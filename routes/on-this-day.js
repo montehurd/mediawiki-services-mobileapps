@@ -4,21 +4,24 @@
 const domino = require('domino');
 const sUtil = require('../lib/util');
 const router = sUtil.router();
-const dateUtil = require('../lib/dateUtil');
 const mUtil = require('../lib/mobile-util');
 const parsoid = require('../lib/parsoid-access');
 const BBPromise = require('bluebird');
+const languages = require('../lib/on-this-day.languages').languages;
 
 let app;
 
 /**
- * Gets English day page titles, which are formatted as follows: 'May_20'
+ * Gets day page titles, which are formatted as follows: 'May_20'
  * @param  {!String} monthNumberString String for month number ranging from '1' to '12'
  * @param  {!String} dayNumberString   String number for day of month
+ * @param  {!String} lang              String for project language code
  * @return {!String}                   Day page title. Example, inputs ('5', '20') returns 'May_20'
  */
-function titleForDayPageFromMonthDayNumberStrings(monthNumberString, dayNumberString) {
-    return `${dateUtil.monthNames[parseInt(monthNumberString) - 1]}_${parseInt(dayNumberString)}`;
+function titleForDayPageFromMonthDayNumberStrings(monthNumberString, dayNumberString, lang) {
+    const monthName = languages[lang].monthNames[parseInt(monthNumberString) - 1];
+    const dayNumber = parseInt(dayNumberString);
+    return languages[lang].dayPage.nameFormatter(monthName, dayNumber);
 }
 
 /**
@@ -29,7 +32,23 @@ function titleForDayPageFromMonthDayNumberStrings(monthNumberString, dayNumberSt
  * returns 'May_20'
  */
 function dayTitleForRequest(req) {
-    return titleForDayPageFromMonthDayNumberStrings(req.params.mm, req.params.dd);
+    const lang = req.params.domain.split('.')[0];
+    return titleForDayPageFromMonthDayNumberStrings(req.params.mm, req.params.dd, lang);
+}
+
+/**
+ * Gets selected page titles, which are formatted as follows:
+ *  'Wikipedia:Selected_anniversaries/May_20'
+ * @param  {!String} monthNumberString String for month number ranging from '1' to '12'
+ * @param  {!String} dayNumberString   String number for day of month
+ * @param  {!String} lang              String for project language code
+ * @return {!String}                   Selected page title. Example, inputs ('5', '20') returns
+ * 'Wikipedia:Selected_anniversaries/May_20'
+ */
+function titleForSelectedPageFromMonthDayNumberStrings(monthNumberString, dayNumberString, lang) {
+    const monthName = languages[lang].monthNames[parseInt(monthNumberString) - 1];
+    const dayNumber = parseInt(dayNumberString);
+    return languages[lang].selectedPage.nameFormatter(monthName, dayNumber);
 }
 
 /**
@@ -43,8 +62,8 @@ function dayTitleForRequest(req) {
  * returns 'Wikipedia:Selected_anniversaries/May_20'
  */
 function selectedTitleForRequest(req) {
-    const title = titleForDayPageFromMonthDayNumberStrings(req.params.mm, req.params.dd);
-    return `Wikipedia:Selected_anniversaries/${title}`;
+    const lang = req.params.domain.split('.')[0];
+    return titleForSelectedPageFromMonthDayNumberStrings(req.params.mm, req.params.dd, lang);
 }
 
 /**
@@ -114,9 +133,11 @@ function wmfPageFromAnchorElement(anchorElement) {
 }
 
 /**
- * RegEx for determining valid "year list elements" and separating their components.
- * For example:     '399 BC - Death of Socrates'
- *    Capture groups:
+ * Converts document list element to WMFEvent model
+ *
+ * A regular expression determines valid "year list elements" and separating their components.
+ *  For example:    '399 BC - Death of Socrates'
+ *    RegEx Capture groups:
  *    1st - entire match (will be non-null if the string looks like a year list element)
  *                  '399 BC - Death of Socrates'
  *    2nd - year number, required
@@ -125,18 +146,15 @@ function wmfPageFromAnchorElement(anchorElement) {
  *                  'BC'
  *    4th - event description string, required
  *                  'Death of Socrates'
- * @type {RegExp}
- */
-const YearListElementRegEx = /^\s*(\d+)\s*(bce?)?\s*–\s(.+)/i;
-
-/**
- * Converts document list element to WMFEvent model
+ *
  * @param   {!ListElement} listElement List element to convert
+ * @param   {!String} lang             String for project language code
  * @return  {?WMFEvent}                A WMFEvent or null if the list element isn't formatted as an
  * event
 */
-function wmfEventFromListElement(listElement) {
-    const match = listElement.textContent.match(YearListElementRegEx);
+function wmfEventFromListElement(listElement, lang) {
+    const regEx = languages[lang].yearListElementRegEx;
+    const match = listElement.textContent.match(regEx);
     if (match === null) {
         return null;
     }
@@ -186,13 +204,14 @@ function reverseChronologicalWMFEventComparator(eventA, eventB) {
 
 /**
  * Gets chronologically sorted array of WMFEvent models from an array of list elements.
- * @param  {!Array} listElements Array of document list elements
- * @return {!Array}              Sorted array of WMFEvent models, one for each year list element
- * found in 'listElements' argument
+ * @param  {!Array}     listElements    Array of document list elements
+ * @param  {!String}    lang            String for project language code
+ * @return {!Array}                     Sorted array of WMFEvent models, one for each year list
+ * element found in 'listElements' argument
  */
-function eventsForYearListElements(listElements) {
+function eventsForYearListElements(listElements, lang) {
     return listElements
-        .map(wmfEventFromListElement)
+        .map((element) => wmfEventFromListElement(element, lang))
         .filter((possibleEvent) => possibleEvent instanceof WMFEvent)
         .sort(reverseChronologicalWMFEventComparator);
 }
@@ -208,57 +227,94 @@ function holidaysForHolidayListElements(listElements) {
 }
 
 /**
+ * Gets list elements grouped under a given heading. Couldn't use pure CSS selector syntax for
+ * extracting these - this is because some languages use further sub-headings under, say, 'births',
+ * for things like 'Births before 1900' and so forth. We want *all* births, in this case - that is,
+ * we want all list elements after the h2 'births' heading up until the next h2 heading.
+ * @param  {!Document}  document    Document to examine
+ * @param  {!String}    headingId   String for heading id
+ * @return {!Array}                 Array of list elements
+ */
+function listElementsByHeadingID(document, headingId) {
+    const elements = Array.from(document.querySelectorAll('h2,ul li'));
+    const listElements = [];
+    let grab = false;
+    for (const element of elements) {
+        if (element.tagName === 'H2') {
+            grab = (element.id === headingId);
+        } else if (element.tagName === 'LI' && grab) {
+            listElements.push(element);
+        }
+    }
+    return listElements;
+}
+
+/**
  * Gets array of WMFEvent models of births found in a document
  * @param  {!Document} document  Document to examine
+ * @param  {!String}   lang      String for project language code
  * @return {!Array}              Array of WMFEvent models of births
  */
-const birthsInDoc = (document) => {
+const birthsInDoc = (document, lang) => {
+    const selector = languages[lang].dayPage.headingIds.births;
     return eventsForYearListElements(
-        document.querySelectorAll('h2#Births + ul li')
+        listElementsByHeadingID(document, selector),
+        lang
     );
 };
 
 /**
  * Gets array of WMFEvent models of deaths found in a document
  * @param  {!Document} document  Document to examine
+ * @param  {!String}   lang      String for project language code
  * @return {!Array}              Array of WMFEvent models of deaths
  */
-const deathsInDoc = (document) => {
+const deathsInDoc = (document, lang) => {
+    const selector = languages[lang].dayPage.headingIds.deaths;
     return eventsForYearListElements(
-        document.querySelectorAll('h2#Deaths + ul li')
+        listElementsByHeadingID(document, selector),
+        lang
     );
 };
 
 /**
  * Gets array of WMFEvent models of events found in a document
  * @param  {!Document} document  Document to examine
+ * @param  {!String}   lang      String for project language code
  * @return {!Array}              Array of WMFEvent models of events
  */
-const eventsInDoc = (document) => {
+const eventsInDoc = (document, lang) => {
+    const selector = languages[lang].dayPage.headingIds.events;
     return eventsForYearListElements(
-        document.querySelectorAll('h2#Events + ul li')
+        listElementsByHeadingID(document, selector),
+        lang
     );
 };
 
 /**
  * Gets array of WMFEvent models of holidays and observances found in a document
  * @param  {!Document} document  Document to examine
+ * @param  {!String}   lang      String for project language code
  * @return {!Array}              Array of WMFEvent models of holidays and observances
  */
-const holidaysInDoc = (document) => {
+const holidaysInDoc = (document, lang) => {
+    const selector = languages[lang].dayPage.headingIds.holidays;
     return holidaysForHolidayListElements(
-        document.querySelectorAll('h2#Holidays_and_observances + ul li')
+        listElementsByHeadingID(document, selector)
     );
 };
 
 /**
  * Gets array of WMFEvent models of editor curated selected events found in a document
  * @param  {!Document} document  Document to examine
+ * @param  {!String}   lang      String for project language code
  * @return {!Array}              Array of WMFEvent models of selections
  */
-const selectionsInDoc = (document) => {
+const selectionsInDoc = (document, lang) => {
+    const selector = languages[lang].selectedPage.listElementSelector;
     return eventsForYearListElements(
-        document.querySelectorAll('body > ul li')
+        document.querySelectorAll(selector),
+        lang
     );
 };
 
@@ -267,16 +323,17 @@ const selectionsInDoc = (document) => {
  * 'holidays' and 'selected'
  * @param  {!Document} dayDoc        Document of events on a given day
  * @param  {!Document} selectionsDoc Document of editor curated events for a given day
+ * @param  {!String}   lang          String for project language code
  * @return {!Dictionary}             Dictionary with keys for arrays of 'births', 'deaths',
  * 'events', 'holidays' and 'selected'
  */
-const everythingInDayAndSelectionsDocs = (dayDoc, selectionsDoc) => {
+const everythingInDayAndSelectionsDocs = (dayDoc, selectionsDoc, lang) => {
     return {
-        selected: selectionsInDoc(selectionsDoc),
-        births: birthsInDoc(dayDoc),
-        deaths: deathsInDoc(dayDoc),
-        events: eventsInDoc(dayDoc),
-        holidays: holidaysInDoc(dayDoc)
+        selected: selectionsInDoc(selectionsDoc, lang),
+        births: birthsInDoc(dayDoc, lang),
+        deaths: deathsInDoc(dayDoc, lang),
+        events: eventsInDoc(dayDoc, lang),
+        holidays: holidaysInDoc(dayDoc, lang)
     };
 };
 
@@ -382,11 +439,12 @@ function fetchDocAndRevision(req, titleFunction) {
  * @return {!Promise}                        Promise resolving when response has completed
  */
 function fetchAndRespond(req, res, titleFunction, extractionFunction) {
+    const lang = req.params.domain.split('.')[0];
     return fetchDocAndRevision(req, titleFunction)
     .then((docAndRevision) => {
         const doc = docAndRevision[0];
         const revision = docAndRevision[1];
-        const output = extractionFunction(doc);
+        const output = extractionFunction(doc, lang);
         endResponseWithOutput(res, output, req.params.domain, revision);
     });
 }
@@ -441,6 +499,7 @@ router.get('/selected/:mm/:dd', (req, res) => {
  * one go Example: http://localhost:6927/en.wikipedia.org/v1/onthisday/all/01/30
  */
 router.get('/all/:mm/:dd', (req, res) => {
+    const lang = req.params.domain.split('.')[0];
     return BBPromise.all([
         fetchDocAndRevision(req, dayTitleForRequest),
         fetchDocAndRevision(req, selectedTitleForRequest)
@@ -455,7 +514,7 @@ router.get('/all/:mm/:dd', (req, res) => {
         const selectionsRevision = selectionsDocAndRevision[1];
 
         const revision = Math.max(dayRevision, selectionsRevision);
-        const output = everythingInDayAndSelectionsDocs(dayDoc, selectionsDoc);
+        const output = everythingInDayAndSelectionsDocs(dayDoc, selectionsDoc, lang);
         endResponseWithOutput(res, output, req.params.domain, revision);
     });
 });
@@ -477,9 +536,9 @@ module.exports = function(appObj) {
             wmfEventFromListElement,
             wmfPageFromAnchorElement,
             eventsForYearListElements,
-            YearListElementRegEx,
             reverseChronologicalWMFEventComparator,
-            hydrateAllTitles
+            hydrateAllTitles,
+            listElementsByHeadingID
         }
     };
 };
