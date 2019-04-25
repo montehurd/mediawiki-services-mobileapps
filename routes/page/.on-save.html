@@ -1,0 +1,26 @@
+<html>
+<script>
+fetch('http://localhost:6927/en.wikipedia.org/v1/page/talk/User_talk:Brion_VIBBER').then(response => {
+// fetch('http://localhost:6927/test.wikipedia.org/v1/page/talk/Bird7').then(response => {
+  response.json().then(json => {
+	  json.forEach(section => {
+      const h = document.createElement('h2')
+      h.innerHTML = section.text
+      document.body.appendChild(h)
+      section.items.forEach(item => {
+        const d = document.createElement('div')
+        d.style.border = '1px solid red'
+        d.style.marginLeft = `${25 * item.depth}px`
+        d.style.marginBottom = '1px'
+        d.innerHTML = item.text
+          .replace(/\n/g, '<br><br>')
+          .replace(/\t/g, '&nbsp;&nbsp;&nbsp;&nbsp;')
+        document.body.appendChild(d)
+      })
+    })
+  })
+})
+</script>
+<body>
+</body>
+</html>
