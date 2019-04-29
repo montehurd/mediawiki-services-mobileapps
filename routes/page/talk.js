@@ -134,7 +134,14 @@ function textContent(rootNode, doc, exclusions = []) {
       if(tagsToPreserve.includes(childNode.tagName)) {
         const clone = childNode.cloneNode(true)
         removeAttributes(clone, attributesToRemove)
-        clone.innerHTML = textContent(clone, doc)
+
+        let text = textContent(clone, doc) 
+        if (text.length === 0 && clone.tagName === 'A') {
+          const fileName = clone.href.substring(clone.href.lastIndexOf('/') + 1)
+          text = `[${fileName}]`
+        }
+
+        clone.innerHTML = text
         results.push(clone.outerHTML)
         return
       }
