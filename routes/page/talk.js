@@ -128,7 +128,12 @@ function textContent(rootNode, doc, exclusions = []) {
   const tagsToPreserve = textContentTagsToPreserve.filter(tag => !exclusions.includes(tag))
   childNodes.forEach(childNode => {
     if (childNode.nodeType === 3) {
-      results.push(childNode.nodeValue);
+      const text = childNode.nodeValue
+      const escapedText = text
+        .replace(/&/g,'&amp;')
+        .replace(/</g,'&lt;')
+        .replace(/>/g,'&gt;')
+      results.push(escapedText)
     } else if (childNode.nodeType === 1) {
       // Everything should be text except `tagsToPreserve`
       if(tagsToPreserve.includes(childNode.tagName)) {
