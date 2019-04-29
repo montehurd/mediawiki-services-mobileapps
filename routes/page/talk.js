@@ -191,7 +191,9 @@ class WMFSection {
   }
 }
 
-const sectionsInDoc = doc => Array.from(doc.querySelectorAll('section')).map(sectionElement => new WMFSection(sectionElement, doc))
+const sectionsInDoc = doc => Array.from(doc.querySelectorAll('section'))
+  //.filter((e, i) => i === 28) // Debugging a single section by index 
+  .map(sectionElement => new WMFSection(sectionElement, doc))
 
 function fetchAndRespond(app, req, res) {
   const lang = req.params.domain.split('.')[0];
