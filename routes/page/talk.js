@@ -56,14 +56,14 @@ function getDepth(element) {
   return depth
 }
 
-class WMFItem {
+class WMFMessage {
   constructor(text = '', depth = 0) {
     this.text = text.replace(/\n\s*\n/g, '\n').trim() 
     this.depth = depth
   }
 }
 
-class WMFFragmentAndDepth {
+class WMFMessageFragmentAndDepth {
   constructor(fragment = null, depth = 0) {
     this.fragment = fragment
     this.depth = depth
@@ -182,12 +182,12 @@ class WMFSection {
           const fragment = doc.createDocumentFragment()
           const depth = getDepth(item)
           fragment.appendChild(item)
-          return new WMFFragmentAndDepth(fragment, depth)
+          return new WMFMessageFragmentAndDepth(fragment, depth)
       })
       .filter(reverseCombiner) 
       .reverse()
       .filter(forwardCombiner)
-      .map(fragmentAndDepth => new WMFItem(textContent(fragmentAndDepth.fragment, doc), fragmentAndDepth.depth))
+      .map(fragmentAndDepth => new WMFMessage(textContent(fragmentAndDepth.fragment, doc), fragmentAndDepth.depth))
   }
 }
 
