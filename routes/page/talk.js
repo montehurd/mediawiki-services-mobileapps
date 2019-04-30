@@ -56,9 +56,12 @@ function getDepth(element) {
   return depth
 }
 
+const consecutiveWhitespaceLinesRegex = /\n\s*\n/g 
+const signatureRegex = /.*\s+\d{4}\s+\(.*\)\s*$/
+
 class WMFMessage {
   constructor(text = '', depth = 0) {
-    this.text = text.replace(/\n\s*\n/g, '\n').trim() 
+    this.text = text.replace(consecutiveWhitespaceLinesRegex, '\n').trim() 
     this.depth = depth
   }
 }
@@ -73,7 +76,7 @@ class WMFMessageFragmentAndDepth {
     if (this.fragment === null) {
       return false
     }
-    return /.*\s+\d{4}\s+\(.*\)\s*$/i.test(this.fragment.textContent)
+    return signatureRegex.test(this.fragment.textContent)
   }
   appendChildren(children) {
     children.forEach(child => this.fragment.appendChild(child))
