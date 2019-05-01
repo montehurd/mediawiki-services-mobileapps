@@ -1,6 +1,7 @@
 const mUtil = require('../../lib/mobile-util');
 const parsoidApi = require('../../lib/parsoid-access');
 const router = require('../../lib/util').router();
+const crypto = require('crypto');
 
 /**
  * The main application object reported when this module is require()d
@@ -11,6 +12,12 @@ let app;
  * GET {domain}/v1/page/talk/{title}{/revision}{/tid}
  * Gets talk page info.
  */
+
+const createSha1 = (input) => {
+  const shasum = crypto.createHash('sha1');
+  shasum.update(input);
+  return shasum.digest('hex');
+};
 
 const endResponseWithOutput = (app, res, output, domain, revision) => {
     res.status(200);
@@ -57,6 +64,7 @@ class WMFMessage {
   constructor(text = '', depth = 0) {
     this.text = text.replace(consecutiveWhitespaceLinesRegex, '\n').trim() 
     this.depth = depth
+    this.sha = createSha1(this.text)
   }
 }
 
@@ -222,6 +230,8 @@ class WMFSection {
     // this.text = h2 ? h2.textContent : ''
     const titleHTMLExclusions = ['A']
     this.text = textContent(h2, doc, titleHTMLExclusions)
+    // Section sha on section title and items sha's.
+    this.sha = createSha1(`${this.text}${this.items.map(item => item.sha).join('')}`)
   }
   itemsFromSectionElement (sectionElement, doc) {
     return soughtElementsInSection(sectionElement, doc)
@@ -239,6 +249,15 @@ class WMFSection {
   }
 }
 
+// Reduce section and items' sha's to first 7 chars.
+const shortenOutputShas = output => {
+  const shortenSha = sectionOrItem => sectionOrItem.sha = sectionOrItem.sha.substring(0, 7)
+  output.forEach(section => {
+    shortenSha(section)
+    section.items.forEach(shortenSha)
+  })
+} 
+
 const sectionsInDoc = doc => Array.from(doc.querySelectorAll('section'))
   //.filter((e, i) => i === 37) // Debugging a single section by index 
   .map(sectionElement => new WMFSection(sectionElement, doc))
@@ -251,6 +270,7 @@ function fetchAndRespond(app, req, res) {
         const doc = docAndRevision[0];
         const revision = docAndRevision[1];
         const output = sectionsInDoc(doc)
+        shortenOutputShas(output)
         endResponseWithOutput(app, res, output, req.params.domain, revision);
     });
 }
