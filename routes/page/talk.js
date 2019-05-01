@@ -8,11 +8,6 @@ const crypto = require('crypto');
  */
 let app;
 
-/**
- * GET {domain}/v1/page/talk/{title}{/revision}{/tid}
- * Gets talk page info.
- */
-
 const createSha1 = (input) => {
   const shasum = crypto.createHash('sha1');
   shasum.update(input);
@@ -273,6 +268,10 @@ function fetchAndRespond(app, req, res) {
     });
 }
 
+/**
+ * GET {domain}/v1/page/talk/{title}{/revision}{/tid}
+ * Gets talk page info.
+ */
 router.get('/talk/:title/:revision?/:tid?', (req, res) => {
   return fetchAndRespond(app, req, res);
 });
