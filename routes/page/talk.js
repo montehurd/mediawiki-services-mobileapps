@@ -106,9 +106,11 @@ const combiner = (fragmentAndDepth, index, array, doc) => {
     const nextFragmentAndDepth = array[index + 1];
 
     if (fragmentAndDepth.fragmentEndsWithSig) {
-      stopAccumulating = nextFragmentAndDepth.fragmentEndsWithSig === fragmentAndDepth.fragmentEndsWithSig;
+      stopAccumulating =
+        nextFragmentAndDepth.fragmentEndsWithSig === fragmentAndDepth.fragmentEndsWithSig;
     } else {
-      stopAccumulating = nextFragmentAndDepth.fragmentEndsWithSig != fragmentAndDepth.fragmentEndsWithSig;
+      stopAccumulating =
+        nextFragmentAndDepth.fragmentEndsWithSig !== fragmentAndDepth.fragmentEndsWithSig;
     }
   }
 
@@ -216,6 +218,9 @@ const soughtElementsInSection = (sectionElement, doc) => {
   return elements;
 };
 
+// Reduce section or item sha to first 7 chars.
+const shortenSha = sectionOrItem => sectionOrItem.sha = sectionOrItem.sha.substring(0, 7);
+
 class WMFSection {
   constructor(sectionElement, doc) {
     this.id = sectionElement.getAttribute('data-mw-section-id');
@@ -239,7 +244,10 @@ class WMFSection {
       })
       .filter((fragmentAndDepth, index, array) => combiner(fragmentAndDepth, index, array, doc))
       .reverse()
-      .map(fragmentAndDepth => new WMFMessage(textContent(fragmentAndDepth.fragment, doc), fragmentAndDepth.depth))
+      .map(fragmentAndDepth => new WMFMessage(
+        textContent(fragmentAndDepth.fragment, doc),
+        fragmentAndDepth.depth
+      ))
       .filter(m => m.text.length > 0);
   }
   shortenShas() {
@@ -247,9 +255,6 @@ class WMFSection {
     this.items.forEach(shortenSha);
   }
 }
-
-// Reduce section or item sha to first 7 chars.
-const shortenSha = sectionOrItem => sectionOrItem.sha = sectionOrItem.sha.substring(0, 7);
 
 const sectionsInDoc = doc => Array.from(doc.querySelectorAll('section'))
   // .filter((e, i) => i === 37) // Debugging a single section by index
