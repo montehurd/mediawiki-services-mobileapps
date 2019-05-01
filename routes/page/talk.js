@@ -219,7 +219,9 @@ const soughtElementsInSection = (sectionElement, doc) => {
 };
 
 // Reduce section or item sha to first 7 chars.
-const shortenSha = sectionOrItem => sectionOrItem.sha = sectionOrItem.sha.substring(0, 7);
+const shortenSha = sectionOrItem => {
+  sectionOrItem.sha = sectionOrItem.sha.substring(0, 7);
+};
 
 class WMFSection {
   constructor(sectionElement, doc) {
