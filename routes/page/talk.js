@@ -247,16 +247,14 @@ class WMFSection {
       .map(fragmentAndDepth => new WMFMessage(textContent(fragmentAndDepth.fragment, doc), fragmentAndDepth.depth))
       .filter(m => m.text.length > 0)
   }
+  shortenShas() {
+    shortenSha(this)
+    this.items.forEach(shortenSha)  
+  }
 }
 
-// Reduce section and items' sha's to first 7 chars.
-const shortenOutputShas = output => {
-  const shortenSha = sectionOrItem => sectionOrItem.sha = sectionOrItem.sha.substring(0, 7)
-  output.forEach(section => {
-    shortenSha(section)
-    section.items.forEach(shortenSha)
-  })
-} 
+// Reduce section or item sha to first 7 chars.
+const shortenSha = sectionOrItem => sectionOrItem.sha = sectionOrItem.sha.substring(0, 7)
 
 const sectionsInDoc = doc => Array.from(doc.querySelectorAll('section'))
   //.filter((e, i) => i === 37) // Debugging a single section by index 
@@ -269,9 +267,9 @@ function fetchAndRespond(app, req, res) {
     .then((docAndRevision) => {
         const doc = docAndRevision[0];
         const revision = docAndRevision[1];
-        const output = sectionsInDoc(doc)
-        shortenOutputShas(output)
-        endResponseWithOutput(app, res, output, req.params.domain, revision);
+        const sections = sectionsInDoc(doc)
+        sections.forEach(section => section.shortenShas())
+        endResponseWithOutput(app, res, sections, req.params.domain, revision);
     });
 }
 
