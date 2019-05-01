@@ -42,7 +42,7 @@ const depthIndicatingAncestorTags = ['DL', 'UL', 'OL'];
 function getDepth(element) {
   let elem = element;
   let familyTreeTags = [element.tagName];
-  while (elem = elem.parentElement) {
+  while ((elem = elem.parentElement) !== null) {
     familyTreeTags.push(elem.tagName);
   }
   let depth = familyTreeTags.filter(tag => depthIndicatingAncestorTags.includes(tag)).length;
