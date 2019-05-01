@@ -1,12 +1,6 @@
-const BBPromise = require('bluebird');
-const domUtil = require('../../lib/domUtil');
-const mwapi = require('../../lib/mwapi');
 const mUtil = require('../../lib/mobile-util');
 const parsoidApi = require('../../lib/parsoid-access');
-const sUtil = require('../../lib/util');
-const router = sUtil.router();
-// const parsoidSections = require('../../lib/sections/parsoidSections');
-//const preq = require('../../scripts/preq');
+const router = require('../../lib/util').router();
 
 /**
  * The main application object reported when this module is require()d
@@ -95,19 +89,34 @@ class WMFMessageFragmentAndDepth {
 // does the desired combination but also removes fragments from the array when their contents are
 // appended to other fragments.
 const accumulator = []
-const combiner = (doc, fragmentAndDepth, index, array, fragmentAdder, accumulatorAdder) => {
+let firstItemEndsWithSig = false
+const combiner = (fragmentAndDepth, index, array, doc) => {
   if (index === 0) {
     accumulator.length = 0
+    firstItemEndsWithSig = fragmentAndDepth.fragmentEndsWithSig 
   }
-  const stopAccumulating = fragmentAndDepth.fragmentEndsWithSig || (index + 1 === array.length) 
+  
+  let stopAccumulating = false
+  if (index + 1 === array.length) {
+    stopAccumulating = true
+  } else {
+    const nextFragmentAndDepth = array[index + 1]
+    
+    if (fragmentAndDepth.fragmentEndsWithSig){
+      stopAccumulating = nextFragmentAndDepth.fragmentEndsWithSig === fragmentAndDepth.fragmentEndsWithSig
+    } else {
+      stopAccumulating = nextFragmentAndDepth.fragmentEndsWithSig != fragmentAndDepth.fragmentEndsWithSig
+    }
+  } 
+  
   if (stopAccumulating) {
     accumulator.forEach(accumulatedFragmentAndDepth => { 
       const tabsTextNode = doc.createTextNode(`\n${'\t'.repeat(accumulatedFragmentAndDepth.depth)}`)
-      fragmentAndDepth[fragmentAdder]([tabsTextNode, accumulatedFragmentAndDepth.fragment])
+      fragmentAndDepth.appendChildren([tabsTextNode, accumulatedFragmentAndDepth.fragment])
     })
     accumulator.length = 0
   } else {
-    accumulator[accumulatorAdder](fragmentAndDepth)
+    accumulator.unshift(fragmentAndDepth)
   } 
   return stopAccumulating
 } 
@@ -166,6 +175,44 @@ function textContent(rootNode, doc, exclusions = []) {
   return results.join(''); 
 }
 
+const arraysOfNodesAroundSignaturesReducer = (resultArray, item, index) => {
+  if (index === 0) {
+    resultArray.push([])
+  }
+  if (item.textContent.length > 0) {
+    resultArray[resultArray.length - 1].push(item)  
+  }
+  const isSigned = signatureRegex.test(item.textContent)
+  if (isSigned) {
+    resultArray.push([])
+  }
+  return resultArray
+}
+
+const pContainingArrayOfNodes = (nodeArray, doc) => {
+  const p = doc.createElement('p')
+  nodeArray.forEach(p.appendChild, p)
+  return p 
+}
+
+const soughtElementsInSection = (sectionElement, doc) => {
+  let elements = []
+  Array.from(sectionElement.querySelectorAll('p,li,dt,dd'))
+    .forEach(element => {
+      if (element.tagName === 'P'){
+        // Sometimes inside 'p' tags we see responses only separated by break tags, so wrap these
+        // responses in 'p' elements so they are treated like 'p' wrapped responses.
+        element.childNodes
+          .reduce(arraysOfNodesAroundSignaturesReducer, [])
+          .map(nodes => pContainingArrayOfNodes(nodes, doc))
+          .forEach(p => elements.push(p))
+      }else{
+        elements.push(element)  
+      }
+    })  
+  return elements
+}
+
 class WMFSection {
   constructor(sectionElement, doc) {
     this.id = sectionElement.getAttribute('data-mw-section-id')
@@ -177,9 +224,7 @@ class WMFSection {
     this.text = textContent(h2, doc, titleHTMLExclusions)
   }
   itemsFromSectionElement (sectionElement, doc) {
-    const reverseCombiner = (fragmentAndDepth, index, array) => combiner(doc, fragmentAndDepth, index, array, 'appendChildren', 'unshift')
-    const forwardCombiner = (fragmentAndDepth, index, array) => combiner(doc, fragmentAndDepth, index, array, 'prependChildren', 'push')
-    return Array.from(sectionElement.querySelectorAll('p,li,dt,dd'))
+    return soughtElementsInSection(sectionElement, doc)
       .reverse()
       .map(item => {
           const fragment = doc.createDocumentFragment()
@@ -187,15 +232,15 @@ class WMFSection {
           fragment.appendChild(item)
           return new WMFMessageFragmentAndDepth(fragment, depth)
       })
-      .filter(reverseCombiner) 
+      .filter((fragmentAndDepth, index, array) => combiner(fragmentAndDepth, index, array, doc))
       .reverse()
-      .filter(forwardCombiner)
       .map(fragmentAndDepth => new WMFMessage(textContent(fragmentAndDepth.fragment, doc), fragmentAndDepth.depth))
+      .filter(m => m.text.length > 0)
   }
 }
 
 const sectionsInDoc = doc => Array.from(doc.querySelectorAll('section'))
-  //.filter((e, i) => i === 28) // Debugging a single section by index 
+  //.filter((e, i) => i === 37) // Debugging a single section by index 
   .map(sectionElement => new WMFSection(sectionElement, doc))
 
 function fetchAndRespond(app, req, res) {
