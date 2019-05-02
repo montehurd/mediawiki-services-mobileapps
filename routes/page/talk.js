@@ -117,6 +117,9 @@ const combiner = (fragmentAndDepth, index, array, doc) => {
   if (stopAccumulating) {
     accumulator.forEach(accumulatedFragmentAndDepth => {
       const tabsTextNode = doc.createTextNode(`\n${'\t'.repeat(accumulatedFragmentAndDepth.depth)}`);
+      if (accumulator.length === 1) {
+        fragmentAndDepth.depth = accumulatedFragmentAndDepth.depth;
+      }
       fragmentAndDepth.appendChildren([tabsTextNode, accumulatedFragmentAndDepth.fragment]);
     });
     accumulator.length = 0;
