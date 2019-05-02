@@ -133,6 +133,13 @@ function removeAttributes(node, attributes) {
   attributes.forEach(attribute => node.removeAttribute(attribute));
 }
 
+const escapeHTML = text => {
+  return text
+    .replace(/&/g,'&amp;')
+    .replace(/</g,'&lt;')
+    .replace(/>/g,'&gt;');
+};
+
 const textContentTagsToPreserve = ['A', 'B', 'I'];
 const textContentTagsToConvertToBold = ['DT'];
 const attributesToRemove = ['style','id','class','rel','about'];
@@ -148,12 +155,7 @@ function textContent(rootNode, doc, exclusions = []) {
   const tagsToPreserve = textContentTagsToPreserve.filter(tag => !exclusions.includes(tag));
   childNodes.forEach(childNode => {
     if (childNode.nodeType === 3) {
-      const text = childNode.nodeValue;
-      const escapedText = text
-        .replace(/&/g,'&amp;')
-        .replace(/</g,'&lt;')
-        .replace(/>/g,'&gt;');
-      results.push(escapedText);
+      results.push(escapeHTML(childNode.nodeValue));
     } else if (childNode.nodeType === 1) {
       if (childNode.tagName === 'BR') {
         results.push('\n');
