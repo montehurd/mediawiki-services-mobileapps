@@ -252,11 +252,10 @@ class WMFSection {
   constructor(sectionElement, doc) {
     this.id = sectionElement.getAttribute('data-mw-section-id');
     this.items = this.itemsFromSectionElement(sectionElement, doc);
-    // Question: h2 only?
-    const h2 = sectionElement.querySelector('h2');
-    // this.text = h2 ? h2.textContent : ''
+    const header = sectionElement.querySelector('h1,h2,h3,h4,h5,h6');
+    this.depth = header ? parseInt(header.tagName.replace(/[^0-9]/g, ''), 10) : 1;
     const titleHTMLExclusions = ['A'];
-    this.text = textContent(h2, doc, titleHTMLExclusions);
+    this.text = textContent(header, doc, titleHTMLExclusions);
     // Section sha on section title and items sha's.
     this.sha = createSha1(`${this.text}${this.items.map(item => item.sha).join('')}`);
   }
@@ -283,8 +282,16 @@ class WMFSection {
   }
 }
 
+const sectionWithoutSubsections = section => {
+  Array.from(section.querySelectorAll('section')).forEach(subSection => {
+    subSection.parentNode.removeChild(subSection);
+  });
+  return section;
+};
+
 const sectionsInDoc = doc => Array.from(doc.querySelectorAll('section'))
-  // .filter((e, i) => i === 37 || i === 32) // For debugging specific sections by index
+  .map(sectionWithoutSubsections)
+  // .filter((e, i) => i === 52 || i === 53 || i === 54) // For debugging specific sections by index
   .map(sectionElement => new WMFSection(sectionElement, doc));
 
 function fetchAndRespond(app, req, res) {
