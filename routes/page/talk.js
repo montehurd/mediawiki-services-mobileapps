@@ -152,6 +152,10 @@ function textContent(rootNode, doc, exclusions = []) {
         .replace(/>/g,'&gt;');
       results.push(escapedText);
     } else if (childNode.nodeType === 1) {
+      if (childNode.tagName === 'BR') {
+        results.push('\n');
+        return;
+      }
       // Everything should be text except `tagsToPreserve`
       if (tagsToPreserve.includes(childNode.tagName)) {
         const clone = childNode.cloneNode(true);
@@ -202,7 +206,7 @@ const pContainingArrayOfNodes = (nodeArray, doc) => {
 
 const soughtElementsInSection = (sectionElement, doc) => {
   let elements = [];
-  Array.from(sectionElement.querySelectorAll('p,li,dt,dd,th,td,pre,div'))
+  Array.from(sectionElement.querySelectorAll('p,li,dt,dd,th,td,pre,div,blockquote'))
     .forEach(element => {
       if (element.tagName === 'P') {
         // Sometimes inside 'p' tags we see responses only separated by break tags, so wrap these
