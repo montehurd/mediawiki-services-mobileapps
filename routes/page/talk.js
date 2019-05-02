@@ -202,7 +202,7 @@ const pContainingArrayOfNodes = (nodeArray, doc) => {
 
 const soughtElementsInSection = (sectionElement, doc) => {
   let elements = [];
-  Array.from(sectionElement.querySelectorAll('p,li,dt,dd,th,td,pre'))
+  Array.from(sectionElement.querySelectorAll('p,li,dt,dd,th,td,pre,div'))
     .forEach(element => {
       if (element.tagName === 'P') {
         // Sometimes inside 'p' tags we see responses only separated by break tags, so wrap these
