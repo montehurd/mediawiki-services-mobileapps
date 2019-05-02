@@ -250,7 +250,7 @@ const shortenSha = sectionOrItem => {
 
 class WMFSection {
   constructor(sectionElement, doc) {
-    this.id = sectionElement.getAttribute('data-mw-section-id');
+    this.id = 0;
     this.items = this.itemsFromSectionElement(sectionElement, doc);
     const header = sectionElement.querySelector('h1,h2,h3,h4,h5,h6');
     this.depth = header ? parseInt(header.tagName.replace(/[^0-9]/g, ''), 10) : 1;
@@ -302,7 +302,10 @@ function fetchAndRespond(app, req, res) {
         const doc = docAndRevision[0];
         const revision = docAndRevision[1];
         const sections = sectionsInDoc(doc);
-        sections.forEach(section => section.shortenShas());
+        sections.forEach((section, i) => {
+          section.shortenShas();
+          section.id = i;
+        });
         endResponseWithOutput(app, res, sections, req.params.domain, revision);
     });
 }

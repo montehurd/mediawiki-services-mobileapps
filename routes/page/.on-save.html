@@ -11,7 +11,7 @@ fetch('http://localhost:6927/en.wikipedia.org/v1/page/talk/User_talk:Brion_VIBBE
       sectionDiv.style.marginLeft = `${30 * (section.depth - 1)}px`
 
       const h = document.createElement(`h${section.depth}`)
-      h.innerHTML = section.text // + ' ' + section.id
+      h.innerHTML = `${section.text} [${section.id}]`
       sectionDiv.appendChild(h)
 
       section.items.forEach(item => {
