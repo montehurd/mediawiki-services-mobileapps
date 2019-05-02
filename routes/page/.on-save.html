@@ -21,8 +21,6 @@ fetch('http://localhost:6927/en.wikipedia.org/v1/page/talk/User_talk:Brion_VIBBE
         d.style.marginBottom = '5px'
         d.style.padding = '5px'
         d.innerHTML = item.text
-          .replace(/\n/g, '<br><br>')
-          .replace(/\t/g, '&nbsp;&nbsp;&nbsp;&nbsp;')
         sectionDiv.appendChild(d)
       })
 

@@ -57,7 +57,11 @@ const signatureRegex = /.*\s+\d{4}\s+\(.*\)\s*$/;
 
 class WMFMessage {
   constructor(text = '', depth = 0) {
-    this.text = text.replace(consecutiveWhitespaceLinesRegex, '\n').trim();
+    this.text = text
+      .replace(consecutiveWhitespaceLinesRegex, '\n')
+      .trim()
+      .replace(/\t/g,'&#8195;')
+      .replace(/\n/g,'<br><br>');
     this.depth = depth;
     this.sha = createSha1(this.text);
   }
@@ -157,10 +161,6 @@ function textContent(rootNode, doc, exclusions = []) {
     if (childNode.nodeType === 3) {
       results.push(escapeHTML(childNode.nodeValue));
     } else if (childNode.nodeType === 1) {
-      if (childNode.tagName === 'BR') {
-        results.push('\n');
-        return;
-      }
       // Everything should be text except `tagsToPreserve`
       if (tagsToPreserve.includes(childNode.tagName)) {
         const clone = childNode.cloneNode(true);
@@ -291,7 +291,7 @@ const sectionWithoutSubsections = section => {
 
 const sectionsInDoc = doc => Array.from(doc.querySelectorAll('section'))
   .map(sectionWithoutSubsections)
-  // .filter((e, i) => i === 52 || i === 53 || i === 54) // For debugging specific sections by index
+  // .filter((e, i) => i === 32 || i === 37) // For debugging specific sections by index
   .map(sectionElement => new WMFSection(sectionElement, doc));
 
 function fetchAndRespond(app, req, res) {
