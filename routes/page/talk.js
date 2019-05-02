@@ -187,6 +187,17 @@ function textContent(rootNode, doc, exclusions = []) {
   return results.join('');
 }
 
+const arraysOfNodesAroundBreaksReducer = (resultArray, item, index) => {
+  const isBR = item.tagName && item.tagName === 'BR';
+  if (isBR || index === 0) {
+    resultArray.push([]);
+  }
+  if (!isBR) {
+    resultArray[resultArray.length - 1].push(item);
+  }
+  return resultArray;
+};
+
 const arraysOfNodesAroundSignaturesReducer = (resultArray, item, index) => {
   if (index === 0) {
     resultArray.push([]);
@@ -209,18 +220,23 @@ const pContainingArrayOfNodes = (nodeArray, doc) => {
 
 const soughtElementsInSection = (sectionElement, doc) => {
   let elements = [];
-  Array.from(sectionElement.querySelectorAll('p,li,dt,dd,th,td,pre,div,blockquote'))
+  Array.from(sectionElement.querySelectorAll('p,li,dt,dd,th,td,pre,div,blockquote,br'))
     .forEach(element => {
+
       if (element.tagName === 'P') {
-        // Sometimes inside 'p' tags we see responses only separated by break tags, so wrap these
-        // responses in 'p' elements so they are treated like 'p' wrapped responses.
         element.childNodes
-          .reduce(arraysOfNodesAroundSignaturesReducer, [])
+          .reduce(arraysOfNodesAroundBreaksReducer, [])
           .map(nodes => pContainingArrayOfNodes(nodes, doc))
-          .forEach(p => elements.push(p));
+          .forEach(p => {
+            p.childNodes
+              .reduce(arraysOfNodesAroundSignaturesReducer, [])
+              .map(nodes => pContainingArrayOfNodes(nodes, doc))
+              .forEach(p => elements.push(p));
+          });
       } else {
         elements.push(element);
       }
+
     });
   return elements;
 };
@@ -266,7 +282,7 @@ class WMFSection {
 }
 
 const sectionsInDoc = doc => Array.from(doc.querySelectorAll('section'))
-  // .filter((e, i) => i === 37) // Debugging a single section by index
+  // .filter((e, i) => i === 37 || i === 32) // For debugging specific sections by index
   .map(sectionElement => new WMFSection(sectionElement, doc));
 
 function fetchAndRespond(app, req, res) {
