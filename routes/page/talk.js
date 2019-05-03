@@ -38,13 +38,18 @@ function fetchDocAndRevision(app, req) {
     .then(doc => [doc, revision]);
 }
 
+const getFamilyTree = (element) => {
+  let elem = element;
+  let tree = [element];
+  while ((elem = elem.parentElement) !== null) {
+    tree.push(elem);
+  }
+  return tree;
+};
+
 const depthIndicatingAncestorTags = ['DL', 'UL', 'OL'];
 function getDepth(element) {
-  let elem = element;
-  let familyTreeTags = [element.tagName];
-  while ((elem = elem.parentElement) !== null) {
-    familyTreeTags.push(elem.tagName);
-  }
+  let familyTreeTags = getFamilyTree(element).map(e => e.tagName);
   let depth = familyTreeTags.filter(tag => depthIndicatingAncestorTags.includes(tag)).length;
   if (element.tagName === 'DT') {
     depth = depth - 1;
@@ -68,9 +73,15 @@ class WMFReply {
 }
 
 class WMFReplyFragmentAndDepth {
-  constructor(fragment = null, depth = 0) {
+  constructor(element = null, doc) {
+    this.depth = getDepth(element);
+    this.isListItem = element.tagName === 'LI';
+    this.isListItemOrdered = this.isListItem && element.parentElement.tagName === 'OL';
+
+    const fragment = doc.createDocumentFragment();
+    fragment.appendChild(element);
+
     this.fragment = fragment;
-    this.depth = depth;
     this.fragmentEndsWithSig = this.endsWithSig();
   }
   endsWithSig() {
@@ -261,12 +272,7 @@ class WMFTopic {
   repliesFromSectionElement (sectionElement, doc) {
     return soughtElementsInSection(sectionElement, doc)
       .reverse()
-      .map(item => {
-          const fragment = doc.createDocumentFragment();
-          const depth = getDepth(item);
-          fragment.appendChild(item);
-          return new WMFReplyFragmentAndDepth(fragment, depth);
-      })
+      .map(item => new WMFReplyFragmentAndDepth(item, doc))
       .filter((fragmentAndDepth, index, array) => combiner(fragmentAndDepth, index, array, doc))
       .reverse()
       .map(fragmentAndDepth => new WMFReply(
@@ -293,7 +299,7 @@ const sectionWithoutSubsections = section => {
 
 const sectionsInDoc = doc => Array.from(doc.querySelectorAll('section'))
   .map(sectionWithoutSubsections)
-  // .filter((e, i) => i === 32 || i === 37  || i === 39 || i === 73 || i === 74)
+  // .filter((e, i) => [37,38,39,74,13].includes(i))
   .map(sectionElement => new WMFTopic(sectionElement, doc));
 
 function fetchAndRespond(app, req, res) {
