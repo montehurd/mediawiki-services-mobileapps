@@ -248,7 +248,7 @@ const shortenSha = sectionOrReply => {
   sectionOrReply.sha = sectionOrReply.sha.substring(0, 7);
 };
 
-class WMFSection {
+class WMFTopic {
   constructor(sectionElement, doc) {
     this.id = 0;
     this.replies = this.repliesFromSectionElement(sectionElement, doc);
@@ -291,7 +291,7 @@ const sectionWithoutSubsections = section => {
 const sectionsInDoc = doc => Array.from(doc.querySelectorAll('section'))
   .map(sectionWithoutSubsections)
   // .filter((e, i) => i === 32 || i === 37  || i === 39 || i === 73 || i === 74)
-  .map(sectionElement => new WMFSection(sectionElement, doc));
+  .map(sectionElement => new WMFTopic(sectionElement, doc));
 
 function fetchAndRespond(app, req, res) {
   const lang = req.params.domain.split('.')[0];
