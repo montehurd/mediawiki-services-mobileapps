@@ -279,6 +279,9 @@ class WMFTopic {
     shortenSha(this);
     this.replies.forEach(shortenSha);
   }
+  isEmpty() {
+    return this.text.length === 0 && this.replies.length === 0;
+  }
 }
 
 const sectionWithoutSubsections = section => {
@@ -300,7 +303,8 @@ function fetchAndRespond(app, req, res) {
     .then((docAndRevision) => {
         const doc = docAndRevision[0];
         const revision = docAndRevision[1];
-        const sections = sectionsInDoc(doc);
+        const sections = sectionsInDoc(doc)
+          .filter(section => !section.isEmpty());
         sections.forEach((section, i) => {
           section.shortenShas();
           section.id = i;
