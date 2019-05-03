@@ -55,7 +55,7 @@ function getDepth(element) {
 const consecutiveWhitespaceLinesRegex = /\n\s*\n/g;
 const signatureRegex = /.*\s+\d{4}\s+\(.*\)\s*$/;
 
-class WMFMessage {
+class WMFReply {
   constructor(text = '', depth = 0) {
     this.text = text
       .replace(consecutiveWhitespaceLinesRegex, '\n')
@@ -67,7 +67,7 @@ class WMFMessage {
   }
 }
 
-class WMFMessageFragmentAndDepth {
+class WMFReplyFragmentAndDepth {
   constructor(fragment = null, depth = 0) {
     this.fragment = fragment;
     this.depth = depth;
@@ -88,11 +88,11 @@ class WMFMessageFragmentAndDepth {
 }
 
 // if a fragment's content text ends in 4 digits followed by parenthetical content
-// ( ie: '2018 (CEST)' ) then we're considering it a separate item. (`fragmentEndsWithSig` can be
-// checked to make this determination.) items that do not end with such a signature need to be
-// combined with either the next or previous item with such a signature. This `combiner` uses an
+// ( ie: '2018 (CEST)' ) then we're considering it a separate reply. (`fragmentEndsWithSig` can be
+// checked to make this determination.) replies that do not end with such a signature need to be
+// combined with either the next or previous reply with such a signature. This `combiner` uses an
 // `accumulator` to buffer such signature-less fragments so they can be moved. returns false when
-// an item with a signature is encountered - as such can be used with array 'filter' so it both
+// an reply with a signature is encountered - as such can be used with array 'filter' so it both
 // does the desired combination but also removes fragments from the array when their contents are
 // appended to other fragments.
 const accumulator = [];
@@ -243,34 +243,34 @@ const soughtElementsInSection = (sectionElement, doc) => {
   return elements;
 };
 
-// Reduce section or item sha to first 7 chars.
-const shortenSha = sectionOrItem => {
-  sectionOrItem.sha = sectionOrItem.sha.substring(0, 7);
+// Reduce section or reply sha to first 7 chars.
+const shortenSha = sectionOrReply => {
+  sectionOrReply.sha = sectionOrReply.sha.substring(0, 7);
 };
 
 class WMFSection {
   constructor(sectionElement, doc) {
     this.id = 0;
-    this.items = this.itemsFromSectionElement(sectionElement, doc);
+    this.replies = this.repliesFromSectionElement(sectionElement, doc);
     const header = sectionElement.querySelector('h1,h2,h3,h4,h5,h6');
     this.depth = header ? parseInt(header.tagName.replace(/[^0-9]/g, ''), 10) : 1;
     const titleHTMLExclusions = ['A'];
     this.text = textContent(header, doc, titleHTMLExclusions);
-    // Section sha on section title and items sha's.
-    this.sha = createSha1(`${this.text}${this.items.map(item => item.sha).join('')}`);
+    // Section sha on section title and replies sha's.
+    this.sha = createSha1(`${this.text}${this.replies.map(reply => reply.sha).join('')}`);
   }
-  itemsFromSectionElement (sectionElement, doc) {
+  repliesFromSectionElement (sectionElement, doc) {
     return soughtElementsInSection(sectionElement, doc)
       .reverse()
       .map(item => {
           const fragment = doc.createDocumentFragment();
           const depth = getDepth(item);
           fragment.appendChild(item);
-          return new WMFMessageFragmentAndDepth(fragment, depth);
+          return new WMFReplyFragmentAndDepth(fragment, depth);
       })
       .filter((fragmentAndDepth, index, array) => combiner(fragmentAndDepth, index, array, doc))
       .reverse()
-      .map(fragmentAndDepth => new WMFMessage(
+      .map(fragmentAndDepth => new WMFReply(
         textContent(fragmentAndDepth.fragment, doc),
         fragmentAndDepth.depth
       ))
@@ -278,7 +278,7 @@ class WMFSection {
   }
   shortenShas() {
     shortenSha(this);
-    this.items.forEach(shortenSha);
+    this.replies.forEach(shortenSha);
   }
 }
 
@@ -306,7 +306,8 @@ function fetchAndRespond(app, req, res) {
           section.shortenShas();
           section.id = i;
         });
-        endResponseWithOutput(app, res, sections, req.params.domain, revision);
+        const output = { topics: sections };
+        endResponseWithOutput(app, res, output, req.params.domain, revision);
     });
 }
 
