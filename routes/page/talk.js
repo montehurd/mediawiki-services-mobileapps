@@ -254,8 +254,7 @@ class WMFSection {
     this.replies = this.repliesFromSectionElement(sectionElement, doc);
     const header = sectionElement.querySelector('h1,h2,h3,h4,h5,h6');
     this.depth = header ? parseInt(header.tagName.replace(/[^0-9]/g, ''), 10) : 1;
-    const titleHTMLExclusions = ['A'];
-    this.text = textContent(header, doc, titleHTMLExclusions);
+    this.text = textContent(header, doc);
     // Section sha on section title and replies sha's.
     this.sha = createSha1(`${this.text}${this.replies.map(reply => reply.sha).join('')}`);
   }
