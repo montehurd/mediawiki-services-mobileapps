@@ -107,11 +107,9 @@ class WMFReplyFragmentAndDepth {
 // does the desired combination but also removes fragments from the array when their contents are
 // appended to other fragments.
 const accumulator = [];
-let firstItemEndsWithSig = false;
 const combiner = (fragmentAndDepth, index, array, doc) => {
   if (index === 0) {
     accumulator.length = 0;
-    firstItemEndsWithSig = fragmentAndDepth.fragmentEndsWithSig;
   }
 
   let stopAccumulating = false;
