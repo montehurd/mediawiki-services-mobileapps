@@ -61,13 +61,13 @@ const consecutiveWhitespaceLinesRegex = /\n\s*\n/g;
 const signatureRegex = /.*\s+\d{4}\s+\(.*\)\s*$/;
 
 class WMFReply {
-  constructor(text = '', depth = 0) {
-    this.text = text
+  constructor(fragmentAndDepth, doc) {
+    this.text = textContent(fragmentAndDepth.fragment, doc)
       .replace(consecutiveWhitespaceLinesRegex, '\n')
       .trim()
       .replace(/\t/g,'&#8195;')
       .replace(/\n/g,'<br><br>');
-    this.depth = depth;
+    this.depth = fragmentAndDepth.depth;
     this.sha = createSha1(this.text);
   }
 }
@@ -273,10 +273,7 @@ class WMFTopic {
       .map(item => new WMFReplyFragmentAndDepth(item, doc))
       .filter((fragmentAndDepth, index, array) => combiner(fragmentAndDepth, index, array, doc))
       .reverse()
-      .map(fragmentAndDepth => new WMFReply(
-        textContent(fragmentAndDepth.fragment, doc),
-        fragmentAndDepth.depth
-      ))
+      .map(fragmentAndDepth => new WMFReply(fragmentAndDepth, doc))
       .filter(m => m.text.length > 0);
   }
   shortenShas() {
