@@ -57,6 +57,62 @@ function getDepth(element) {
   return depth;
 }
 
+function removeAttributes(node, attributes) {
+  attributes.forEach(attribute => node.removeAttribute(attribute));
+}
+
+const escapeHTML = text => {
+  return text
+    .replace(/&/g,'&amp;')
+    .replace(/</g,'&lt;')
+    .replace(/>/g,'&gt;');
+};
+
+const textContentTagsToPreserve = ['A', 'B', 'I'];
+const textContentTagsToConvertToBold = ['DT'];
+const attributesToRemove = ['style','id','class','rel','about'];
+function textContent(rootNode, doc, exclusions = []) {
+  if (!rootNode) {
+    return '';
+  }
+  const childNodes = rootNode.childNodes;
+  if (!childNodes) {
+    return '';
+  }
+  const results = [];
+  const tagsToPreserve = textContentTagsToPreserve.filter(tag => !exclusions.includes(tag));
+  childNodes.forEach(childNode => {
+    if (childNode.nodeType === 3) {
+      results.push(escapeHTML(childNode.nodeValue));
+    } else if (childNode.nodeType === 1) {
+      // Everything should be text except `tagsToPreserve`
+      if (tagsToPreserve.includes(childNode.tagName)) {
+        const clone = childNode.cloneNode(true);
+        removeAttributes(clone, attributesToRemove);
+
+        let text = textContent(clone, doc);
+        if (text.length === 0 && clone.tagName === 'A') {
+          const fileName = clone.href.substring(clone.href.lastIndexOf('/') + 1);
+          text = `[${fileName}]`;
+        }
+
+        clone.innerHTML = text;
+        results.push(clone.outerHTML);
+        return;
+      }
+      // Convert `textContentTagsToConvertToBold` to bold
+      if (textContentTagsToConvertToBold.includes(childNode.tagName)) {
+        const b = doc.createElement('B');
+        b.innerHTML = textContent(childNode, doc);
+        results.push(b.outerHTML);
+        return;
+      }
+      results.push(textContent(childNode, doc));
+    }
+  });
+  return results.join('');
+}
+
 const consecutiveWhitespaceLinesRegex = /\n\s*\n/g;
 const signatureRegex = /.*\s+\d{4}\s+\(.*\)\s*$/;
 
@@ -141,62 +197,6 @@ const combiner = (fragmentAndDepth, index, array, doc) => {
   }
   return stopAccumulating;
 };
-
-function removeAttributes(node, attributes) {
-  attributes.forEach(attribute => node.removeAttribute(attribute));
-}
-
-const escapeHTML = text => {
-  return text
-    .replace(/&/g,'&amp;')
-    .replace(/</g,'&lt;')
-    .replace(/>/g,'&gt;');
-};
-
-const textContentTagsToPreserve = ['A', 'B', 'I'];
-const textContentTagsToConvertToBold = ['DT'];
-const attributesToRemove = ['style','id','class','rel','about'];
-function textContent(rootNode, doc, exclusions = []) {
-  if (!rootNode) {
-    return '';
-  }
-  const childNodes = rootNode.childNodes;
-  if (!childNodes) {
-    return '';
-  }
-  const results = [];
-  const tagsToPreserve = textContentTagsToPreserve.filter(tag => !exclusions.includes(tag));
-  childNodes.forEach(childNode => {
-    if (childNode.nodeType === 3) {
-      results.push(escapeHTML(childNode.nodeValue));
-    } else if (childNode.nodeType === 1) {
-      // Everything should be text except `tagsToPreserve`
-      if (tagsToPreserve.includes(childNode.tagName)) {
-        const clone = childNode.cloneNode(true);
-        removeAttributes(clone, attributesToRemove);
-
-        let text = textContent(clone, doc);
-        if (text.length === 0 && clone.tagName === 'A') {
-          const fileName = clone.href.substring(clone.href.lastIndexOf('/') + 1);
-          text = `[${fileName}]`;
-        }
-
-        clone.innerHTML = text;
-        results.push(clone.outerHTML);
-        return;
-      }
-      // Convert `textContentTagsToConvertToBold` to bold
-      if (textContentTagsToConvertToBold.includes(childNode.tagName)) {
-        const b = doc.createElement('B');
-        b.innerHTML = textContent(childNode, doc);
-        results.push(b.outerHTML);
-        return;
-      }
-      results.push(textContent(childNode, doc));
-    }
-  });
-  return results.join('');
-}
 
 const arraysOfNodesAroundBreaksReducer = (resultArray, item, index) => {
   const isBR = item.tagName && item.tagName === 'BR';
