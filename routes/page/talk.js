@@ -118,11 +118,7 @@ const signatureRegex = /.*\s+\d{4}\s+\(.*\)\s*$/;
 
 class WMFReply {
   constructor(fragmentAndDepth, doc) {
-    this.text = textContent(fragmentAndDepth.fragment, doc)
-      .replace(consecutiveWhitespaceLinesRegex, '\n')
-      .trim()
-      .replace(/\t/g,'&#8195;')
-      .replace(/\n/g,'<br><br>');
+    this.text = fragmentAndDepth.text(doc);
     this.depth = fragmentAndDepth.depth;
     this.sha = createSha1(this.text);
   }
@@ -140,17 +136,26 @@ class WMFReplyFragmentAndDepth {
     this.fragment = fragment;
     this.fragmentEndsWithSig = this.endsWithSig();
   }
+
+  text(doc) {
+    return textContent(this.fragment, doc)
+      .replace(consecutiveWhitespaceLinesRegex, '\n')
+      .trim()
+      .replace(/\t/g,'&#8195;')
+      .replace(/\n/g,'<br><br>');
+  }
+
   endsWithSig() {
     if (this.fragment === null) {
       return false;
     }
     return signatureRegex.test(this.fragment.textContent);
   }
-  appendChildren(children) {
-    children.forEach(child => this.fragment.appendChild(child));
-  }
-  prependChildren(children) {
-    children.forEach(child => this.fragment.insertBefore(child, this.fragment.firstChild));
+
+  combineWith(otherReplyFragmentAndDepth, doc) {
+    const tabsTextNode = doc.createTextNode(`\n${'\t'.repeat(otherReplyFragmentAndDepth.depth)}`);
+    this.fragment.appendChild(tabsTextNode);
+    this.fragment.appendChild(otherReplyFragmentAndDepth.fragment);
   }
 }
 
@@ -185,11 +190,7 @@ const combiner = (fragmentAndDepth, index, array, doc) => {
 
   if (stopAccumulating) {
     accumulator.forEach(accumulatedFragmentAndDepth => {
-      const tabsTextNode = doc.createTextNode(`\n${'\t'.repeat(accumulatedFragmentAndDepth.depth)}`);
-      if (accumulator.length === 1) {
-        fragmentAndDepth.depth = accumulatedFragmentAndDepth.depth;
-      }
-      fragmentAndDepth.appendChildren([tabsTextNode, accumulatedFragmentAndDepth.fragment]);
+      fragmentAndDepth.combineWith(accumulatedFragmentAndDepth, doc);
     });
     accumulator.length = 0;
   } else {
@@ -271,6 +272,7 @@ class WMFTopic {
     return soughtElementsInSection(sectionElement, doc)
       .reverse()
       .map(item => new WMFReplyFragmentAndDepth(item, doc))
+      .filter(fragmentAndDepth => fragmentAndDepth.text(doc).length > 0)
       .filter((fragmentAndDepth, index, array) => combiner(fragmentAndDepth, index, array, doc))
       .reverse()
       .map(fragmentAndDepth => new WMFReply(fragmentAndDepth, doc))
