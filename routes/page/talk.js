@@ -110,15 +110,15 @@ function textContent(rootNode, doc, exclusions = []) {
       results.push(textContent(childNode, doc));
     }
   });
-  return results.join('');
+  return results.join('').trim();
 }
 
-const consecutiveWhitespaceLinesRegex = /\n\s*\n/g;
+// const consecutiveWhitespaceLinesRegex = /\n\s*\n/g;
 const signatureRegex = /.*\s+\d{4}\s+\(.*\)\s*$/;
 
 class WMFReply {
   constructor(fragmentAndDepth, doc) {
-    this.text = fragmentAndDepth.text(doc);
+    this.text = fragmentAndDepth.text;
     this.depth = fragmentAndDepth.depth;
     this.sha = createSha1(this.text);
   }
@@ -132,18 +132,33 @@ class WMFReplyFragmentAndDepth {
 
     const fragment = doc.createDocumentFragment();
     fragment.appendChild(element);
-
+//do i still need fragment? if not can fragmentEndsWithSig go against text and just be endsWithSig?
     this.fragment = fragment;
     this.fragmentEndsWithSig = this.endsWithSig();
+    
+    this.text = textContent(this.fragment, doc)
+      // .replace(consecutiveWhitespaceLinesRegex, '\n')
+      // .trim()
+
+      // .replace(/\t/g,'&#8195;')
+      // .replace(/\n/g,'<br><br>');
+//        ^ last 2 replaces not needed?
   }
 
-  text(doc) {
-    return textContent(this.fragment, doc)
-      .replace(consecutiveWhitespaceLinesRegex, '\n')
-      .trim()
-      .replace(/\t/g,'&#8195;')
-      .replace(/\n/g,'<br><br>');
-  }
+
+// setText(text) {
+//   this.text = text
+//     .replace(consecutiveWhitespaceLinesRegex, '\n')
+//     .trim()
+// }
+
+  // text(doc) {
+  //   return textContent(this.fragment, doc)
+  //     .replace(consecutiveWhitespaceLinesRegex, '\n')
+  //     .trim()
+  //     .replace(/\t/g,'&#8195;')
+  //     .replace(/\n/g,'<br><br>');
+  // }
 
   endsWithSig() {
     if (this.fragment === null) {
@@ -153,10 +168,79 @@ class WMFReplyFragmentAndDepth {
   }
 
   combineWith(otherReplyFragmentAndDepth, doc) {
-    const tabsTextNode = doc.createTextNode(`\n${'\t'.repeat(otherReplyFragmentAndDepth.depth)}`);
-    this.fragment.appendChild(tabsTextNode);
-    this.fragment.appendChild(otherReplyFragmentAndDepth.fragment);
+    
+
+    
+    // const tabsTextNode = doc.createTextNode(`\n${'\t'.repeat(otherReplyFragmentAndDepth.depth)}`);
+    // this.fragment.appendChild(tabsTextNode);
+    
+//XXX    this.fragment.appendChild(otherReplyFragmentAndDepth.fragment);
+    
+const stringStartsWithListTagHTML = string => string.startsWith('<OL>') || string.startsWith('<UL>') 
+const stringEndsWithListTagHTML = string => string.endsWith('</OL>') || string.endsWith('</UL>') 
+
+    
+let separator = ''
+if (
+  otherReplyFragmentAndDepth.text.length > 0 
+  && 
+  !stringStartsWithListTagHTML(otherReplyFragmentAndDepth.text)
+  &&
+  !stringEndsWithListTagHTML(this.text)  
+) {
+  separator = `<br><br>${'&#8195;'.repeat(otherReplyFragmentAndDepth.depth)}`
+}
+
+
+const otherText = otherReplyFragmentAndDepth.text
+//.replace(/^(&#8195;)/g, 'T')
+
+
+this.text = `${this.text}${separator}${otherText}`
+  // .replace(consecutiveWhitespaceLinesRegex, '\n')
+  // .trim()
+
   }
+  
+  
+  
+  
+  
+  
+  convertToListContainingItems(replyFragmentAndDepthArray, doc) {
+    if(replyFragmentAndDepthArray.length < 1) { 
+      return
+    }
+
+    const newText = []
+    newText.push(this.isListItemOrdered ? '<OL>' : '<UL>')
+
+    newText.push('<LI>')
+    newText.push(this.text)
+    
+    replyFragmentAndDepthArray.forEach(replyFragmentAndDepth => {
+      newText.push('<LI>')
+      newText.push(replyFragmentAndDepth.text)
+    })
+        
+    newText.push(this.isListItemOrdered ? '</OL>' : '</UL>') 
+    this.text = newText.join('')
+    
+    
+    // .replace(consecutiveWhitespaceLinesRegex, '\n')
+    // .trim()
+
+  }
+
+
+  
+  
+  
+  
+  
+  
+  
+  
 }
 
 // if a fragment's content text ends in 4 digits followed by parenthetical content
@@ -198,6 +282,114 @@ const combiner = (fragmentAndDepth, index, array, doc) => {
   }
   return stopAccumulating;
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+const accumulator2 = [];
+const combiner2 = (fragmentAndDepth, index, array, doc) => {
+  // return true
+  if (index === 0) {
+    accumulator2.length = 0;
+  }
+
+  let stopAccumulating = false;
+  if (index + 1 === array.length) {
+    stopAccumulating = true;
+  } else {
+    const nextFragmentAndDepth = array[index + 1];
+
+    const continueAccumulating =
+      fragmentAndDepth.isListItem && nextFragmentAndDepth.isListItem
+      && fragmentAndDepth.depth === nextFragmentAndDepth.depth
+      && fragmentAndDepth.isListItemOrdered === nextFragmentAndDepth.isListItemOrdered
+      && fragmentAndDepth.fragmentEndsWithSig === false
+      && nextFragmentAndDepth.fragmentEndsWithSig === false
+
+
+// if (fragmentAndDepth.isListItem) {
+//   fragmentAndDepth.text = fragmentAndDepth.text + 'FART'
+// }
+
+   
+    stopAccumulating = !continueAccumulating  
+  }
+  
+
+
+
+
+
+  if (stopAccumulating) {
+
+
+// if (accumulator2.length > 0){
+//   const tn = doc.createTextNode('AAA')
+//   fragmentAndDepth.fragment.appendChild(tn)    
+// }
+
+
+fragmentAndDepth.convertToListContainingItems(accumulator2, doc);
+
+    // accumulator2.forEach(accumulatedFragmentAndDepth => {
+      // fragmentAndDepth.combineWith(accumulatedFragmentAndDepth, doc);
+    // });
+    accumulator2.length = 0;
+  } else {
+    accumulator2.unshift(fragmentAndDepth);
+  }
+//return true
+  return stopAccumulating;
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 const arraysOfNodesAroundBreaksReducer = (resultArray, item, index) => {
   const isBR = item.tagName && item.tagName === 'BR';
@@ -272,9 +464,10 @@ class WMFTopic {
     return soughtElementsInSection(sectionElement, doc)
       .reverse()
       .map(item => new WMFReplyFragmentAndDepth(item, doc))
-      .filter(fragmentAndDepth => fragmentAndDepth.text(doc).length > 0)
+      .filter(fragmentAndDepth => fragmentAndDepth.text.length > 0)
+.filter((fragmentAndDepth, index, array) => combiner2(fragmentAndDepth, index, array, doc))
       .filter((fragmentAndDepth, index, array) => combiner(fragmentAndDepth, index, array, doc))
-      .reverse()
+      .reverse() 
       .map(fragmentAndDepth => new WMFReply(fragmentAndDepth, doc))
       .filter(m => m.text.length > 0);
   }
@@ -296,7 +489,7 @@ const sectionWithoutSubsections = section => {
 
 const sectionsInDoc = doc => Array.from(doc.querySelectorAll('section'))
   .map(sectionWithoutSubsections)
-  // .filter((e, i) => [37,38,39,74,13].includes(i))
+  // .filter((e, i) => [1, 13].includes(i))
   .map(sectionElement => new WMFTopic(sectionElement, doc));
 
 function fetchAndRespond(app, req, res) {
