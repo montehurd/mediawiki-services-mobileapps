@@ -110,19 +110,14 @@ function textContent(rootNode, doc, exclusions = []) {
       results.push(textContent(childNode, doc));
     }
   });
-  return results.join('');
+  return results.join('').trim();
 }
 
-const consecutiveWhitespaceLinesRegex = /\n\s*\n/g;
 const signatureRegex = /.*\s+\d{4}\s+\(.*\)\s*$/;
 
 class WMFReply {
   constructor(fragmentAndDepth, doc) {
-    this.text = textContent(fragmentAndDepth.fragment, doc)
-      .replace(consecutiveWhitespaceLinesRegex, '\n')
-      .trim()
-      .replace(/\t/g,'&#8195;')
-      .replace(/\n/g,'<br><br>');
+    this.text = fragmentAndDepth.text;
     this.depth = fragmentAndDepth.depth;
     this.sha = createSha1(this.text);
   }
@@ -136,9 +131,10 @@ class WMFReplyFragmentAndDepth {
 
     const fragment = doc.createDocumentFragment();
     fragment.appendChild(element);
-
     this.fragment = fragment;
     this.fragmentEndsWithSig = this.endsWithSig();
+
+    this.text = textContent(this.fragment, doc);
   }
   endsWithSig() {
     if (this.fragment === null) {
@@ -146,11 +142,36 @@ class WMFReplyFragmentAndDepth {
     }
     return signatureRegex.test(this.fragment.textContent);
   }
-  appendChildren(children) {
-    children.forEach(child => this.fragment.appendChild(child));
+  combineWith(otherReplyFragmentAndDepth, doc) {
+    const stringStartsWithListTagHTML = string => string.startsWith('<ol>') || string.startsWith('<ul>');
+    const stringEndsWithListTagHTML = string => string.endsWith('</ol>') || string.endsWith('</ul>');
+    let separator = '';
+    if (
+      otherReplyFragmentAndDepth.text.length > 0
+      &&
+      !stringStartsWithListTagHTML(otherReplyFragmentAndDepth.text)
+      &&
+      !stringEndsWithListTagHTML(this.text)
+    ) {
+      separator = `<br><br>${'&#8195;'.repeat(otherReplyFragmentAndDepth.depth)}`;
+    }
+    this.text = `${this.text}${separator}${otherReplyFragmentAndDepth.text}`;
   }
-  prependChildren(children) {
-    children.forEach(child => this.fragment.insertBefore(child, this.fragment.firstChild));
+
+  convertToListContainingItems(replyFragmentAndDepthArray, doc) {
+    if (replyFragmentAndDepthArray.length < 1) {
+      return;
+    }
+    const newText = [];
+    newText.push(this.isListItemOrdered ? '<ol>' : '<ul>');
+    newText.push('<li>');
+    newText.push(this.text);
+    replyFragmentAndDepthArray.forEach(replyFragmentAndDepth => {
+      newText.push('<li>');
+      newText.push(replyFragmentAndDepth.text);
+    });
+    newText.push(this.isListItemOrdered ? '</ol>' : '</ul>');
+    this.text = newText.join('');
   }
 }
 
@@ -162,10 +183,10 @@ class WMFReplyFragmentAndDepth {
 // an reply with a signature is encountered - as such can be used with array 'filter' so it both
 // does the desired combination but also removes fragments from the array when their contents are
 // appended to other fragments.
-const accumulator = [];
-const combiner = (fragmentAndDepth, index, array, doc) => {
+const replyAccumulator = [];
+const replyCombiner = (fragmentAndDepth, index, array, doc) => {
   if (index === 0) {
-    accumulator.length = 0;
+    replyAccumulator.length = 0;
   }
 
   let stopAccumulating = false;
@@ -184,16 +205,43 @@ const combiner = (fragmentAndDepth, index, array, doc) => {
   }
 
   if (stopAccumulating) {
-    accumulator.forEach(accumulatedFragmentAndDepth => {
-      const tabsTextNode = doc.createTextNode(`\n${'\t'.repeat(accumulatedFragmentAndDepth.depth)}`);
-      if (accumulator.length === 1) {
-        fragmentAndDepth.depth = accumulatedFragmentAndDepth.depth;
-      }
-      fragmentAndDepth.appendChildren([tabsTextNode, accumulatedFragmentAndDepth.fragment]);
+    replyAccumulator.forEach(accumulatedFragmentAndDepth => {
+      fragmentAndDepth.combineWith(accumulatedFragmentAndDepth, doc);
     });
-    accumulator.length = 0;
+    replyAccumulator.length = 0;
   } else {
-    accumulator.unshift(fragmentAndDepth);
+    replyAccumulator.unshift(fragmentAndDepth);
+  }
+  return stopAccumulating;
+};
+
+const listItemAccumulator = [];
+const listItemCombiner = (fragmentAndDepth, index, array, doc) => {
+  if (index === 0) {
+    listItemAccumulator.length = 0;
+  }
+
+  let stopAccumulating = false;
+  if (index + 1 === array.length) {
+    stopAccumulating = true;
+  } else {
+    const nextFragmentAndDepth = array[index + 1];
+
+    const continueAccumulating =
+      fragmentAndDepth.isListItem && nextFragmentAndDepth.isListItem
+      && fragmentAndDepth.depth === nextFragmentAndDepth.depth
+      && fragmentAndDepth.isListItemOrdered === nextFragmentAndDepth.isListItemOrdered
+      && fragmentAndDepth.fragmentEndsWithSig === false
+      && nextFragmentAndDepth.fragmentEndsWithSig === false;
+
+    stopAccumulating = !continueAccumulating;
+  }
+
+  if (stopAccumulating) {
+    fragmentAndDepth.convertToListContainingItems(listItemAccumulator, doc);
+    listItemAccumulator.length = 0;
+  } else {
+    listItemAccumulator.unshift(fragmentAndDepth);
   }
   return stopAccumulating;
 };
@@ -271,7 +319,13 @@ class WMFTopic {
     return soughtElementsInSection(sectionElement, doc)
       .reverse()
       .map(item => new WMFReplyFragmentAndDepth(item, doc))
-      .filter((fragmentAndDepth, index, array) => combiner(fragmentAndDepth, index, array, doc))
+      .filter(fragmentAndDepth => fragmentAndDepth.text.length > 0)
+      .filter(
+        (fragmentAndDepth, index, array) => listItemCombiner(fragmentAndDepth, index, array, doc)
+      )
+      .filter(
+        (fragmentAndDepth, index, array) => replyCombiner(fragmentAndDepth, index, array, doc)
+      )
       .reverse()
       .map(fragmentAndDepth => new WMFReply(fragmentAndDepth, doc))
       .filter(m => m.text.length > 0);
@@ -294,12 +348,11 @@ const sectionWithoutSubsections = section => {
 
 const sectionsInDoc = doc => Array.from(doc.querySelectorAll('section'))
   .map(sectionWithoutSubsections)
-  // .filter((e, i) => [37,38,39,74,13].includes(i))
+  // .filter((e, i) => [1, 13].includes(i))
   .map(sectionElement => new WMFTopic(sectionElement, doc));
 
 function fetchAndRespond(app, req, res) {
   const lang = req.params.domain.split('.')[0];
-  // assertLanguage(lang);
   return fetchDocAndRevision(app, req)
     .then((docAndRevision) => {
         const doc = docAndRevision[0];
