@@ -315,8 +315,23 @@ class WMFTopic {
     // Section sha on section title and replies sha's.
     this.sha = createSha1(`${this.text}${this.replies.map(reply => reply.sha).join('')}`);
   }
+  // Occasionally the first reply is at a non-zero depth.
+  // Reduce all reply depths by first reply depth.
+  normalizeReplyDepths(replies) {
+    if (replies.length === 0) {
+      return;
+    }
+    const initialReplyDepth = replies[0].depth;
+    if (initialReplyDepth === 0) {
+      return;
+    }
+    replies.forEach(reply => {
+      const newDepth = reply.depth - initialReplyDepth;
+      reply.depth = newDepth > -1 ? newDepth : 0;
+    });
+  }
   repliesFromSectionElement (sectionElement, doc) {
-    return soughtElementsInSection(sectionElement, doc)
+    const replies = soughtElementsInSection(sectionElement, doc)
       .reverse()
       .map(item => new WMFReplyFragmentAndDepth(item, doc))
       .filter(fragmentAndDepth => fragmentAndDepth.text.length > 0)
@@ -329,6 +344,10 @@ class WMFTopic {
       .reverse()
       .map(fragmentAndDepth => new WMFReply(fragmentAndDepth, doc))
       .filter(m => m.text.length > 0);
+
+    this.normalizeReplyDepths(replies);
+
+    return replies;
   }
   shortenShas() {
     shortenSha(this);
@@ -348,7 +367,7 @@ const sectionWithoutSubsections = section => {
 
 const sectionsInDoc = doc => Array.from(doc.querySelectorAll('section'))
   .map(sectionWithoutSubsections)
-  // .filter((e, i) => [1, 13].includes(i))
+  // .filter((e, i) => [37,44,73,74,98,99].includes(i))
   .map(sectionElement => new WMFTopic(sectionElement, doc));
 
 function fetchAndRespond(app, req, res) {
