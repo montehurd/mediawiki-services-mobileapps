@@ -161,6 +161,14 @@ class WMFReplyData {
     }
     return signatureRegex.test(this.fragment.textContent);
   }
+
+  shouldCombineWith(otherReplyData) {
+    if (!otherReplyData) {
+      return false;
+    }
+    return !otherReplyData.fragmentEndsWithSig;
+  }
+
   combineWith(otherReplyData, doc) {
     const stringStartsWithListTagHTML = string => string.startsWith('<ol>') || string.startsWith('<ul>');
     const stringEndsWithListTagHTML = string => string.endsWith('</ol>') || string.endsWith('</ul>');
@@ -194,44 +202,16 @@ class WMFReplyData {
   }
 }
 
-// if a fragment's content text ends in 4 digits followed by parenthetical content
-// ( ie: '2018 (CEST)' ) then we're considering it a separate reply. (`fragmentEndsWithSig` can be
-// checked to make this determination.) replies that do not end with such a signature need to be
-// combined with either the next or previous reply with such a signature. This `combiner` uses an
-// `accumulator` to buffer such signature-less fragments so they can be moved. returns false when
-// an reply with a signature is encountered - as such can be used with array 'filter' so it both
-// does the desired combination but also removes fragments from the array when their contents are
-// appended to other fragments.
-const replyAccumulator = [];
-const replyCombiner = (replyData, index, array, doc) => {
-  if (index === 0) {
-    replyAccumulator.length = 0;
-  }
-
-  let stopAccumulating = false;
-  if (index + 1 === array.length) {
-    stopAccumulating = true;
-  } else {
-    const nextReplyData = array[index + 1];
-
-    if (replyData.fragmentEndsWithSig) {
-      stopAccumulating =
-        nextReplyData.fragmentEndsWithSig === replyData.fragmentEndsWithSig;
+const replyReducerWithDoc = doc => {
+  return (accumulator, replyData, index, array) => {
+    const nextReplyData = (index + 1 < array.length) ? array[index + 1] : null;
+    if (replyData.shouldCombineWith(nextReplyData)) {
+      nextReplyData.combineWith(replyData, doc);
     } else {
-      stopAccumulating =
-        nextReplyData.fragmentEndsWithSig !== replyData.fragmentEndsWithSig;
+      accumulator.push(replyData);
     }
-  }
-
-  if (stopAccumulating) {
-    replyAccumulator.forEach(accumulatedReplyData => {
-      replyData.combineWith(accumulatedReplyData, doc);
-    });
-    replyAccumulator.length = 0;
-  } else {
-    replyAccumulator.unshift(replyData);
-  }
-  return stopAccumulating;
+    return accumulator;
+  };
 };
 
 const listItemReducerWithDoc = doc => {
@@ -358,9 +338,7 @@ class WMFTopic {
       .map(item => new WMFReplyData(item, doc))
       .filter(replyData => replyData.text.length > 0)
       .reduce(listItemReducerWithDoc(doc), [])
-      .filter(
-        (replyData, index, array) => replyCombiner(replyData, index, array, doc)
-      )
+      .reduce(replyReducerWithDoc(doc), [])
       .reverse()
       .map(replyData => new WMFReply(replyData, doc))
       .filter(m => m.text.length > 0);
