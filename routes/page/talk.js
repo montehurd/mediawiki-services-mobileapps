@@ -224,7 +224,7 @@ const listItemCombiner = doc => {
 
       const siblingListItemsIds = [];
       let lastF = replyData;
-      for (var j = accumulator.length - 1; j > -1; j--) {
+      for (let j = accumulator.length - 1; j > -1; j--) {
         const thisF = accumulator[j];
         if (thisF.isListItemSiblingWith(lastF)) {
           siblingListItemsIds.push(j);
@@ -333,15 +333,20 @@ class WMFTopic {
     });
   }
   repliesFromSectionElement (sectionElement, doc) {
+
+    const replyDataForElement = element => new WMFReplyData(element, doc);
+    const replyOrReplyDataIsNonBlank = replyOrReplyData => replyOrReplyData.text.length > 0;
+    const replyForReplyData = replyData => new WMFReply(replyData, doc);
+
     const replies = soughtElementsInSection(sectionElement, doc)
       .reverse()
-      .map(item => new WMFReplyData(item, doc))
-      .filter(replyData => replyData.text.length > 0)
+      .map(replyDataForElement)
+      .filter(replyOrReplyDataIsNonBlank)
       .reduce(listItemCombiner(doc), [])
       .reduce(replyCombiner(doc), [])
       .reverse()
-      .map(replyData => new WMFReply(replyData, doc))
-      .filter(m => m.text.length > 0);
+      .map(replyForReplyData)
+      .filter(replyOrReplyDataIsNonBlank);
 
     this.normalizeReplyDepths(replies);
 
