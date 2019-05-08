@@ -216,35 +216,39 @@ const replyCombiner = doc => {
 
 const listItemCombiner = doc => {
   return (accumulator, replyData, index, array) => {
-
-    const nextReplyData = (index > 0) ? array[index - 1] : null;
-    const prevReplyData = (index + 1 < array.length) ? array[index + 1] : null;
-
-    if (replyData.isListItemFirstSibling(prevReplyData, nextReplyData)) {
-
-      const siblingListItemsIds = [];
-      let lastF = replyData;
-      for (let j = accumulator.length - 1; j > -1; j--) {
-        const thisF = accumulator[j];
-        if (thisF.isListItemSiblingWith(lastF)) {
-          siblingListItemsIds.push(j);
-        } else {
-          break;
-        }
-        lastF = thisF;
-      }
-
-      const listItems = accumulator
-        .filter((item, index) => siblingListItemsIds.includes(index))
-        .reverse();
-
-      replyData.convertToListContainingSelfAndItems(listItems, doc);
-
-      accumulator = accumulator.filter((item, index) => !siblingListItemsIds.includes(index));
+    // Accumulate an array of arrays of indices of list items to be combined.
+    if (accumulator.length === 0) {
+      accumulator.push([]);
     }
 
-    accumulator.push(replyData);
-    return accumulator;
+    const prevReplyData = (index > 0) ? array[index - 1] : null;
+    const nextReplyData = (index + 1 < array.length) ? array[index + 1] : null;
+    if (replyData.isListItemSiblingWith(nextReplyData)) {
+      accumulator[accumulator.length - 1].push(index);
+    } else if (replyData.isListItemFirstSibling(nextReplyData, prevReplyData)) {
+      accumulator[accumulator.length - 1].push(index);
+      accumulator.push([]);
+    }
+
+    const isAtEnd = index === array.length - 1;
+    if (!isAtEnd) {
+      return accumulator;
+    }
+
+    // When we get here the accumulator will contain an array of arrays of indices of list items to
+    // be combined. Do the combinations, then filter out the items which were combined.
+    let indicesToRemove = [];
+    accumulator.forEach(listItemIndices => {
+      if (listItemIndices.length > 0) {
+        const indexOfFirstSibling = listItemIndices.pop();
+        indicesToRemove = indicesToRemove.concat(listItemIndices);
+        const firstSibling = array[indexOfFirstSibling];
+        const siblingsToBeCombined = listItemIndices.map(id => array[id]).reverse();
+        firstSibling.convertToListContainingSelfAndItems(siblingsToBeCombined, doc);
+      }
+    });
+    // Remove the sibling items which were merged into the firstSibling.
+    return array.filter((_, index) => !indicesToRemove.includes(index));
   };
 };
 
@@ -370,7 +374,7 @@ const sectionWithoutSubsections = section => {
 
 const sectionsInDoc = doc => Array.from(doc.querySelectorAll('section'))
   .map(sectionWithoutSubsections)
-  // .filter((e, i) => [37, 113].includes(i))
+  // .filter((e, i) => [37].includes(i))
   .map(sectionElement => new WMFTopic(sectionElement, doc));
 
 function fetchAndRespond(app, req, res) {
