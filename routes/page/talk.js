@@ -202,7 +202,7 @@ class WMFReplyData {
   }
 }
 
-const replyReducerWithDoc = doc => {
+const replyCombiner = doc => {
   return (accumulator, replyData, index, array) => {
     const nextReplyData = (index + 1 < array.length) ? array[index + 1] : null;
     if (replyData.shouldCombineWith(nextReplyData)) {
@@ -214,7 +214,7 @@ const replyReducerWithDoc = doc => {
   };
 };
 
-const listItemReducerWithDoc = doc => {
+const listItemCombiner = doc => {
   return (accumulator, replyData, index, array) => {
 
     const nextReplyData = (index > 0) ? array[index - 1] : null;
@@ -337,8 +337,8 @@ class WMFTopic {
       .reverse()
       .map(item => new WMFReplyData(item, doc))
       .filter(replyData => replyData.text.length > 0)
-      .reduce(listItemReducerWithDoc(doc), [])
-      .reduce(replyReducerWithDoc(doc), [])
+      .reduce(listItemCombiner(doc), [])
+      .reduce(replyCombiner(doc), [])
       .reverse()
       .map(replyData => new WMFReply(replyData, doc))
       .filter(m => m.text.length > 0);
