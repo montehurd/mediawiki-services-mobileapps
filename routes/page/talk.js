@@ -136,6 +136,25 @@ class WMFReplyFragmentAndDepth {
 
     this.text = textContent(this.fragment, doc);
   }
+
+  isListItemFirstSibling(prevFragmentAndDepth, nextFragmentAndDepth) {
+    return nextFragmentAndDepth
+      && nextFragmentAndDepth.isListItemSiblingWith(this)
+      && !this.isListItemSiblingWith(prevFragmentAndDepth);
+  }
+
+  isListItemSiblingWith(otherReplyFragmentAndDepth) {
+    if (!otherReplyFragmentAndDepth) {
+      return false;
+    }
+    return this.isListItem
+      && otherReplyFragmentAndDepth.isListItem
+      && this.depth === otherReplyFragmentAndDepth.depth
+      && this.isListItemOrdered === otherReplyFragmentAndDepth.isListItemOrdered
+      && this.fragmentEndsWithSig === false
+      && otherReplyFragmentAndDepth.fragmentEndsWithSig === false;
+  }
+
   endsWithSig() {
     if (this.fragment === null) {
       return false;
@@ -158,7 +177,7 @@ class WMFReplyFragmentAndDepth {
     this.text = `${this.text}${separator}${otherReplyFragmentAndDepth.text}`;
   }
 
-  convertToListContainingItems(replyFragmentAndDepthArray, doc) {
+  convertToListContainingSelfAndItems(replyFragmentAndDepthArray, doc) {
     if (replyFragmentAndDepthArray.length < 1) {
       return;
     }
@@ -215,35 +234,38 @@ const replyCombiner = (fragmentAndDepth, index, array, doc) => {
   return stopAccumulating;
 };
 
-const listItemAccumulator = [];
-const listItemCombiner = (fragmentAndDepth, index, array, doc) => {
-  if (index === 0) {
-    listItemAccumulator.length = 0;
-  }
+const listItemReducerWithDoc = doc => {
+  return (accumulator, fragmentAndDepth, index, array) => {
 
-  let stopAccumulating = false;
-  if (index + 1 === array.length) {
-    stopAccumulating = true;
-  } else {
-    const nextFragmentAndDepth = array[index + 1];
+    const nextFragmentAndDepth = (index > 0) ? array[index - 1] : null;
+    const prevFragmentAndDepth = (index + 1 < array.length) ? array[index + 1] : null;
 
-    const continueAccumulating =
-      fragmentAndDepth.isListItem && nextFragmentAndDepth.isListItem
-      && fragmentAndDepth.depth === nextFragmentAndDepth.depth
-      && fragmentAndDepth.isListItemOrdered === nextFragmentAndDepth.isListItemOrdered
-      && fragmentAndDepth.fragmentEndsWithSig === false
-      && nextFragmentAndDepth.fragmentEndsWithSig === false;
+    if (fragmentAndDepth.isListItemFirstSibling(prevFragmentAndDepth, nextFragmentAndDepth)) {
 
-    stopAccumulating = !continueAccumulating;
-  }
+      const siblingListItemsIds = [];
+      let lastF = fragmentAndDepth;
+      for (var j = accumulator.length - 1; j > -1; j--) {
+        const thisF = accumulator[j];
+        if (thisF.isListItemSiblingWith(lastF)) {
+          siblingListItemsIds.push(j);
+        } else {
+          break;
+        }
+        lastF = thisF;
+      }
 
-  if (stopAccumulating) {
-    fragmentAndDepth.convertToListContainingItems(listItemAccumulator, doc);
-    listItemAccumulator.length = 0;
-  } else {
-    listItemAccumulator.unshift(fragmentAndDepth);
-  }
-  return stopAccumulating;
+      const listItems = accumulator
+        .filter((item, index) => siblingListItemsIds.includes(index))
+        .reverse();
+
+      fragmentAndDepth.convertToListContainingSelfAndItems(listItems, doc);
+
+      accumulator = accumulator.filter((item, index) => !siblingListItemsIds.includes(index));
+    }
+
+    accumulator.push(fragmentAndDepth);
+    return accumulator;
+  };
 };
 
 const arraysOfNodesAroundBreaksReducer = (resultArray, item, index) => {
@@ -335,9 +357,7 @@ class WMFTopic {
       .reverse()
       .map(item => new WMFReplyFragmentAndDepth(item, doc))
       .filter(fragmentAndDepth => fragmentAndDepth.text.length > 0)
-      .filter(
-        (fragmentAndDepth, index, array) => listItemCombiner(fragmentAndDepth, index, array, doc)
-      )
+      .reduce(listItemReducerWithDoc(doc), [])
       .filter(
         (fragmentAndDepth, index, array) => replyCombiner(fragmentAndDepth, index, array, doc)
       )
@@ -367,7 +387,7 @@ const sectionWithoutSubsections = section => {
 
 const sectionsInDoc = doc => Array.from(doc.querySelectorAll('section'))
   .map(sectionWithoutSubsections)
-  // .filter((e, i) => [37,44,73,74,98,99].includes(i))
+  // .filter((e, i) => [37, 113].includes(i))
   .map(sectionElement => new WMFTopic(sectionElement, doc));
 
 function fetchAndRespond(app, req, res) {
