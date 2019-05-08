@@ -321,6 +321,7 @@ class WMFTopic {
     // Section sha on section title and replies sha's.
     this.sha = createSha1(`${this.text}${this.replies.map(reply => reply.sha).join('')}`);
   }
+
   // Occasionally the first reply is at a non-zero depth.
   // Reduce all reply depths by first reply depth.
   normalizeReplyDepths(replies) {
@@ -336,12 +337,11 @@ class WMFTopic {
       reply.depth = newDepth > -1 ? newDepth : 0;
     });
   }
-  repliesFromSectionElement (sectionElement, doc) {
 
+  repliesFromSectionElement (sectionElement, doc) {
     const replyDataForElement = element => new WMFReplyData(element, doc);
     const replyOrReplyDataIsNonBlank = replyOrReplyData => replyOrReplyData.text.length > 0;
     const replyForReplyData = replyData => new WMFReply(replyData, doc);
-
     const replies = soughtElementsInSection(sectionElement, doc)
       .reverse()
       .map(replyDataForElement)
@@ -353,13 +353,14 @@ class WMFTopic {
       .filter(replyOrReplyDataIsNonBlank);
 
     this.normalizeReplyDepths(replies);
-
     return replies;
   }
+
   shortenShas() {
     shortenSha(this);
     this.replies.forEach(shortenSha);
   }
+
   isEmpty() {
     return this.text.length === 0 && this.replies.length === 0;
   }
