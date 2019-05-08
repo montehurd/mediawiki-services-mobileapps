@@ -107,6 +107,10 @@ function textContent(rootNode, doc, exclusions = []) {
         results.push(b.outerHTML);
         return;
       }
+      if (['PRE'].includes(childNode.tagName)) {
+        results.push(textContent(childNode, doc).replace(/\n/g,'<br>'));
+        return;
+      }
       results.push(textContent(childNode, doc));
     }
   });
@@ -288,7 +292,7 @@ const soughtElementsInSection = (sectionElement, doc) => {
   Array.from(sectionElement.querySelectorAll('p,li,dt,dd,th,td,pre,div,blockquote,br,center'))
     .forEach(element => {
 
-      if (!['LI', 'DT', 'DD'].includes(element.tagName)) {
+      if (!['PRE', 'LI', 'DT', 'DD'].includes(element.tagName)) {
         element.childNodes
           .reduce(arraysOfNodesAroundBreaksReducer, [])
           .map(nodes => pContainingArrayOfNodes(nodes, doc))
@@ -375,7 +379,7 @@ const sectionWithoutSubsections = section => {
 
 const sectionsInDoc = doc => Array.from(doc.querySelectorAll('section'))
   .map(sectionWithoutSubsections)
-  // .filter((e, i) => [37].includes(i))
+  // .filter((e, i) => [65].includes(i))
   .map(sectionElement => new WMFTopic(sectionElement, doc));
 
 function fetchAndRespond(app, req, res) {
