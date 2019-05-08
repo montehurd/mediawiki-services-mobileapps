@@ -116,14 +116,14 @@ function textContent(rootNode, doc, exclusions = []) {
 const signatureRegex = /.*\s+\d{4}\s+\(.*\)\s*$/;
 
 class WMFReply {
-  constructor(fragmentAndDepth, doc) {
-    this.text = fragmentAndDepth.text;
-    this.depth = fragmentAndDepth.depth;
+  constructor(replyData, doc) {
+    this.text = replyData.text;
+    this.depth = replyData.depth;
     this.sha = createSha1(this.text);
   }
 }
 
-class WMFReplyFragmentAndDepth {
+class WMFReplyData {
   constructor(element = null, doc) {
     this.depth = getDepth(element);
     this.isListItem = element.tagName === 'LI';
@@ -137,22 +137,22 @@ class WMFReplyFragmentAndDepth {
     this.text = textContent(this.fragment, doc);
   }
 
-  isListItemFirstSibling(prevFragmentAndDepth, nextFragmentAndDepth) {
-    return nextFragmentAndDepth
-      && nextFragmentAndDepth.isListItemSiblingWith(this)
-      && !this.isListItemSiblingWith(prevFragmentAndDepth);
+  isListItemFirstSibling(prevReplyData, nextReplyData) {
+    return nextReplyData
+      && nextReplyData.isListItemSiblingWith(this)
+      && !this.isListItemSiblingWith(prevReplyData);
   }
 
-  isListItemSiblingWith(otherReplyFragmentAndDepth) {
-    if (!otherReplyFragmentAndDepth) {
+  isListItemSiblingWith(otherReplyData) {
+    if (!otherReplyData) {
       return false;
     }
     return this.isListItem
-      && otherReplyFragmentAndDepth.isListItem
-      && this.depth === otherReplyFragmentAndDepth.depth
-      && this.isListItemOrdered === otherReplyFragmentAndDepth.isListItemOrdered
+      && otherReplyData.isListItem
+      && this.depth === otherReplyData.depth
+      && this.isListItemOrdered === otherReplyData.isListItemOrdered
       && this.fragmentEndsWithSig === false
-      && otherReplyFragmentAndDepth.fragmentEndsWithSig === false;
+      && otherReplyData.fragmentEndsWithSig === false;
   }
 
   endsWithSig() {
@@ -161,33 +161,33 @@ class WMFReplyFragmentAndDepth {
     }
     return signatureRegex.test(this.fragment.textContent);
   }
-  combineWith(otherReplyFragmentAndDepth, doc) {
+  combineWith(otherReplyData, doc) {
     const stringStartsWithListTagHTML = string => string.startsWith('<ol>') || string.startsWith('<ul>');
     const stringEndsWithListTagHTML = string => string.endsWith('</ol>') || string.endsWith('</ul>');
     let separator = '';
     if (
-      otherReplyFragmentAndDepth.text.length > 0
+      otherReplyData.text.length > 0
       &&
-      !stringStartsWithListTagHTML(otherReplyFragmentAndDepth.text)
+      !stringStartsWithListTagHTML(otherReplyData.text)
       &&
       !stringEndsWithListTagHTML(this.text)
     ) {
-      separator = `<br><br>${'&#8195;'.repeat(otherReplyFragmentAndDepth.depth)}`;
+      separator = `<br><br>${'&#8195;'.repeat(otherReplyData.depth)}`;
     }
-    this.text = `${this.text}${separator}${otherReplyFragmentAndDepth.text}`;
+    this.text = `${this.text}${separator}${otherReplyData.text}`;
   }
 
-  convertToListContainingSelfAndItems(replyFragmentAndDepthArray, doc) {
-    if (replyFragmentAndDepthArray.length < 1) {
+  convertToListContainingSelfAndItems(replyDataArray, doc) {
+    if (replyDataArray.length < 1) {
       return;
     }
     const newText = [];
     newText.push(this.isListItemOrdered ? '<ol>' : '<ul>');
     newText.push('<li>');
     newText.push(this.text);
-    replyFragmentAndDepthArray.forEach(replyFragmentAndDepth => {
+    replyDataArray.forEach(replyData => {
       newText.push('<li>');
-      newText.push(replyFragmentAndDepth.text);
+      newText.push(replyData.text);
     });
     newText.push(this.isListItemOrdered ? '</ol>' : '</ul>');
     this.text = newText.join('');
@@ -203,7 +203,7 @@ class WMFReplyFragmentAndDepth {
 // does the desired combination but also removes fragments from the array when their contents are
 // appended to other fragments.
 const replyAccumulator = [];
-const replyCombiner = (fragmentAndDepth, index, array, doc) => {
+const replyCombiner = (replyData, index, array, doc) => {
   if (index === 0) {
     replyAccumulator.length = 0;
   }
@@ -212,38 +212,38 @@ const replyCombiner = (fragmentAndDepth, index, array, doc) => {
   if (index + 1 === array.length) {
     stopAccumulating = true;
   } else {
-    const nextFragmentAndDepth = array[index + 1];
+    const nextReplyData = array[index + 1];
 
-    if (fragmentAndDepth.fragmentEndsWithSig) {
+    if (replyData.fragmentEndsWithSig) {
       stopAccumulating =
-        nextFragmentAndDepth.fragmentEndsWithSig === fragmentAndDepth.fragmentEndsWithSig;
+        nextReplyData.fragmentEndsWithSig === replyData.fragmentEndsWithSig;
     } else {
       stopAccumulating =
-        nextFragmentAndDepth.fragmentEndsWithSig !== fragmentAndDepth.fragmentEndsWithSig;
+        nextReplyData.fragmentEndsWithSig !== replyData.fragmentEndsWithSig;
     }
   }
 
   if (stopAccumulating) {
-    replyAccumulator.forEach(accumulatedFragmentAndDepth => {
-      fragmentAndDepth.combineWith(accumulatedFragmentAndDepth, doc);
+    replyAccumulator.forEach(accumulatedReplyData => {
+      replyData.combineWith(accumulatedReplyData, doc);
     });
     replyAccumulator.length = 0;
   } else {
-    replyAccumulator.unshift(fragmentAndDepth);
+    replyAccumulator.unshift(replyData);
   }
   return stopAccumulating;
 };
 
 const listItemReducerWithDoc = doc => {
-  return (accumulator, fragmentAndDepth, index, array) => {
+  return (accumulator, replyData, index, array) => {
 
-    const nextFragmentAndDepth = (index > 0) ? array[index - 1] : null;
-    const prevFragmentAndDepth = (index + 1 < array.length) ? array[index + 1] : null;
+    const nextReplyData = (index > 0) ? array[index - 1] : null;
+    const prevReplyData = (index + 1 < array.length) ? array[index + 1] : null;
 
-    if (fragmentAndDepth.isListItemFirstSibling(prevFragmentAndDepth, nextFragmentAndDepth)) {
+    if (replyData.isListItemFirstSibling(prevReplyData, nextReplyData)) {
 
       const siblingListItemsIds = [];
-      let lastF = fragmentAndDepth;
+      let lastF = replyData;
       for (var j = accumulator.length - 1; j > -1; j--) {
         const thisF = accumulator[j];
         if (thisF.isListItemSiblingWith(lastF)) {
@@ -258,12 +258,12 @@ const listItemReducerWithDoc = doc => {
         .filter((item, index) => siblingListItemsIds.includes(index))
         .reverse();
 
-      fragmentAndDepth.convertToListContainingSelfAndItems(listItems, doc);
+      replyData.convertToListContainingSelfAndItems(listItems, doc);
 
       accumulator = accumulator.filter((item, index) => !siblingListItemsIds.includes(index));
     }
 
-    accumulator.push(fragmentAndDepth);
+    accumulator.push(replyData);
     return accumulator;
   };
 };
@@ -355,14 +355,14 @@ class WMFTopic {
   repliesFromSectionElement (sectionElement, doc) {
     const replies = soughtElementsInSection(sectionElement, doc)
       .reverse()
-      .map(item => new WMFReplyFragmentAndDepth(item, doc))
-      .filter(fragmentAndDepth => fragmentAndDepth.text.length > 0)
+      .map(item => new WMFReplyData(item, doc))
+      .filter(replyData => replyData.text.length > 0)
       .reduce(listItemReducerWithDoc(doc), [])
       .filter(
-        (fragmentAndDepth, index, array) => replyCombiner(fragmentAndDepth, index, array, doc)
+        (replyData, index, array) => replyCombiner(replyData, index, array, doc)
       )
       .reverse()
-      .map(fragmentAndDepth => new WMFReply(fragmentAndDepth, doc))
+      .map(replyData => new WMFReply(replyData, doc))
       .filter(m => m.text.length > 0);
 
     this.normalizeReplyDepths(replies);
