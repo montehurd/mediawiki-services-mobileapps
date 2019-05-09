@@ -178,4 +178,20 @@ describe('talk-unit', () => {
           );
         });
     });
+    describe('escapeHTML', () => {
+        it('escapes tags', () => {
+            const sha = 'This <i>is</i> fine.';
+            assert.deepEqual(
+                talk.escapeHTML(sha),
+                'This &lt;i&gt;is&lt;/i&gt; fine.'
+            );
+        });
+        it('escapes ampersands', () => {
+            const sha = 'This&nbsp;is&nbsp;fine.';
+            assert.deepEqual(
+                talk.escapeHTML(sha),
+                'This&amp;nbsp;is&amp;nbsp;fine.'
+            );
+        });
+    });
 });
