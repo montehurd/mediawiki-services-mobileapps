@@ -48,11 +48,21 @@ describe('talk', function() {
 });
 
 describe('talk-unit', () => {
-    describe('sha', () => {
-        it('generates sha for string', () => {
+    describe('createSha1', () => {
+        it('generates expected sha for string', () => {
             assert.equal(
                 talk.createSha1('Some string'),
                 '3febe4d69db2a2d620fa73388dbd3aed38be5575'
+            );
+        });
+    });
+    describe('shortenSha', () => {
+        it('shortens sha to first 7 chars', () => {
+            const objWithSha = { sha: '3febe4d69db2a2d620fa73388dbd3aed38be5575' };
+            talk.shortenSha(objWithSha);
+            assert.deepEqual(
+                objWithSha,
+                { sha: '3febe4d' }
             );
         });
     });
