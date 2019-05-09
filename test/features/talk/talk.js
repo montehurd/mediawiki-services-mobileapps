@@ -84,4 +84,98 @@ describe('talk-unit', () => {
           );
         });
     });
+    describe('getReplyDepth', () => {
+        it('expected depth in list', () => {
+          const el = domino.createDocument(`
+            <html>
+              <body>
+                <div>
+                  <ul>
+                    <li><div id='sought'>Hi</div>
+                  </ul>
+                </div>
+              </body>
+            </html>`).querySelector('#sought');
+          const depth = talk.getReplyDepth(el);
+          assert.equal(
+              depth, 1
+          );
+        });
+        it('expected depth in list nested in list', () => {
+          const el = domino.createDocument(`
+            <html>
+              <body>
+                <div>
+                  <ol>
+                    <li>
+                      <ul>
+                        <li><div id='sought'>Hi</div>
+                      </ul>
+                  </ol>
+                </div>
+              </body>
+            </html>`).querySelector('#sought');
+          const depth = talk.getReplyDepth(el);
+          assert.equal(
+              depth, 2
+          );
+        });
+        it('expected depth in div', () => {
+          const el = domino.createDocument(`
+            <html>
+              <body>
+                <div id='sought'>Hi</div>
+              </body>
+            </html>`).querySelector('#sought');
+          const depth = talk.getReplyDepth(el);
+          assert.equal(
+              depth, 0
+          );
+        });
+        it('expected depth in dl', () => {
+          const el = domino.createDocument(`
+            <html>
+              <body>
+                <div>
+                  <dl>
+                    <dt>Coffee</dt>
+                    <dd id='sought'>Black</dd>
+                    <dt>Milk</dt>
+                    <dd>White</dd>
+                  </dl>
+                </div>
+              </body>
+            </html>`).querySelector('#sought');
+          const depth = talk.getReplyDepth(el);
+          assert.equal(
+              depth, 1
+          );
+        });
+        it('expected depth in list nested in list nested in dl', () => {
+          const el = domino.createDocument(`
+            <html>
+              <body>
+                <div>
+                  <dl>
+                    <dt>Coffee</dt>
+                    <dd>
+                      <ol>
+                        <li>
+                          <ul>
+                            <li><div id='sought'>Hi</div>
+                          </ul>
+                      </ol>
+                    </dd>
+                    <dt>Milk</dt>
+                    <dd>White</dd>
+                  </dl>
+                </div>
+              </body>
+            </html>`).querySelector('#sought');
+          const depth = talk.getReplyDepth(el);
+          assert.equal(
+              depth, 3
+          );
+        });
+    });
 });
