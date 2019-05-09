@@ -4,35 +4,35 @@
       "id": 0,
       "replies": [
         {
-          "text": "<b>This user is too busy working for <a href=\"./Wikimedia_Foundation\" title=\"Wikimedia Foundation\">Wikipedia</a> to edit Wikipedia</b>. Brion VIBBER has not edited Wikipedia <b>since October 17, 2016</b>. As a result, any requests made here may not receive a response. If you are seeking assistance, you may need to approach someone else.<br><br><b>I have declared talk page bankruptcy! All old messages deleted.:) --<a href=\"./User:Brion_VIBBER\" title=\"User:Brion VIBBER\">brion</a> (<a href=\"./User_talk:Brion_VIBBER#top\" title=\"User talk:Brion VIBBER\">talk</a>) 21:00, 16 June 2009 (UTC)</b>",
+          "text": "<b>This user is too busy working for <a href=\"./Wikimedia_Foundation\" title=\"Wikimedia Foundation\">Wikipedia</a> to edit Wikipedia</b>. Brion VIBBER has not edited Wikipedia <b>since October 17, 2016</b>. As a result, any requests made here may not receive a response. If you are seeking assistance, you may need to approach someone else.<br><br><b>I have declared talk page bankruptcy! All old messages deleted. :) --<a href=\"./User:Brion_VIBBER\" title=\"User:Brion VIBBER\">brion</a> (<a href=\"./User_talk:Brion_VIBBER#top\" title=\"User talk:Brion VIBBER\">talk</a>) 21:00, 16 June 2009 (UTC)</b>",
           "depth": 0,
-          "sha": "25b18cc"
+          "sha": "73bbc8e"
         }
       ],
       "depth": 1,
       "text": "",
-      "sha": "49122d2"
+      "sha": "d7ca225"
     },
     {
       "id": 1,
       "replies": [
         {
-          "text": "Feel free to leave me messages here about articles and such on Wikipedia, but if you need to prod me about a tech issue I might not see your message here. You'll get a speedier response if you track me down elsewhere...<ul><li><b>Most software issues should get added to <a href=\"https://bugzilla.wikimedia.org/show_bug.cgi?id=\" title=\"bugzilla:\">our bug tracker</a>.</b> Even if you grab ahold of me another way, it's going to be easier for me to keep track of it if it's in here!<li><a href=\"./Wikipedia:IRC\" title=\"Wikipedia:IRC\">IRC chat</a> - you'll often find me in #mediawiki or #wikimedia-tech during work hours<li>direct e-mail... if you're really sure:)</ul>",
+          "text": "Feel free to leave me messages here about articles and such on Wikipedia, but if you need to prod me about a tech issue I might not see your message here. You'll get a speedier response if you track me down elsewhere...<ul><li><b>Most software issues should get added to <a href=\"https://bugzilla.wikimedia.org/show_bug.cgi?id=\" title=\"bugzilla:\">our bug tracker</a>.</b> Even if you grab ahold of me another way, it's going to be easier for me to keep track of it if it's in here!<li><a href=\"./Wikipedia:IRC\" title=\"Wikipedia:IRC\">IRC chat</a> - you'll often find me in #mediawiki or #wikimedia-tech during work hours<li>direct e-mail... if you're really sure :)</ul>",
           "depth": 0,
-          "sha": "978e7eb"
+          "sha": "6935486"
         }
       ],
       "depth": 2,
       "text": "How to get in touch with me",
-      "sha": "28ced86"
+      "sha": "da5646d"
     },
     {
       "id": 2,
       "replies": [
         {
-          "text": "hi Brion VIBBER,<br><br>I wanna be an uploader. What should I do to be a?--<a href=\"./User:GreatOrangePumpkin\" title=\"User:GreatOrangePumpkin\">♫Greatorangepumpkin♫</a><a href=\"./User_talk:GreatOrangePumpkin\" title=\"User talk:GreatOrangePumpkin\">T</a> 09:59, 7 June 2009 (UTC)",
+          "text": "hi Brion VIBBER,<br><br>I wanna be an uploader. What should I do to be a?-- <a href=\"./User:GreatOrangePumpkin\" title=\"User:GreatOrangePumpkin\">♫Greatorangepumpkin♫</a> <a href=\"./User_talk:GreatOrangePumpkin\" title=\"User talk:GreatOrangePumpkin\">T</a> 09:59, 7 June 2009 (UTC)",
           "depth": 0,
-          "sha": "b980535"
+          "sha": "7b79a00"
         },
         {
           "text": "Wait until your account is autoconfirmed. --<a href=\"./User:Brion_VIBBER\" title=\"User:Brion VIBBER\">brion</a> (<a href=\"./User_talk:Brion_VIBBER#top\" title=\"User talk:Brion VIBBER\">talk</a>) 21:00, 16 June 2009 (UTC)",
@@ -42,7 +42,7 @@
       ],
       "depth": 2,
       "text": "Images",
-      "sha": "e29cd99"
+      "sha": "48f5669"
     },
     {
       "id": 3,
@@ -63,14 +63,14 @@
           "sha": "9657316"
         },
         {
-          "text": "It sure does seem like that sometimes.:) --<a href=\"./User:Brion_VIBBER\" title=\"User:Brion VIBBER\">brion</a> (<a href=\"./User_talk:Brion_VIBBER#top\" title=\"User talk:Brion VIBBER\">talk</a>) 18:20, 6 July 2009 (UTC)",
+          "text": "It sure does seem like that sometimes. :) --<a href=\"./User:Brion_VIBBER\" title=\"User:Brion VIBBER\">brion</a> (<a href=\"./User_talk:Brion_VIBBER#top\" title=\"User talk:Brion VIBBER\">talk</a>) 18:20, 6 July 2009 (UTC)",
           "depth": 1,
-          "sha": "dae97f9"
+          "sha": "81ad117"
         }
       ],
       "depth": 2,
       "text": "Random obesrvation",
-      "sha": "42db3fa"
+      "sha": "b7dbb33"
     },
     {
       "id": 4,
@@ -122,9 +122,9 @@
       "id": 6,
       "replies": [
         {
-          "text": "Any idea how you can {{subst: a surname in the page title to DEFAULTSORT sort the categories? Its just I have a large batch of German politicians to transwiki and I want to do it more quickly. So basically when you create the page it automatically places e.g Fritz Baier as Baier, Fritz in the categories. If not I gather there is a bot that can default sort the categories by surname and fix it afterwards?<br><br>I'd imagine it is something like {subst:PAGENAME} but with a little programming to read the last word of the title and place it first. It would save a great deal of time anyway.<a href=\"./User:Dr._Blofeld\" title=\"User:Dr. Blofeld\"><i><b>Dr. Blofeld</b></i></a>     <a href=\"./User_talk:Dr._Blofeld\" title=\"User talk:Dr. Blofeld\">White cat</a> 12:35, 12 July 2009 (UTC)",
+          "text": "Any idea how you can {{subst: a surname in the page title to DEFAULTSORT sort the categories? Its just I have a large batch of German politicians to transwiki and I want to do it more quickly. So basically when you create the page it automatically places e.g Fritz Baier as Baier, Fritz in the categories. If not I gather there is a bot that can default sort the categories by surname and fix it afterwards?<br><br>I'd imagine it is something like {subst:PAGENAME} but with a little programming to read the last word of the title and place it first. It would save a great deal of time anyway.<a href=\"./User:Dr._Blofeld\" title=\"User:Dr. Blofeld\">  <i><b>Dr. Blofeld</b></i></a>     <a href=\"./User_talk:Dr._Blofeld\" title=\"User talk:Dr. Blofeld\"> White cat </a> 12:35, 12 July 2009 (UTC)",
           "depth": 0,
-          "sha": "a0cfa44"
+          "sha": "3f95ee1"
         },
         {
           "text": "Brion -- Dr. Blofeld asked me this question, and I suggested that it could be done, except that it appears that the <a href=\"https://www.mediawiki.org/wiki/Extension:StringFunctions\" title=\"mw:Extension:StringFunctions\">string functions</a> are disabled.  Is that the case, and if so, why?  My guess is that they would suck up too much CPU power on Wikimedia's end...  Thanks, <a href=\"./User:Mikaey\" title=\"User:Mikaey\">Mikaey</a>, <a href=\"./User_talk:Mikaey\" title=\"User talk:Mikaey\">Devil's advocate</a> 01:23, 30 July 2009 (UTC)",
@@ -134,15 +134,15 @@
       ],
       "depth": 2,
       "text": "Substituting surname",
-      "sha": "8e936b8"
+      "sha": "b855fdc"
     },
     {
       "id": 7,
       "replies": [
         {
-          "text": "Hi. I'm left handed and I've only noticed that cologne blue and classic or one other has the option to change the quickbar from left to right and fixed or moveable. Given that I mostly use modern and occasionally mono, would it be possible to be able to add the quickbar option for modern so the navigation bar can be moved to the right hand side. I think you should give people this option for all skins givne that some people are left handed and might find it more natural to have it on the otherside. I also think there should be a shrinkable option on the nav bars like we have with big templates for instance as if we could conveniently shrink the task while reading or at least have the option to this would ease useability I think. Also for the task bar on modern does it have to be so wide? There is at least a centimetre gap, it could be trimmed easily by 1-2 centimetres.<a href=\"./User:Dr._Blofeld\" title=\"User:Dr. Blofeld\"><i><b>Dr. Blofeld</b></i></a>     <a href=\"./User_talk:Dr._Blofeld\" title=\"User talk:Dr. Blofeld\">White cat</a> 13:41, 19 July 2009 (UTC)",
+          "text": "Hi. I'm left handed and I've only noticed that cologne blue and classic or one other has the option to change the quickbar from left to right and fixed or moveable. Given that I mostly use modern and occasionally mono, would it be possible to be able to add the quickbar option for modern so the navigation bar can be moved to the right hand side. I think you should give people this option for all skins givne that some people are left handed and might find it more natural to have it on the otherside. I also think there should be a shrinkable option on the nav bars like we have with big templates for instance as if we could conveniently shrink the task while reading or at least have the option to this would ease useability I think. Also for the task bar on modern does it have to be so wide? There is at least a centimetre gap, it could be trimmed easily by 1-2 centimetres.<a href=\"./User:Dr._Blofeld\" title=\"User:Dr. Blofeld\">  <i><b>Dr. Blofeld</b></i></a>     <a href=\"./User_talk:Dr._Blofeld\" title=\"User talk:Dr. Blofeld\"> White cat </a> 13:41, 19 July 2009 (UTC)",
           "depth": 0,
-          "sha": "b6fa825"
+          "sha": "af40e0b"
         },
         {
           "text": "I'll pass it on to the usability team working on the skin updates, thanks for the feedback! Note we're considering actually using sidebars on both sides for some extra navigation tools, but that's still a ways away. --<a href=\"./User:Brion_VIBBER\" title=\"User:Brion VIBBER\">brion</a> (<a href=\"./User_talk:Brion_VIBBER#top\" title=\"User talk:Brion VIBBER\">talk</a>) 18:17, 19 July 2009 (UTC)",
@@ -152,7 +152,7 @@
       ],
       "depth": 2,
       "text": "Quick bar",
-      "sha": "97478b2"
+      "sha": "a7bf96e"
     },
     {
       "id": 8,
@@ -163,14 +163,14 @@
           "sha": "91f66ca"
         },
         {
-          "text": "test test... test test...<br><br>Welcome and thank you for experimenting with Wikipedia. Your test on the page<a href=\"./User_talk:Brion_VIBBER\" title=\"User talk:Brion VIBBER\">User talk:Brion VIBBER</a> worked, and it has been <a href=\"./Help:Reverting\" title=\"Help:Reverting\">reverted</a> or removed. Please take a look at the <a href=\"./Wikipedia:Introduction\" title=\"Wikipedia:Introduction\">welcome page</a> to learn more about contributing to <a href=\"./Wikipedia\" title=\"Wikipedia\">this encyclopedia</a>. If you would like to experiment further, please use the <a href=\"./Wikipedia:Sandbox\" title=\"Wikipedia:Sandbox\">sandbox</a> instead. Thank you.",
+          "text": "test test... test test...<br><br>Welcome and thank you for experimenting with Wikipedia. Your test on the page <a href=\"./User_talk:Brion_VIBBER\" title=\"User talk:Brion VIBBER\">User talk:Brion VIBBER</a> worked, and it has been <a href=\"./Help:Reverting\" title=\"Help:Reverting\">reverted</a> or removed. Please take a look at the <a href=\"./Wikipedia:Introduction\" title=\"Wikipedia:Introduction\">welcome page</a> to learn more about contributing to <a href=\"./Wikipedia\" title=\"Wikipedia\">this encyclopedia</a>. If you would like to experiment further, please use the <a href=\"./Wikipedia:Sandbox\" title=\"Wikipedia:Sandbox\">sandbox</a> instead. Thank you.",
           "depth": 0,
-          "sha": "891c381"
+          "sha": "8051210"
         }
       ],
       "depth": 2,
       "text": "Renames",
-      "sha": "8a71b98"
+      "sha": "6c0f9c8"
     },
     {
       "id": 9,
@@ -289,14 +289,14 @@
       "id": 15,
       "replies": [
         {
-          "text": "There is a sequence of file redirects with <i>(do not delete)</i> in the file name, which date from September. Is it now OK to delete these redirects?<ul><li><a href=\"./Special:FilePath/Third_test_file_investigating_bug_-_do_not_delete.png\">File:Third test file investigating bug - do not delete.png</a><li><a href=\"./Special:FilePath/Second_test_file_investigating_bug_-_do_not_delete.png\">File:Second test file investigating bug - do not delete.png</a><li><a href=\"./Special:FilePath/Test_file_investigating_bug_-_do_not_delete.png\">File:Test file investigating bug - do not delete.png</a></ul>— <a href=\"./User:This,_that_and_the_other\" title=\"User:This, that and the other\">This, that</a>, and <a href=\"./User_talk:This,_that_and_the_other\" title=\"User talk:This, that and the other\">the other(talk)</a> 06:19, 26 November 2009 (UTC)",
+          "text": "There is a sequence of file redirects with <i>(do not delete)</i> in the file name, which date from September. Is it now OK to delete these redirects?<ul><li><a href=\"./Special:FilePath/Third_test_file_investigating_bug_-_do_not_delete.png\">File:Third test file investigating bug - do not delete.png</a><li><a href=\"./Special:FilePath/Second_test_file_investigating_bug_-_do_not_delete.png\">File:Second test file investigating bug - do not delete.png</a><li><a href=\"./Special:FilePath/Test_file_investigating_bug_-_do_not_delete.png\">File:Test file investigating bug - do not delete.png</a></ul>— <a href=\"./User:This,_that_and_the_other\" title=\"User:This, that and the other\">This, that</a>, and <a href=\"./User_talk:This,_that_and_the_other\" title=\"User talk:This, that and the other\">the other (talk)</a> 06:19, 26 November 2009 (UTC)",
           "depth": 0,
-          "sha": "2896236"
+          "sha": "3d072eb"
         }
       ],
       "depth": 2,
       "text": "Sequence of files (bug test)",
-      "sha": "8022bef"
+      "sha": "6e20985"
     },
     {
       "id": 16,
@@ -406,45 +406,45 @@
       "id": 24,
       "replies": [
         {
-          "text": "Not sure how quickly you would see <a href=\"http://usability.wikimedia.org/wiki/User_talk:Brion_VIBBER\">this</a>, so just fyi.  Thanks  <a href=\"./User_talk:7\" title=\"User talk:7\"><b>7</b></a> 00:52, 14 May 2010 (UTC)",
+          "text": "Not sure how quickly you would see <a href=\"http://usability.wikimedia.org/wiki/User_talk:Brion_VIBBER\">this</a>, so just fyi.  Thanks  <a href=\"./User_talk:7\" title=\"User talk:7\"> <b>7</b> </a> 00:52, 14 May 2010 (UTC)",
           "depth": 0,
-          "sha": "492efea"
+          "sha": "8562033"
         }
       ],
       "depth": 2,
       "text": "Usability",
-      "sha": "9a70cc5"
+      "sha": "5746f7a"
     },
     {
       "id": 25,
       "replies": [
         {
-          "text": "Bona vin tagon!:D - <a href=\"./User:UtherSRG\" title=\"User:UtherSRG\">UtherSRG</a> <a href=\"./User_talk:UtherSRG\" title=\"User talk:UtherSRG\">(talk)</a> 14:47, 1 June 2010 (UTC)",
+          "text": "Bona vin tagon! :D - <a href=\"./User:UtherSRG\" title=\"User:UtherSRG\">UtherSRG</a> <a href=\"./User_talk:UtherSRG\" title=\"User talk:UtherSRG\">(talk)</a> 14:47, 1 June 2010 (UTC)",
           "depth": 0,
-          "sha": "21721af"
+          "sha": "35d10f1"
         },
         {
-          "text": "Dankegon!:) --<a href=\"./User:Brion_VIBBER\" title=\"User:Brion VIBBER\">brion</a> (<a href=\"./User_talk:Brion_VIBBER#top\" title=\"User talk:Brion VIBBER\">talk</a>) 16:36, 1 June 2010 (UTC)",
+          "text": "Dankegon! :) --<a href=\"./User:Brion_VIBBER\" title=\"User:Brion VIBBER\">brion</a> (<a href=\"./User_talk:Brion_VIBBER#top\" title=\"User talk:Brion VIBBER\">talk</a>) 16:36, 1 June 2010 (UTC)",
           "depth": 1,
-          "sha": "002334b"
+          "sha": "7645620"
         }
       ],
       "depth": 2,
       "text": "Saluton!",
-      "sha": "a9babad"
+      "sha": "5d1b426"
     },
     {
       "id": 26,
       "replies": [
         {
-          "text": "Hey Brion. Just a quick note to say that I've chopped up your recent comment on phoebe's blog to make a nice little item (well, I think so anyway) for next week's <a href=\"./Wikipedia:Wikipedia_Signpost/2010-07-05/Technology_report\" title=\"Wikipedia:Wikipedia Signpost/2010-07-05/Technology report\">BRION</a> report in the <i>Signpost</i>. Inevitably, this meant shortening areas slightly, and I'd be grateful if you might check to make sure I haven't misrepresented your thoughts or if you have any suggestions about their presentation. Thanks, - <a href=\"./User:Jarry1250\" title=\"User:Jarry1250\">Jarry1250</a>[<i><a href=\"./Special:Contributions/Jarry1250\" title=\"Special:Contributions/Jarry1250\">Humorous</a>? <a href=\"./User_talk:Jarry1250\" title=\"User talk:Jarry1250\">Discuss</a>.</i>] 18:54, 1 July 2010 (UTC)",
+          "text": "Hey Brion. Just a quick note to say that I've chopped up your recent comment on phoebe's blog to make a nice little item (well, I think so anyway) for next week's <a href=\"./Wikipedia:Wikipedia_Signpost/2010-07-05/Technology_report\" title=\"Wikipedia:Wikipedia Signpost/2010-07-05/Technology report\">BRION</a> report in the <i>Signpost</i>. Inevitably, this meant shortening areas slightly, and I'd be grateful if you might check to make sure I haven't misrepresented your thoughts or if you have any suggestions about their presentation. Thanks, - <a href=\"./User:Jarry1250\" title=\"User:Jarry1250\">Jarry1250</a> [<i><a href=\"./Special:Contributions/Jarry1250\" title=\"Special:Contributions/Jarry1250\">Humorous</a>? <a href=\"./User_talk:Jarry1250\" title=\"User talk:Jarry1250\">Discuss</a>.</i>] 18:54, 1 July 2010 (UTC)",
           "depth": 0,
-          "sha": "3e0b2d9"
+          "sha": "1010160"
         }
       ],
       "depth": 2,
       "text": "Quoted on, um, <a href=\"./Wikipedia:Wikipedia_Signpost/2010-07-05/Technology_report\" title=\"Wikipedia:Wikipedia Signpost/2010-07-05/Technology report\">BRION</a>",
-      "sha": "19b165d"
+      "sha": "c8952a2"
     },
     {
       "id": 27,
@@ -515,14 +515,14 @@
       "id": 32,
       "replies": [
         {
-          "text": "Hello.:)<br><br>I cannot edit the page <a href=\"./User:ℜepress/vector.css\" title=\"User:ℜepress/vector.css\">User:ℜepress/vector.css</a>. I think the problem is my name. Quote: \"<b>Wikipedia does not have a user page with this exact name.</b>\" Can you change my name to \"Repress\"? – <a href=\"./User:ℜepress\" title=\"User:ℜepress\">ℜepress</a> (<a href=\"./User_talk:ℜepress\" title=\"User talk:ℜepress\">talk</a>) 14:12, 19 May 2011 (UTC)",
+          "text": "Hello. :)<br><br>I cannot edit the page <a href=\"./User:ℜepress/vector.css\" title=\"User:ℜepress/vector.css\">User:ℜepress/vector.css</a>. I think the problem is my name. Quote: \"<b>Wikipedia does not have a user page with this exact name.</b>\" Can you change my name to \"Repress\"? – <a href=\"./User:ℜepress\" title=\"User:ℜepress\">ℜepress</a> (<a href=\"./User_talk:ℜepress\" title=\"User talk:ℜepress\">talk</a>) 14:12, 19 May 2011 (UTC)",
           "depth": 0,
-          "sha": "bd4ac64"
+          "sha": "617c90f"
         }
       ],
       "depth": 2,
       "text": "Problems with my Wikipedia name",
-      "sha": "b5d8962"
+      "sha": "2c97e34"
     },
     {
       "id": 33,
@@ -564,27 +564,27 @@
           "sha": "acc6f21"
         },
         {
-          "text": "Feel free to clean it up or put it somewhere else:-)  <a href=\"./User:Hashar\" title=\"User:Hashar\">Hashar</a> (<a href=\"./User_talk:Hashar\" title=\"User talk:Hashar\">talk</a>) 06:18, 5 July 2011 (UTC)",
+          "text": "Feel free to clean it up or put it somewhere else :-)  <a href=\"./User:Hashar\" title=\"User:Hashar\">Hashar</a> (<a href=\"./User_talk:Hashar\" title=\"User talk:Hashar\">talk</a>) 06:18, 5 July 2011 (UTC)",
           "depth": 1,
-          "sha": "2480eeb"
+          "sha": "f8eb48a"
         }
       ],
       "depth": 2,
       "text": "A kitten for you!",
-      "sha": "4d0bdf2"
+      "sha": "588b49d"
     },
     {
       "id": 36,
       "replies": [
         {
-          "text": "Thanks for uploading <b><a href=\"./File:Fifa_world_cup_org.jpg\" title=\"File:Fifa world cup org.jpg\">File:Fifa world cup org.jpg</a></b>. The image description page currently specifies that the image is non-free and may only be used on Wikipedia under a <a href=\"./Wikipedia:FU\" title=\"Wikipedia:FU\">claim of fair use</a>. However, the image is currently <a href=\"./Wikipedia:Orphan\" title=\"Wikipedia:Orphan\">orphaned</a>, meaning that it is not used in any articles on Wikipedia. If the image was previously in an article, please go to the article and see why it was removed. <a href=\"./Wikipedia:BOLD\" title=\"Wikipedia:BOLD\">You may add it back</a> if you think that that will be useful. However, please note that images for which a replacement could be created are not acceptable for use on Wikipedia (see <a href=\"./Wikipedia:Non-free_content#Policy\" title=\"Wikipedia:Non-free content\">our policy for non-free media</a>).<br><br><b>PLEASE NOTE:</b><ul><li>I am a <a href=\"./Wikipedia:BOT\" title=\"Wikipedia:BOT\">bot</a>, and will therefore not be able to answer your questions.<li>I will remove the request for deletion if the file is used in an article once again.<li>If you receive this notice <i>after</i> the image is deleted, and you want to restore the image, click <a typeof=\"mw:ExpandedAttrs\" href=\"http://en.wikipedia.org/w/index.php?action=edit&amp;preload=Wikipedia:Requests_for_undeletion/Example&amp;editintro=Wikipedia:Requests_for_undeletion/Intro&amp;preloadtitle=File%3AFifa+world+cup+org.jpg&amp;section=new&amp;title=Wikipedia:Requests_for_undeletion/Current_requests&amp;create=Request\" data-mw=\"{&quot;attribs&quot;:[[{&quot;txt&quot;:&quot;href&quot;},{&quot;html&quot;:&quot;http://en.wikipedia.org/w/index.php?action=edit&amp;amp;preload=Wikipedia:Requests_for_undeletion/Example&amp;amp;editintro=Wikipedia:Requests_for_undeletion/Intro&amp;amp;preloadtitle=<span about=\\&quot;#mwt34\\&quot; typeof=\\&quot;mw:Transclusion\\&quot; data-parsoid='{\\&quot;pi\\&quot;:[[]],\\&quot;dsr\\&quot;:[29308,29349,null,null]}' data-mw='{\\&quot;parts\\&quot;:[{\\&quot;template\\&quot;:{\\&quot;target\\&quot;:{\\&quot;wt\\&quot;:\\&quot;urlencode:File:Fifa world cup org.jpg\\&quot;,\\&quot;function\\&quot;:\\&quot;urlencode\\&quot;},\\&quot;params\\&quot;:{},\\&quot;i\\&quot;:0}}]}'>File%3AFifa+world+cup+org.jpg</span>&amp;amp;section=new&amp;amp;title=Wikipedia:Requests_for_undeletion/Current_requests&amp;amp;create=Request&quot;}]]}\">here</a> to file an un-delete request.<li>To opt out of these bot messages, add {{bots|deny=DASHBot}} to your talk page.<li>If you believe the bot has made an error, please turn it off <a href=\"./User:DASHBot/F5\" title=\"User:DASHBot/F5\">here</a> and leave a message on <a href=\"./User_talk:Tim1357\" title=\"User talk:Tim1357\">my owner's talk page</a>.</ul>Thank you.  <a href=\"./User:DASHBot\" title=\"User:DASHBot\">DASHBot</a> (<a href=\"./User_talk:DASHBot\" title=\"User talk:DASHBot\">talk</a>) 06:07, 3 July 2011 (UTC)",
+          "text": "Thanks for uploading <b><a href=\"./File:Fifa_world_cup_org.jpg\" title=\"File:Fifa world cup org.jpg\">File:Fifa world cup org.jpg</a></b>. The image description page currently specifies that the image is non-free and may only be used on Wikipedia under a <a href=\"./Wikipedia:FU\" title=\"Wikipedia:FU\">claim of fair use</a>. However, the image is currently <a href=\"./Wikipedia:Orphan\" title=\"Wikipedia:Orphan\">orphaned</a>, meaning that it is not used in any articles on Wikipedia. If the image was previously in an article, please go to the article and see why it was removed. <a href=\"./Wikipedia:BOLD\" title=\"Wikipedia:BOLD\">You may add it back</a> if you think that that will be useful. However, please note that images for which a replacement could be created are not acceptable for use on Wikipedia (see <a href=\"./Wikipedia:Non-free_content#Policy\" title=\"Wikipedia:Non-free content\">our policy for non-free media</a>).<br><br><b>PLEASE NOTE:</b><ul><li>I am a <a href=\"./Wikipedia:BOT\" title=\"Wikipedia:BOT\">bot</a>, and will therefore not be able to answer your questions.<li>I will remove the request for deletion if the file is used in an article once again.<li>If you receive this notice <i>after</i> the image is deleted, and you want to restore the image, click <a typeof=\"mw:ExpandedAttrs\" href=\"http://en.wikipedia.org/w/index.php?action=edit&amp;preload=Wikipedia:Requests_for_undeletion/Example&amp;editintro=Wikipedia:Requests_for_undeletion/Intro&amp;preloadtitle=File%3AFifa+world+cup+org.jpg&amp;section=new&amp;title=Wikipedia:Requests_for_undeletion/Current_requests&amp;create=Request\" data-mw=\"{&quot;attribs&quot;:[[{&quot;txt&quot;:&quot;href&quot;},{&quot;html&quot;:&quot;http://en.wikipedia.org/w/index.php?action=edit&amp;amp;preload=Wikipedia:Requests_for_undeletion/Example&amp;amp;editintro=Wikipedia:Requests_for_undeletion/Intro&amp;amp;preloadtitle=<span about=\\&quot;#mwt36\\&quot; typeof=\\&quot;mw:Transclusion\\&quot; data-parsoid='{\\&quot;pi\\&quot;:[[]],\\&quot;dsr\\&quot;:[29308,29349,null,null]}' data-mw='{\\&quot;parts\\&quot;:[{\\&quot;template\\&quot;:{\\&quot;target\\&quot;:{\\&quot;wt\\&quot;:\\&quot;urlencode:File:Fifa world cup org.jpg\\&quot;,\\&quot;function\\&quot;:\\&quot;urlencode\\&quot;},\\&quot;params\\&quot;:{},\\&quot;i\\&quot;:0}}]}'>File%3AFifa+world+cup+org.jpg</span>&amp;amp;section=new&amp;amp;title=Wikipedia:Requests_for_undeletion/Current_requests&amp;amp;create=Request&quot;}]]}\">here</a> to file an un-delete request.<li>To opt out of these bot messages, add {{bots|deny=DASHBot}} to your talk page.<li>If you believe the bot has made an error, please turn it off <a href=\"./User:DASHBot/F5\" title=\"User:DASHBot/F5\">here</a> and leave a message on <a href=\"./User_talk:Tim1357\" title=\"User talk:Tim1357\">my owner's talk page</a>.</ul>Thank you.  <a href=\"./User:DASHBot\" title=\"User:DASHBot\">DASHBot</a> (<a href=\"./User_talk:DASHBot\" title=\"User talk:DASHBot\">talk</a>) 06:07, 3 July 2011 (UTC)",
           "depth": 0,
-          "sha": "53f72e5"
+          "sha": "0a028a5"
         }
       ],
       "depth": 2,
       "text": "Orphaned non-free image File:Fifa world cup org.jpg",
-      "sha": "dfa3291"
+      "sha": "cdd08c3"
     },
     {
       "id": 37,
@@ -636,29 +636,29 @@
       "id": 39,
       "replies": [
         {
-          "text": "Hi Brion, I hope you don't mind the reply here. That would be the classic monobook skin. Hope this helps.:) -- <a href=\"./Special:Contributions/WikHead\" title=\"Special:Contributions/WikHead\">WikHead</a> (<a href=\"./User_talk:WikHead\" title=\"User talk:WikHead\">talk</a>) 18:50, 7 October 2011 (UTC)",
+          "text": "Hi Brion, I hope you don't mind the reply here. That would be the classic monobook skin. Hope this helps. :)  -- <a href=\"./Special:Contributions/WikHead\" title=\"Special:Contributions/WikHead\">WikHead</a> (<a href=\"./User_talk:WikHead\" title=\"User talk:WikHead\">talk</a>) 18:50, 7 October 2011 (UTC)",
           "depth": 0,
-          "sha": "7790238"
+          "sha": "cc0afc9"
         },
         {
-          "text": "Perhaps I should add, that when I view the raw HTML source of a page, I see no &lt;img src=, or anything else that would indicate that an image is supposed to be loading into the blank space. -- <a href=\"./Special:Contributions/WikHead\" title=\"Special:Contributions/WikHead\">WikHead</a> (<a href=\"./User_talk:WikHead\" title=\"User talk:WikHead\">talk</a>) 19:11, 7 October 2011 (UTC)",
+          "text": "Perhaps I should add, that when I view the raw HTML source of a page, I see no &lt;img src=, or anything else that would indicate that an image is supposed to be loading into the blank space.  -- <a href=\"./Special:Contributions/WikHead\" title=\"Special:Contributions/WikHead\">WikHead</a> (<a href=\"./User_talk:WikHead\" title=\"User talk:WikHead\">talk</a>) 19:11, 7 October 2011 (UTC)",
           "depth": 1,
-          "sha": "0ffb016"
+          "sha": "c74ba06"
         },
         {
-          "text": "Ok... you actually shouldn't see an &lt;img&gt; or anything as it's added in the CSS stylesheets -- so that's normal.:) I'll see if we can narrow down the bug checks on Monobook skin, thanks! --<a href=\"./User:Brion_VIBBER\" title=\"User:Brion VIBBER\">brion</a> (<a href=\"./User_talk:Brion_VIBBER#top\" title=\"User talk:Brion VIBBER\">talk</a>) 20:59, 7 October 2011 (UTC)",
+          "text": "Ok... you actually shouldn't see an &lt;img&gt; or anything as it's added in the CSS stylesheets -- so that's normal. :) I'll see if we can narrow down the bug checks on Monobook skin, thanks! --<a href=\"./User:Brion_VIBBER\" title=\"User:Brion VIBBER\">brion</a> (<a href=\"./User_talk:Brion_VIBBER#top\" title=\"User talk:Brion VIBBER\">talk</a>) 20:59, 7 October 2011 (UTC)",
           "depth": 2,
-          "sha": "9577ccd"
+          "sha": "cff031e"
         },
         {
-          "text": "Great, thanks for the reply! If the new plan is to remove the icon, I really don't mind that so much. What's weird to me however, is seeing the (space) tail-padding before the punctuation. If the padding was removed, I'd be just as happy.:) -- <a href=\"./Special:Contributions/WikHead\" title=\"Special:Contributions/WikHead\">WikHead</a> (<a href=\"./User_talk:WikHead\" title=\"User talk:WikHead\">talk</a>) 21:09, 7 October 2011 (UTC)",
+          "text": "Great, thanks for the reply! If the new plan is to remove the icon, I really don't mind that so much. What's weird to me however, is seeing the (space) tail-padding before the punctuation. If the padding was removed, I'd be just as happy. :)  -- <a href=\"./Special:Contributions/WikHead\" title=\"Special:Contributions/WikHead\">WikHead</a> (<a href=\"./User_talk:WikHead\" title=\"User talk:WikHead\">talk</a>) 21:09, 7 October 2011 (UTC)",
           "depth": 3,
-          "sha": "df7d5b8"
+          "sha": "13fc9e3"
         }
       ],
       "depth": 2,
       "text": "Re: External link icon bug",
-      "sha": "c10022b"
+      "sha": "4ecb1a9"
     },
     {
       "id": 40,
@@ -705,19 +705,19 @@
       "id": 42,
       "replies": [
         {
-          "text": "I killed some of the ancient content on your user page. It could use a bit of sprucing, though.:-)  --<a href=\"./User:MZMcBride\" title=\"User:MZMcBride\">MZMcBride</a> (<a href=\"./User_talk:MZMcBride\" title=\"User talk:MZMcBride\">talk</a>) 21:08, 28 November 2011 (UTC)",
+          "text": "I killed some of the ancient content on your user page. It could use a bit of sprucing, though. :-)  --<a href=\"./User:MZMcBride\" title=\"User:MZMcBride\">MZMcBride</a> (<a href=\"./User_talk:MZMcBride\" title=\"User talk:MZMcBride\">talk</a>) 21:08, 28 November 2011 (UTC)",
           "depth": 0,
-          "sha": "cce5b8e"
+          "sha": "f3ac174"
         },
         {
-          "text": "Thanks... I gotta spend more editing time on this wiki.:D --<a href=\"./User:Brion_VIBBER\" title=\"User:Brion VIBBER\">brion</a> (<a href=\"./User_talk:Brion_VIBBER#top\" title=\"User talk:Brion VIBBER\">talk</a>) 21:11, 28 November 2011 (UTC)",
+          "text": "Thanks... I gotta spend more editing time on this wiki. :D --<a href=\"./User:Brion_VIBBER\" title=\"User:Brion VIBBER\">brion</a> (<a href=\"./User_talk:Brion_VIBBER#top\" title=\"User talk:Brion VIBBER\">talk</a>) 21:11, 28 November 2011 (UTC)",
           "depth": 1,
-          "sha": "34f0b61"
+          "sha": "44a6e71"
         }
       ],
       "depth": 2,
       "text": "<a href=\"./User:Brion_VIBBER\" title=\"User:Brion VIBBER\">Your user page</a>",
-      "sha": "9ee61aa"
+      "sha": "f11403d"
     },
     {
       "id": 43,
@@ -811,19 +811,19 @@
       "id": 49,
       "replies": [
         {
-          "text": "<b>The Original Barnstar</b><br><br>Hey Brion! Thanks for your years of dedication and hard work in improving and making Wikipedia as best as ever!:) <a href=\"./User:TheGeneralUser\" title=\"User:TheGeneralUser\">TheGeneralUser</a> (<a href=\"./User_talk:TheGeneralUser\" title=\"User talk:TheGeneralUser\">talk</a>) 23:15, 30 April 2012 (UTC)",
+          "text": "<b>The Original Barnstar</b><br><br>Hey Brion! Thanks for your years of dedication and hard work in improving and making Wikipedia as best as ever! :) <a href=\"./User:TheGeneralUser\" title=\"User:TheGeneralUser\">TheGeneralUser</a> (<a href=\"./User_talk:TheGeneralUser\" title=\"User talk:TheGeneralUser\">talk</a>) 23:15, 30 April 2012 (UTC)",
           "depth": 0,
-          "sha": "71b5dfc"
+          "sha": "72abd07"
         },
         {
-          "text": "Thanks!:D --<a href=\"./User:Brion_VIBBER\" title=\"User:Brion VIBBER\">brion</a> (<a href=\"./User_talk:Brion_VIBBER#top\" title=\"User talk:Brion VIBBER\">talk</a>) 23:28, 30 April 2012 (UTC)",
+          "text": "Thanks! :D --<a href=\"./User:Brion_VIBBER\" title=\"User:Brion VIBBER\">brion</a> (<a href=\"./User_talk:Brion_VIBBER#top\" title=\"User talk:Brion VIBBER\">talk</a>) 23:28, 30 April 2012 (UTC)",
           "depth": 1,
-          "sha": "f1bf189"
+          "sha": "3f49026"
         }
       ],
       "depth": 2,
       "text": "A barnstar for you!",
-      "sha": "0bfea25"
+      "sha": "0d2dccd"
     },
     {
       "id": 50,
@@ -883,14 +883,14 @@
           "sha": "03c8df9"
         },
         {
-          "text": "awwww thanks:)",
+          "text": "awwww thanks :)",
           "depth": 1,
-          "sha": "9c4284d"
+          "sha": "80f33da"
         }
       ],
       "depth": 3,
       "text": "My toast for you",
-      "sha": "6bc0041"
+      "sha": "947e3ef"
     },
     {
       "id": 54,
@@ -922,27 +922,27 @@
       "id": 56,
       "replies": [
         {
-          "text": "The article <a href=\"./Starfighter\" title=\"Starfighter\">Starfighter</a> has been <a href=\"./Wikipedia:Proposed_deletion\" title=\"Wikipedia:Proposed deletion\">proposed for deletion</a> because of the following concern:<br><br>&#8195;<b>article on a word made up by some editor, unsourced after several years</b><br><br>While all contributions to Wikipedia are appreciated, content or articles may be <a href=\"./Wikipedia:DEL#REASON\" title=\"Wikipedia:DEL\">deleted for any of several reasons</a>.<br><br>You may prevent the proposed deletion by removing the {{proposed deletion/dated}} notice, but please explain why in your <a href=\"./Help:Edit_summary\" title=\"Help:Edit summary\">edit summary</a> or on <a href=\"./Talk:Starfighter\" title=\"Talk:Starfighter\">the article's talk page</a>.<br><br>Please consider improving the article to address the issues raised. Removing {{proposed deletion/dated}} will stop the <a href=\"./Wikipedia:Proposed_deletion\" title=\"Wikipedia:Proposed deletion\">proposed deletion process</a>, but other <a href=\"./Wikipedia:Deletion_process\" title=\"Wikipedia:Deletion process\">deletion processes</a> exist. In particular, the <a href=\"./Wikipedia:Criteria_for_speedy_deletion\" title=\"Wikipedia:Criteria for speedy deletion\">speedy deletion</a> process can result in deletion without discussion, and <a href=\"./Wikipedia:Articles_for_deletion\" title=\"Wikipedia:Articles for deletion\">articles for deletion</a> allows discussion to reach <a href=\"./Wikipedia:Consensus\" title=\"Wikipedia:Consensus\">consensus</a> for deletion.<br><br>&#8195;I've seconded it. -- <a href=\"./User:Trevj#top\" title=\"User:Trevj\">Trevj</a> (<a href=\"./User_talk:Trevj#top\" title=\"User talk:Trevj\">talk</a>) 11:22, 13 July 2012 (UTC)",
+          "text": "The article <a href=\"./Starfighter\" title=\"Starfighter\">Starfighter</a> has been <a href=\"./Wikipedia:Proposed_deletion\" title=\"Wikipedia:Proposed deletion\">proposed for deletion</a>  because of the following concern:<br><br>&#8195;<b>article on a word made up by some editor, unsourced after several years</b><br><br>While all contributions to Wikipedia are appreciated, content or articles may be <a href=\"./Wikipedia:DEL#REASON\" title=\"Wikipedia:DEL\">deleted for any of several reasons</a>.<br><br>You may prevent the proposed deletion by removing the {{proposed deletion/dated}} notice, but please explain why in your <a href=\"./Help:Edit_summary\" title=\"Help:Edit summary\">edit summary</a> or on <a href=\"./Talk:Starfighter\" title=\"Talk:Starfighter\">the article's talk page</a>.<br><br>Please consider improving the article to address the issues raised. Removing {{proposed deletion/dated}} will stop the <a href=\"./Wikipedia:Proposed_deletion\" title=\"Wikipedia:Proposed deletion\">proposed deletion process</a>, but other <a href=\"./Wikipedia:Deletion_process\" title=\"Wikipedia:Deletion process\">deletion processes</a> exist. In particular, the <a href=\"./Wikipedia:Criteria_for_speedy_deletion\" title=\"Wikipedia:Criteria for speedy deletion\">speedy deletion</a> process can result in deletion without discussion, and <a href=\"./Wikipedia:Articles_for_deletion\" title=\"Wikipedia:Articles for deletion\">articles for deletion</a> allows discussion to reach <a href=\"./Wikipedia:Consensus\" title=\"Wikipedia:Consensus\">consensus</a> for deletion.<br><br>&#8195;I've seconded it. -- <a href=\"./User:Trevj#top\" title=\"User:Trevj\">Trevj</a> (<a href=\"./User_talk:Trevj#top\" title=\"User talk:Trevj\">talk</a>) 11:22, 13 July 2012 (UTC)",
           "depth": 0,
-          "sha": "94c5b61"
+          "sha": "bdebe7a"
         }
       ],
       "depth": 2,
       "text": "<a href=\"./Wikipedia:Proposed_deletion\" title=\"Wikipedia:Proposed deletion\">Proposed deletion</a> of <a href=\"./Starfighter\" title=\"Starfighter\">Starfighter</a>",
-      "sha": "ea21465"
+      "sha": "2611a6e"
     },
     {
       "id": 57,
       "replies": [
         {
-          "text": "Hi Brion VIBBER ! I have started my second editor review at <a href=\"./Wikipedia:Editor_review/TheGeneralUser_(2)\" title=\"Wikipedia:Editor review/TheGeneralUser (2)\">Wikipedia:Editor review/TheGeneralUser (2)</a>. I will be greatly delighted, thankful and valued to have your review for me regarding my editing and possible candidate for <a href=\"./Wikipedia:Requests_for_adminship\" title=\"Wikipedia:Requests for adminship\">Adminship</a>. As you are a experienced and long term Wikipedian so i have asked for your kind review. Take your time to review my editing and give the best review that you can:). Feel free to ask me any questions you would like to on the review page itself. It will be a great honor to have you review me for which I will truly feel appreciated and helpful! I always work to improve Wikipedia and make it a more better place to be for Everyone:). Regards and Happy Editing! <a href=\"./User:TheGeneralUser\" title=\"User:TheGeneralUser\">TheGeneralUser</a> (<a href=\"./User_talk:TheGeneralUser\" title=\"User talk:TheGeneralUser\">talk</a>) 19:05, 4 September 2012 (UTC)",
+          "text": "Hi Brion VIBBER ! I have started my second editor review at <a href=\"./Wikipedia:Editor_review/TheGeneralUser_(2)\" title=\"Wikipedia:Editor review/TheGeneralUser (2)\">Wikipedia:Editor review/TheGeneralUser (2)</a>. I will be greatly delighted, thankful and valued to have your review for me regarding my editing and possible candidate for <a href=\"./Wikipedia:Requests_for_adminship\" title=\"Wikipedia:Requests for adminship\">Adminship</a>. As you are a experienced and long term Wikipedian so i have asked for your kind review. Take your time to review my editing and give the best review that you can :). Feel free to ask me any questions you would like to on the review page itself. It will be a great honor to have you review me for which I will truly feel appreciated and helpful! I always work to improve Wikipedia and make it a more better place to be for Everyone :). Regards and Happy Editing! <a href=\"./User:TheGeneralUser\" title=\"User:TheGeneralUser\">TheGeneralUser</a> (<a href=\"./User_talk:TheGeneralUser\" title=\"User talk:TheGeneralUser\">talk</a>) 19:05, 4 September 2012 (UTC)",
           "depth": 0,
-          "sha": "b6807c6"
+          "sha": "cd242f6"
         }
       ],
       "depth": 2,
-      "text": "<a href=\"./Wikipedia:Editor_review/TheGeneralUser_(2)\" title=\"Wikipedia:Editor review/TheGeneralUser (2)\">Wikipedia:Editor review/TheGeneralUser (2)</a> Your review is required and will be greatly appreciated:)",
-      "sha": "d577012"
+      "text": "<a href=\"./Wikipedia:Editor_review/TheGeneralUser_(2)\" title=\"Wikipedia:Editor review/TheGeneralUser (2)\">Wikipedia:Editor review/TheGeneralUser (2)</a> Your review is required and will be greatly appreciated :)",
+      "sha": "d0be82d"
     },
     {
       "id": 58,
@@ -954,8 +954,8 @@
         }
       ],
       "depth": 2,
-      "text": "<i><b>You're invited!</b> - <b>Wiki Loves Monuments - San Francisco Events</b></i>",
-      "sha": "7a414ec"
+      "text": "<i> <b>You're invited!</b> - <b>Wiki Loves Monuments - San Francisco Events</b> </i>",
+      "sha": "9921c6b"
     },
     {
       "id": 59,
@@ -999,14 +999,14 @@
           "sha": "91bbedf"
         },
         {
-          "text": "Most of the new design work is focused on mobile -- we can iterate quickly there without breaking things -- but we plan to expand that work back to the desktop as well. Keep watching.:) --<a href=\"./User:Brion_VIBBER\" title=\"User:Brion VIBBER\">brion</a> (<a href=\"./User_talk:Brion_VIBBER#top\" title=\"User talk:Brion VIBBER\">talk</a>) 01:17, 6 November 2012 (UTC)",
+          "text": "Most of the new design work is focused on mobile -- we can iterate quickly there without breaking things -- but we plan to expand that work back to the desktop as well. Keep watching. :) --<a href=\"./User:Brion_VIBBER\" title=\"User:Brion VIBBER\">brion</a> (<a href=\"./User_talk:Brion_VIBBER#top\" title=\"User talk:Brion VIBBER\">talk</a>) 01:17, 6 November 2012 (UTC)",
           "depth": 1,
-          "sha": "b5b3d32"
+          "sha": "3c5974b"
         }
       ],
       "depth": 2,
       "text": "Wikipedia skins",
-      "sha": "06e622e"
+      "sha": "e53924e"
     },
     {
       "id": 63,
@@ -1048,14 +1048,14 @@
       "id": 65,
       "replies": [
         {
-          "text": "Just had a thought. Sometimes you want to quickly identify the status of something in a process - say, the completion amount of a particular day at AFD. So you go to that page's AFD log and there's a great big table of contents. Short of scrolling down the page there's no way to know what the status is of each item in that TOC. My suggestion: a magic word that allows the appending of text to the display of a heading in a TOC. Something like this:<br><br>== First thing {{TOCLABEL:closed}}==<br>Text<br><br>== Second thing {{TOCLABEL:open}}==<br>Text<br><br>== Third thing {{TOCLABEL:reopened}}==<br>Text<br><br>which would render something like:<br><br>Contents <a href=\"./User_talk:Brion_VIBBER\">(hide)</a><ul><li><a href=\"./User_talk:Brion_VIBBER\">1 First thing</a> (closed)<li><a href=\"./User_talk:Brion_VIBBER\">2 Second thing</a> (open)<li><a href=\"./User_talk:Brion_VIBBER\">3 Third thing</a> (reopened)</ul>Wouldn't that be kind of handy? There would likely be all sorts of uses. The technique might need to be restricted to use outside article space only, though, I think. <a href=\"./User:YellowPegasus\" title=\"User:YellowPegasus\"><b>.:YellowPegasus:.</b></a>(<a href=\"./User_talk:YellowPegasus\" title=\"User talk:YellowPegasus\">talk</a> • <a href=\"./Special:Contributions/YellowPegasus\" title=\"Special:Contributions/YellowPegasus\">contribs</a>) 20:00, 23 November 2012 (UTC)",
+          "text": "Just had a thought. Sometimes you want to quickly identify the status of something in a process - say, the completion amount of a particular day at AFD. So you go to that page's AFD log and there's a great big table of contents. Short of scrolling down the page there's no way to know what the status is of each item in that TOC. My suggestion: a magic word that allows the appending of text to the display of a heading in a TOC. Something like this:<br><br>== First thing {{TOCLABEL:closed}}==<br>Text<br><br>== Second thing {{TOCLABEL:open}}==<br>Text<br><br>== Third thing {{TOCLABEL:reopened}}==<br>Text<br><br><br>which would render something like:<br><br>Contents <a href=\"./User_talk:Brion_VIBBER\">(hide)</a><ul><li><a href=\"./User_talk:Brion_VIBBER\">1 First thing</a> (closed)<li><a href=\"./User_talk:Brion_VIBBER\">2 Second thing</a> (open)<li><a href=\"./User_talk:Brion_VIBBER\">3 Third thing</a> (reopened)</ul>Wouldn't that be kind of handy? There would likely be all sorts of uses. The technique might need to be restricted to use outside article space only, though, I think. <a href=\"./User:YellowPegasus\" title=\"User:YellowPegasus\"><b>.:YellowPegasus:.</b></a> (<a href=\"./User_talk:YellowPegasus\" title=\"User talk:YellowPegasus\">talk</a> • <a href=\"./Special:Contributions/YellowPegasus\" title=\"Special:Contributions/YellowPegasus\">contribs</a>) 20:00, 23 November 2012 (UTC)",
           "depth": 0,
-          "sha": "2398c2d"
+          "sha": "3e44ad0"
         }
       ],
       "depth": 2,
       "text": "From VPR: TOC labels",
-      "sha": "a5096d9"
+      "sha": "af7faac"
     },
     {
       "id": 66,
@@ -1113,14 +1113,14 @@
       "id": 70,
       "replies": [
         {
-          "text": "<a href=\"./Wikipedia:WikiProject_California/List_of_California-related_topics\" title=\"Wikipedia:WikiProject California/List of California-related topics\">Wikipedia:WikiProject California/List of California-related topics</a>, a page you substantially contributed to, has been nominated for <a href=\"./Wikipedia:MfD\" title=\"Wikipedia:MfD\">deletion</a>. Your opinions on the matter are welcome; please participate in the discussion by adding your comments at <a href=\"./Wikipedia:Miscellany_for_deletion/Wikipedia:WikiProject_California/List_of_California-related_topics\" title=\"Wikipedia:Miscellany for deletion/Wikipedia:WikiProject California/List of California-related topics\">Wikipedia:Miscellany for deletion/Wikipedia:WikiProject California/List of California-related topics</a> and please be sure to <a href=\"./Wikipedia:SIG\" title=\"Wikipedia:SIG\">sign your comments</a> with four tildes (~~~~).  You are free to edit the content of <a href=\"./Wikipedia:WikiProject_California/List_of_California-related_topics\" title=\"Wikipedia:WikiProject California/List of California-related topics\">Wikipedia:WikiProject California/List of California-related topics</a> during the discussion but should not remove the miscellany for deletion template from the top of the page; such a removal will not end the deletion discussion.  Thank you. <a href=\"./User:Mercurywoodrose\" title=\"User:Mercurywoodrose\">Mercurywoodrose</a> (<a href=\"./User_talk:Mercurywoodrose\" title=\"User talk:Mercurywoodrose\">talk</a>) 04:01, 1 April 2013 (UTC)",
+          "text": "<a href=\"./Wikipedia:WikiProject_California/List_of_California-related_topics\" title=\"Wikipedia:WikiProject California/List of California-related topics\">Wikipedia:WikiProject California/List of California-related topics</a>, a page you substantially contributed to, has been nominated for <a href=\"./Wikipedia:MfD\" title=\"Wikipedia:MfD\">deletion</a>. Your opinions on the matter are welcome; please participate in the discussion by adding your comments at <a href=\"./Wikipedia:Miscellany_for_deletion/Wikipedia:WikiProject_California/List_of_California-related_topics\" title=\"Wikipedia:Miscellany for deletion/Wikipedia:WikiProject California/List of California-related topics\">Wikipedia:Miscellany for deletion/Wikipedia:WikiProject California/List of California-related topics </a> and please be sure to <a href=\"./Wikipedia:SIG\" title=\"Wikipedia:SIG\">sign your comments</a> with four tildes (~~~~).  You are free to edit the content of <a href=\"./Wikipedia:WikiProject_California/List_of_California-related_topics\" title=\"Wikipedia:WikiProject California/List of California-related topics\">Wikipedia:WikiProject California/List of California-related topics</a> during the discussion but should not remove the miscellany for deletion template from the top of the page; such a removal will not end the deletion discussion.  Thank you. <a href=\"./User:Mercurywoodrose\" title=\"User:Mercurywoodrose\">Mercurywoodrose</a> (<a href=\"./User_talk:Mercurywoodrose\" title=\"User talk:Mercurywoodrose\">talk</a>) 04:01, 1 April 2013 (UTC)",
           "depth": 0,
-          "sha": "e5dd08f"
+          "sha": "8df1b0b"
         }
       ],
       "depth": 2,
       "text": "MfD nomination of <a href=\"./Wikipedia:WikiProject_California/List_of_California-related_topics\" title=\"Wikipedia:WikiProject California/List of California-related topics\">Wikipedia:WikiProject California/List of California-related topics</a>",
-      "sha": "8724e0b"
+      "sha": "46eb23f"
     },
     {
       "id": 71,
@@ -1224,14 +1224,14 @@
           "sha": "72bd61c"
         },
         {
-          "text": "Dankon:D --<a href=\"./User:Brion_VIBBER\" title=\"User:Brion VIBBER\">brion</a> (<a href=\"./User_talk:Brion_VIBBER#top\" title=\"User talk:Brion VIBBER\">talk</a>) 16:30, 5 June 2013 (UTC)",
+          "text": "Dankon :D --<a href=\"./User:Brion_VIBBER\" title=\"User:Brion VIBBER\">brion</a> (<a href=\"./User_talk:Brion_VIBBER#top\" title=\"User talk:Brion VIBBER\">talk</a>) 16:30, 5 June 2013 (UTC)",
           "depth": 1,
-          "sha": "aa1273c"
+          "sha": "73f24be"
         }
       ],
       "depth": 2,
       "text": "Already this time of the year !",
-      "sha": "2526031"
+      "sha": "58c31b7"
     },
     {
       "id": 78,
@@ -1307,40 +1307,40 @@
       "id": 83,
       "replies": [
         {
-          "text": "Hello Brion: I have been politely asked to \"read the archives\" before editing on a contentious article and realize this is going to take a while and require lots of notes.:) I decided to setup a personal Wikimedia-on-a-stick so I can work locally (much faster, I live in a rural area and have a somewhat slower connection) but the history limit on export is an issue since there are <i>a lot</i> more than 1000 edits. I saw you were able to do this before <a href=\"http://en.wikipedia.org/wiki/Wikipedia:Village_pump_(technical)/Archive_I#Special:Export_Full_History_alternative.3F\">here</a> and was hoping you would be willing to do it again maybe? The page is <a href=\"./Morgellons\" title=\"Morgellons\">Morgellons</a> and I would like to have the whole set of article + article history/diffs + talk + talk history/diffs + talk archives (11) + talk archives history/diffs. Is that possible? Thanks in advance either way.<br><br>{{imaginary-smiley|pleading-with-big-sad-puppy-dog-eyes}}:)<br><br><a href=\"./User:Formerly6697\" title=\"User:Formerly6697\"><b>F6697</b></a><a href=\"./Special:Contributions/66.97.209.215\" title=\"Special:Contributions/66.97.209.215\"><i>FORMERLY</i></a><a href=\"./Special:Contributions/Formerly6697\" title=\"Special:Contributions/Formerly6697\"><b>66.97.209.215</b></a><a href=\"./User_talk:Formerly6697\" title=\"User talk:Formerly6697\">TALK</a> 04:24, 4 January 2014 (UTC)",
+          "text": "Hello Brion: I have been politely asked to \"read the archives\" before editing on a contentious article and realize this is going to take a while and require lots of notes. :) I decided to setup a personal Wikimedia-on-a-stick so I can work locally (much faster, I live in a rural area and have a somewhat slower connection) but the history limit on export is an issue since there are <i>a lot</i> more than 1000 edits. I saw you were able to do this before <a href=\"http://en.wikipedia.org/wiki/Wikipedia:Village_pump_(technical)/Archive_I#Special:Export_Full_History_alternative.3F\">here</a> and was hoping you would be willing to do it again maybe? The page is <a href=\"./Morgellons\" title=\"Morgellons\">Morgellons</a> and I would like to have the whole set of article + article history/diffs + talk + talk history/diffs + talk archives (11) + talk archives history/diffs. Is that possible? Thanks in advance either way.<br><br>{{imaginary-smiley|pleading-with-big-sad-puppy-dog-eyes}} :)<br><br><a href=\"./User:Formerly6697\" title=\"User:Formerly6697\"><b>F6697</b></a><a href=\"./Special:Contributions/66.97.209.215\" title=\"Special:Contributions/66.97.209.215\">  <i>FORMERLY</i>  </a><a href=\"./Special:Contributions/Formerly6697\" title=\"Special:Contributions/Formerly6697\"><b> 66.97.209.215 </b></a><a href=\"./User_talk:Formerly6697\" title=\"User talk:Formerly6697\">TALK</a> 04:24, 4 January 2014 (UTC)",
           "depth": 0,
-          "sha": "4364131"
+          "sha": "87e7444"
         }
       ],
       "depth": 2,
       "text": "Request for a <i>complete</i> export of one article and related pages.",
-      "sha": "1d7c19b"
+      "sha": "ca61910"
     },
     {
       "id": 84,
       "replies": [
         {
-          "text": "Greetings $editor, I see from your $signpostProfileArticle that you have an interest in service-oriented architectures! :-)    I'm trying to help a group of COI-encumbered PhDs re-write the <a href=\"./SORCER\" title=\"SORCER\">SORCER</a> article (NPOV), which is a service-oriented architecture based on the <a href=\"./Jini\" title=\"Jini\">Jini</a>/<a href=\"./JVM\" title=\"JVM\">JVM</a> substrate, used by the USAF (plus French and rumour has it Chinese and Russians and possibly Brits/Aussies) to speed up the automated mechanical-design-and-analysis of radical new aerospace structures.  Interesting stuff, but could use another set of eyeballs to help translate from the jargon-debt they've built up during classified and quasi-governmental projects involving this software, since the previous millenium.  Do you have any interest in helping, and are you available?  And if so, how strong is your wikiImmuneSystem when it comes to surviving TLDR?<br><br>p.s.  I'd also like to give you an earful about WP:FLOW and VizEd and the general push for wiki2.0 sorts of things.  But I promise to refrain, if you'd prefer not to hear it. :-)    Hope this helps, and thanks for improving wikipedia.  <a href=\"./The_Blues\" title=\"The Blues\">Please leave me a talkback / if you respon' / cannot have no watchlist / as just an anon'</a>.  Danke.  <a href=\"./Special:Contributions/74.192.84.101\" title=\"Special:Contributions/74.192.84.101\">74.192.84.101</a> (<a href=\"./User_talk:74.192.84.101\" title=\"User talk:74.192.84.101\">talk</a>) 17:19, 26 January 2014 (UTC)",
+          "text": "Greetings $editor, I see from your $signpostProfileArticle that you have an interest in service-oriented architectures!  :-)     I'm trying to help a group of COI-encumbered PhDs re-write the <a href=\"./SORCER\" title=\"SORCER\">SORCER</a> article (NPOV), which is a service-oriented architecture based on the <a href=\"./Jini\" title=\"Jini\">Jini</a>/<a href=\"./JVM\" title=\"JVM\">JVM</a> substrate, used by the USAF (plus French and rumour has it Chinese and Russians and possibly Brits/Aussies) to speed up the automated mechanical-design-and-analysis of radical new aerospace structures.  Interesting stuff, but could use another set of eyeballs to help translate from the jargon-debt they've built up during classified and quasi-governmental projects involving this software, since the previous millenium.  Do you have any interest in helping, and are you available?  And if so, how strong is your wikiImmuneSystem when it comes to surviving TLDR?<br><br>p.s.  I'd also like to give you an earful about WP:FLOW and VizEd and the general push for wiki2.0 sorts of things.  But I promise to refrain, if you'd prefer not to hear it.  :-)     Hope this helps, and thanks for improving wikipedia.  <a href=\"./The_Blues\" title=\"The Blues\"> Please leave me a talkback / if you respon' / cannot have no watchlist / as just an anon'</a>.  Danke.  <a href=\"./Special:Contributions/74.192.84.101\" title=\"Special:Contributions/74.192.84.101\">74.192.84.101</a> (<a href=\"./User_talk:74.192.84.101\" title=\"User talk:74.192.84.101\">talk</a>) 17:19, 26 January 2014 (UTC)",
           "depth": 0,
-          "sha": "4f11b7f"
+          "sha": "5b7951e"
         }
       ],
       "depth": 2,
       "text": "service oriented architecture",
-      "sha": "9881ab4"
+      "sha": "30c0b69"
     },
     {
       "id": 85,
       "replies": [
         {
-          "text": "<a href=\"./Portal:Literature/Mobile_redesign_attempt\" title=\"Portal:Literature/Mobile redesign attempt\">Portal:Literature/Mobile redesign attempt</a>, a page you substantially contributed to, has been nominated for <a href=\"./Wikipedia:MfD\" title=\"Wikipedia:MfD\">deletion</a>. Your opinions on the matter are welcome; please participate in the discussion by adding your comments at <a href=\"./Wikipedia:Miscellany_for_deletion/Portal:Literature/Mobile_redesign_attempt\" title=\"Wikipedia:Miscellany for deletion/Portal:Literature/Mobile redesign attempt\">Wikipedia:Miscellany for deletion/Portal:Literature/Mobile redesign attempt</a> and please be sure to <a href=\"./Wikipedia:SIG\" title=\"Wikipedia:SIG\">sign your comments</a> with four tildes (~~~~).  You are free to edit the content of <a href=\"./Portal:Literature/Mobile_redesign_attempt\" title=\"Portal:Literature/Mobile redesign attempt\">Portal:Literature/Mobile redesign attempt</a> during the discussion but should not remove the miscellany for deletion template from the top of the page; such a removal will not end the deletion discussion.  Thank you. <a href=\"./User:Sven_Manguard\" title=\"User:Sven Manguard\"><b>SvenManguard</b></a><a href=\"./User_talk:Sven_Manguard\" title=\"User talk:Sven Manguard\"><b>Wha?</b></a> 20:02, 3 February 2014 (UTC)",
+          "text": "<a href=\"./Portal:Literature/Mobile_redesign_attempt\" title=\"Portal:Literature/Mobile redesign attempt\">Portal:Literature/Mobile redesign attempt</a>, a page you substantially contributed to, has been nominated for <a href=\"./Wikipedia:MfD\" title=\"Wikipedia:MfD\">deletion</a>. Your opinions on the matter are welcome; please participate in the discussion by adding your comments at <a href=\"./Wikipedia:Miscellany_for_deletion/Portal:Literature/Mobile_redesign_attempt\" title=\"Wikipedia:Miscellany for deletion/Portal:Literature/Mobile redesign attempt\">Wikipedia:Miscellany for deletion/Portal:Literature/Mobile redesign attempt </a> and please be sure to <a href=\"./Wikipedia:SIG\" title=\"Wikipedia:SIG\">sign your comments</a> with four tildes (~~~~).  You are free to edit the content of <a href=\"./Portal:Literature/Mobile_redesign_attempt\" title=\"Portal:Literature/Mobile redesign attempt\">Portal:Literature/Mobile redesign attempt</a> during the discussion but should not remove the miscellany for deletion template from the top of the page; such a removal will not end the deletion discussion.  Thank you. <a href=\"./User:Sven_Manguard\" title=\"User:Sven Manguard\"><b>Sven Manguard</b></a> <a href=\"./User_talk:Sven_Manguard\" title=\"User talk:Sven Manguard\"><b>Wha?</b></a> 20:02, 3 February 2014 (UTC)",
           "depth": 0,
-          "sha": "11d8f77"
+          "sha": "c2cde6f"
         }
       ],
       "depth": 2,
       "text": "MfD nomination of <a href=\"./Portal:Literature/Mobile_redesign_attempt\" title=\"Portal:Literature/Mobile redesign attempt\">Portal:Literature/Mobile redesign attempt</a>",
-      "sha": "10f0e0c"
+      "sha": "9ed8c2f"
     },
     {
       "id": 86,
@@ -1416,14 +1416,14 @@
       "id": 91,
       "replies": [
         {
-          "text": "<i>You are invited!</i> → <a href=\"./Wikipedia:Meetup/San_Francisco/Litquake_Edit-a-Thon\" title=\"Wikipedia:Meetup/San Francisco/Litquake Edit-a-Thon\">Litquake Edit-a-thon in San Francisco</a> → Saturday, October 11, 2014, from 1-5 PM<br><br>The Edit-a-thon will occur in parallel with <a href=\"./Litquake\" title=\"Litquake\">Litquake</a>, the <a href=\"./San_Francisco_Bay_Area\" title=\"San Francisco Bay Area\">San Francisco Bay Area</a>'s annual literature festival.<br><br>Writers from all over the Bay Area and the world will be in town during the nine day festival, so the timing is just right for us to meet, create and improve articles about literature and writers.<br><br>All levels of Wikipedia editing experience are welcome. This event will include new editor training. Please bring your laptop.<br><br>The venue: <a href=\"./Wikimedia_Foundation\" title=\"Wikimedia Foundation\">Wikimedia Foundation</a> offices (149 New Montgomery Street, 6th Floor San Francisco, CA 94105)– <a href=\"http://maps.google.com/maps?q=149+New+Montgomery+Street&amp;hnear=149+New+Montgomery+St,+San+Francisco,+California+94105&amp;gl=us&amp;t=m&amp;z=16\">Google Maps view</a><br><br>You must RSVP <a href=\"./Wikipedia:Meetup/San_Francisco/Litquake_Edit-a-Thon\" title=\"Wikipedia:Meetup/San Francisco/Litquake Edit-a-Thon\">here</a> — see you there! --<a href=\"./User:Rosiestep\" title=\"User:Rosiestep\">Rosiestep</a> (<a href=\"./User_talk:Rosiestep\" title=\"User talk:Rosiestep\">talk</a>) 03:44, 26 September 2014 (UTC)",
+          "text": "<i>You are invited!</i> → <a href=\"./Wikipedia:Meetup/San_Francisco/Litquake_Edit-a-Thon\" title=\"Wikipedia:Meetup/San Francisco/Litquake Edit-a-Thon\">Litquake Edit-a-thon in San Francisco</a> → Saturday, October 11, 2014, from 1-5 PM<br><br>The Edit-a-thon will occur in parallel with <a href=\"./Litquake\" title=\"Litquake\">Litquake</a>, the <a href=\"./San_Francisco_Bay_Area\" title=\"San Francisco Bay Area\">San Francisco Bay Area</a>'s annual literature festival.<br><br>Writers from all over the Bay Area and the world will be in town during the nine day festival, so the timing is just right for us to meet, create and improve articles about literature and writers.<br><br>All levels of Wikipedia editing experience are welcome. This event will include new editor training. Please bring your laptop.<br><br>The venue: <a href=\"./Wikimedia_Foundation\" title=\"Wikimedia Foundation\">Wikimedia Foundation</a> offices (149 New Montgomery Street, 6th Floor San Francisco, CA 94105) – <a href=\"http://maps.google.com/maps?q=149+New+Montgomery+Street&amp;hnear=149+New+Montgomery+St,+San+Francisco,+California+94105&amp;gl=us&amp;t=m&amp;z=16\">Google Maps view</a><br><br>You must RSVP <a href=\"./Wikipedia:Meetup/San_Francisco/Litquake_Edit-a-Thon\" title=\"Wikipedia:Meetup/San Francisco/Litquake Edit-a-Thon\">here</a> — see you there! --<a href=\"./User:Rosiestep\" title=\"User:Rosiestep\">Rosiestep</a> (<a href=\"./User_talk:Rosiestep\" title=\"User talk:Rosiestep\">talk</a>) 03:44, 26 September 2014 (UTC)",
           "depth": 0,
-          "sha": "8283496"
+          "sha": "ca43c4c"
         }
       ],
       "depth": 2,
       "text": "<i>You're invited!</i> Litquake Edit-a-thon in San Francisco",
-      "sha": "35c5d5d"
+      "sha": "9291058"
     },
     {
       "id": 92,
@@ -1551,9 +1551,9 @@
       "id": 101,
       "replies": [
         {
-          "text": "Following a <a href=\"./Special:PermanentLink/676107626\" title=\"Special:PermanentLink/676107626\">community discussion</a> ending August 2015, consensus was reached to <a href=\"./Wikipedia:Bureaucrats#Bureaucrat_activity_requirements\" title=\"Wikipedia:Bureaucrats\">remove the bureaucrat permissions of users who have not participated in bureaucrat activity for three years</a>.<br><br>“<br><br>Bureaucrats are expected to exercise the duties granted by their role while remaining cognizant of relevant community standards concerning their tasks. In addition to the \"<a href=\"./Wikipedia:Bureaucrats#Inactive_bureaucrat_accounts\" title=\"Wikipedia:Bureaucrats\">Inactive bureaucrat accounts</a>\" requirements, if a bureaucrat does not participate in bureaucrat activity<a href=\"./User_talk:Brion_VIBBER#cite_note-1\">[1]</a> for over three years, their bureaucrat permissions may be removed. The user must be notified on their talk page and by email one month before the removal, and again and a few days prior to the removal. If the user does not return to bureaucrat activity, another bureaucrat may request the removal of permissions at <a href=\"https://meta.wikimedia.org/wiki/Steward%20requests/Permissions\" title=\"meta:Steward requests/Permissions\">meta:Steward requests/Permissions</a>. Permissions removed for not meeting bureaucrat activity requirements may be re-obtained through a new request for bureaucratship.<br><br>&#8195;<a href=\"./User_talk:Brion_VIBBER#cite_ref-1\">↑</a> Bureaucrat activity is widely construed and includes acting or commenting as a bureaucrat at any venue including WP:BN/RFA/RFB/RFBAG/BRFA and responding to requests in their capacity as a <a href=\"https://meta.wikimedia.org/wiki/global%20renamer\" title=\"meta:global renamer\">global renamer</a> or subscriber to the bureaucrats' mailing list or signalling that they remain actively engaged and available for bureacrat tasks.<br><br>”<br><br>To assist with the implementation of this requirement, please see <a href=\"./Wikipedia:Bureaucrat_activity\" title=\"Wikipedia:Bureaucrat activity\">Wikipedia:Bureaucrat activity</a>. Modeled after <a href=\"./Wikipedia:Inactive_administrators\" title=\"Wikipedia:Inactive administrators\">Wikipedia:Inactive administrators</a> and similar to that process, the <a href=\"./Wikipedia:Bureaucrat_activity/2015\" title=\"Wikipedia:Bureaucrat activity/2015\">log page</a> will be created on 1 September 2015. Bureaucrats who have not met the activity requirements as of that date will be notified by email (where possible) and on their talk page to advise of the pending removal.<br><br>If the notified user does not return to bureaucrat activity and the permissions are removed, they will need to request reinstatement at <a href=\"./Wikipedia:RFB\" title=\"Wikipedia:RFB\">WP:RFB</a>. Removal of access is procedural only, and not intended to reflect negatively upon the affected user in any way.<br><br>Please let me know if you have any questions or concerns. –<a href=\"./User:Xeno\" title=\"User:Xeno\"><b>xeno</b></a><a href=\"./User_talk:Xeno\" title=\"User talk:Xeno\">talk</a><br><br><a href=\"./User:MediaWiki_message_delivery\" title=\"User:MediaWiki message delivery\">MediaWiki message delivery</a> (<a href=\"./User_talk:MediaWiki_message_delivery\" title=\"User talk:MediaWiki message delivery\">talk</a>) 22:20, 17 August 2015 (UTC)",
+          "text": "Following a <a href=\"./Special:PermanentLink/676107626\" title=\"Special:PermanentLink/676107626\">community discussion</a> ending August 2015, consensus was reached to <a href=\"./Wikipedia:Bureaucrats#Bureaucrat_activity_requirements\" title=\"Wikipedia:Bureaucrats\">remove the bureaucrat permissions of users who have not participated in bureaucrat activity for three years</a>.<br><br>“<br><br>Bureaucrats are expected to exercise the duties granted by their role while remaining cognizant of relevant community standards concerning their tasks. In addition to the \"<a href=\"./Wikipedia:Bureaucrats#Inactive_bureaucrat_accounts\" title=\"Wikipedia:Bureaucrats\">Inactive bureaucrat accounts</a>\" requirements, if a bureaucrat does not participate in bureaucrat activity<a href=\"./User_talk:Brion_VIBBER#cite_note-1\">[1]</a> for over three years, their bureaucrat permissions may be removed. The user must be notified on their talk page and by email one month before the removal, and again and a few days prior to the removal. If the user does not return to bureaucrat activity, another bureaucrat may request the removal of permissions at <a href=\"https://meta.wikimedia.org/wiki/Steward%20requests/Permissions\" title=\"meta:Steward requests/Permissions\">meta:Steward requests/Permissions</a>. Permissions removed for not meeting bureaucrat activity requirements may be re-obtained through a new request for bureaucratship.<br><br>&#8195;<a href=\"./User_talk:Brion_VIBBER#cite_ref-1\">↑ </a> Bureaucrat activity is widely construed and includes acting or commenting as a bureaucrat at any venue including WP:BN/RFA/RFB/RFBAG/BRFA and responding to requests in their capacity as a <a href=\"https://meta.wikimedia.org/wiki/global%20renamer\" title=\"meta:global renamer\">global renamer</a> or subscriber to the bureaucrats' mailing list or signalling that they remain actively engaged and available for bureacrat tasks.<br><br>”<br><br>To assist with the implementation of this requirement, please see <a href=\"./Wikipedia:Bureaucrat_activity\" title=\"Wikipedia:Bureaucrat activity\">Wikipedia:Bureaucrat activity</a>. Modeled after <a href=\"./Wikipedia:Inactive_administrators\" title=\"Wikipedia:Inactive administrators\">Wikipedia:Inactive administrators</a> and similar to that process, the <a href=\"./Wikipedia:Bureaucrat_activity/2015\" title=\"Wikipedia:Bureaucrat activity/2015\">log page</a> will be created on 1 September 2015. Bureaucrats who have not met the activity requirements as of that date will be notified by email (where possible) and on their talk page to advise of the pending removal.<br><br>If the notified user does not return to bureaucrat activity and the permissions are removed, they will need to request reinstatement at <a href=\"./Wikipedia:RFB\" title=\"Wikipedia:RFB\">WP:RFB</a>. Removal of access is procedural only, and not intended to reflect negatively upon the affected user in any way.<br><br>Please let me know if you have any questions or concerns. –<a href=\"./User:Xeno\" title=\"User:Xeno\"><b>xeno</b></a><a href=\"./User_talk:Xeno\" title=\"User talk:Xeno\">talk</a><br><br><a href=\"./User:MediaWiki_message_delivery\" title=\"User:MediaWiki message delivery\">MediaWiki message delivery</a> (<a href=\"./User_talk:MediaWiki_message_delivery\" title=\"User talk:MediaWiki message delivery\">talk</a>) 22:20, 17 August 2015 (UTC)",
           "depth": 0,
-          "sha": "1a5d2e0"
+          "sha": "c145e9f"
         },
         {
           "text": "From what I understand (<a href=\"./User_talk:WJBscribe/Archive_32#Bureaucrat_discussion_notification\" title=\"User talk:WJBscribe/Archive 32\">User talk:WJBscribe/Archive 32#Bureaucrat discussion notification</a>), your account has bureaucrat privileges for technical reasons. Are they still required? Should we except this account from the log page? –<a href=\"./User:Xeno\" title=\"User:Xeno\"><b>xeno</b></a><a href=\"./User_talk:Xeno\" title=\"User talk:Xeno\">talk</a> 22:24, 17 August 2015 (UTC)",
@@ -1563,20 +1563,20 @@
       ],
       "depth": 2,
       "text": "Implementation of <a href=\"./Wikipedia:Bureaucrats#Bureaucrat_activity_requirements\" title=\"Wikipedia:Bureaucrats\">Wikipedia:Bureaucrats#Bureaucrat activity requirements</a>",
-      "sha": "ee8154e"
+      "sha": "a556dcf"
     },
     {
       "id": 102,
       "replies": [
         {
-          "text": "Hi,<br><br>You appear to be eligible to vote in the current<a href=\"./Wikipedia:ACE2015\" title=\"Wikipedia:ACE2015\">Arbitration Committee election</a>. The<a href=\"./Wikipedia:ARBCOM\" title=\"Wikipedia:ARBCOM\">Arbitration Committee</a>is the panel of editors responsible for conducting the Wikipedia<a href=\"./Wikipedia:RFAR\" title=\"Wikipedia:RFAR\">arbitration process</a>. It has the authority to enact binding solutions for disputes between editors, primarily related to serious behavioural issues that the community has been unable to resolve. This includes the ability to impose<a href=\"./Wikipedia:BAN\" title=\"Wikipedia:BAN\">site bans</a>,<a href=\"./Wikipedia:TBAN\" title=\"Wikipedia:TBAN\">topic bans</a>, editing restrictions, and other measures needed to maintain our editing environment. The<a href=\"./Wikipedia:ARBPOL\" title=\"Wikipedia:ARBPOL\">arbitration policy</a>describes the Committee's roles and responsibilities in greater detail. If you wish to participate, you are welcome to<a href=\"./Wikipedia:ACE2015/C\" title=\"Wikipedia:ACE2015/C\">review the candidates' statements</a>and submit your choices on<a href=\"./Special:SecurePoll/vote/398\" title=\"Special:SecurePoll/vote/398\">the voting page</a>. For the Election committee, <a href=\"./User:MediaWiki_message_delivery\" title=\"User:MediaWiki message delivery\">MediaWiki message delivery</a> (<a href=\"./User_talk:MediaWiki_message_delivery\" title=\"User talk:MediaWiki message delivery\">talk</a>) 08:51, 23 November 2015 (UTC)",
+          "text": "Hi,<br><br>You appear to be eligible to vote in the current <a href=\"./Wikipedia:ACE2015\" title=\"Wikipedia:ACE2015\">Arbitration Committee election</a>. The <a href=\"./Wikipedia:ARBCOM\" title=\"Wikipedia:ARBCOM\">Arbitration Committee</a> is the panel of editors responsible for conducting the Wikipedia <a href=\"./Wikipedia:RFAR\" title=\"Wikipedia:RFAR\">arbitration process</a>. It has the authority to enact binding solutions for disputes between editors, primarily related to serious behavioural issues that the community has been unable to resolve. This includes the ability to impose <a href=\"./Wikipedia:BAN\" title=\"Wikipedia:BAN\">site bans</a>, <a href=\"./Wikipedia:TBAN\" title=\"Wikipedia:TBAN\">topic bans</a>, editing restrictions, and other measures needed to maintain our editing environment. The <a href=\"./Wikipedia:ARBPOL\" title=\"Wikipedia:ARBPOL\">arbitration policy</a> describes the Committee's roles and responsibilities in greater detail. If you wish to participate, you are welcome to <a href=\"./Wikipedia:ACE2015/C\" title=\"Wikipedia:ACE2015/C\">review the candidates' statements</a> and submit your choices on <a href=\"./Special:SecurePoll/vote/398\" title=\"Special:SecurePoll/vote/398\">the voting page</a>. For the Election committee, <a href=\"./User:MediaWiki_message_delivery\" title=\"User:MediaWiki message delivery\">MediaWiki message delivery</a> (<a href=\"./User_talk:MediaWiki_message_delivery\" title=\"User talk:MediaWiki message delivery\">talk</a>) 08:51, 23 November 2015 (UTC)",
           "depth": 0,
-          "sha": "2ee5272"
+          "sha": "b41af34"
         }
       ],
       "depth": 2,
       "text": "<a href=\"./Wikipedia:ACE2015\" title=\"Wikipedia:ACE2015\">ArbCom elections are now open!</a>",
-      "sha": "0539364"
+      "sha": "9170aa7"
     },
     {
       "id": 103,
@@ -1764,9 +1764,9 @@
       "id": 117,
       "replies": [
         {
-          "text": "Hello, Brion VIBBER. This message is intended to notify administrators of important changes to the protection policy.\n\n\n\n\n\nPlease review <a href=\"./Wikipedia:Protection_policy#Extended_confirmed_protection\" title=\"Wikipedia:Protection policy\">the protection policy</a> carefully before using this new level of protection on pages. Thank you.<br><br>This message was sent to the administrators' <a href=\"./Wikipedia:Administrators/Message_list\" title=\"Wikipedia:Administrators/Message list\">mass message list</a>. To opt-out of future messages, please remove yourself from the list. 17:48, 23 September 2016 (UTC)",
+          "text": "Hello, Brion VIBBER. This message is intended to notify administrators of important changes to the protection policy.\n\n\n\n\n\n\nPlease review <a href=\"./Wikipedia:Protection_policy#Extended_confirmed_protection\" title=\"Wikipedia:Protection policy\">the protection policy</a> carefully before using this new level of protection on pages. Thank you.<br><br>This message was sent to the administrators' <a href=\"./Wikipedia:Administrators/Message_list\" title=\"Wikipedia:Administrators/Message list\">mass message list</a>. To opt-out of future messages, please remove yourself from the list. 17:48, 23 September 2016 (UTC)",
           "depth": 0,
-          "sha": "86a3889"
+          "sha": "20744a0"
         },
         {
           "text": "<a href=\"./Wikipedia:BLUELOCK\" title=\"Wikipedia:BLUELOCK\">Extended confirmed protection</a> (also known as \"30/500 protection\") is a new level of page protection that only allows edits from accounts at least 30 days old and with 500 edits. The automatically assigned <a href=\"./Wikipedia:EXTENDEDCONFIRMED\" title=\"Wikipedia:EXTENDEDCONFIRMED\">\"extended confirmed\" user right</a> was created for this purpose. The protection level was created following <a href=\"./Wikipedia:Village_pump_(proposals)/Archive_129#New_usergroup_with_autopromotion_to_implement_arbitration_&quot;30-500&quot;_bans_as_a_page_protection\" title=\"Wikipedia:Village pump (proposals)/Archive 129\">this community discussion</a> with the primary intention of enforcing various arbitration remedies that prohibited editors under the \"30 days/500 edits\" threshold to edit certain topic areas.<br><br>In July and August 2016, <a href=\"./Wikipedia:ECP2016\" title=\"Wikipedia:ECP2016\">a request for comment</a> established consensus for community use of the new protection level. Administrators are authorized to apply extended confirmed protection to combat any form of disruption (e.g. vandalism, sock puppetry, edit warring, etc.) on any topic, subject to the following conditions:<ul><li><b>Extended confirmed protection may only be used in cases where semi-protection has proven ineffective</b>. It should not be used as a first resort.<li><b>A bot will post a notification at <a href=\"./Wikipedia:Administrators'_noticeboard\" title=\"Wikipedia:Administrators' noticeboard\">Wikipedia:Administrators' noticeboard</a> of each use</b>. MusikBot currently does this by updating <a href=\"./User:MusikBot/ECPMonitor/Report\" title=\"User:MusikBot/ECPMonitor/Report\">a report</a>, which is transcluded onto the noticeboard.</ul>",
@@ -1776,7 +1776,7 @@
       ],
       "depth": 2,
       "text": "Extended confirmed protection",
-      "sha": "238f772"
+      "sha": "a546844"
     },
     {
       "id": 118,
@@ -1938,14 +1938,14 @@
       "id": 130,
       "replies": [
         {
-          "text": "Dear Brion,<br><br>I am working with Prof. Steven LaValle to help obtain permissions for borrowing figures or pictures in his upcoming book Virtual Reality, to be published by Cambridge University Press.  The book is online here:<br><br><a href=\"http://vr.cs.uiuc.edu/\">http://vr.cs.uiuc.edu/</a><br><br>We are hoping to include the picture of yours (<a href=\"https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Bump-map-demo-full.png/400px-Bump-map-demo-full.png\">https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Bump-map-demo-full.png/400px-Bump-map-demo-full.png</a>) in this book (Chapter 7, Figure 7.9).  Could we please have your permission for this?  Thank you.<br><br>Please contact me at awarkoczewski@yahoo.com<br><br>Sincerely,<br><br>Adam Warkoczewski  —Preceding <a href=\"./Wikipedia:Signatures\" title=\"Wikipedia:Signatures\">unsigned</a> comment added by <a href=\"./Special:Contributions/83.25.191.254\" title=\"Special:Contributions/83.25.191.254\">83.25.191.254</a> (<a href=\"./User_talk:83.25.191.254#top\" title=\"User talk:83.25.191.254\">talk</a>) 11:09, 22 January 2017 (UTC)",
+          "text": "Dear Brion,<br><br>I am working with Prof. Steven LaValle to help obtain permissions for borrowing figures or pictures in his upcoming book Virtual Reality, to be published by Cambridge University Press.  The book is online here:<br><br><a href=\"http://vr.cs.uiuc.edu/\">http://vr.cs.uiuc.edu/</a><br><br>We are hoping to include the picture of yours (<a href=\"https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Bump-map-demo-full.png/400px-Bump-map-demo-full.png\">https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Bump-map-demo-full.png/400px-Bump-map-demo-full.png</a>) in this book (Chapter 7, Figure 7.9).  Could we please have your permission for this?  Thank you.<br><br>Please contact me at awarkoczewski@yahoo.com<br><br>Sincerely,<br><br>Adam Warkoczewski  — Preceding <a href=\"./Wikipedia:Signatures\" title=\"Wikipedia:Signatures\">unsigned</a> comment added by <a href=\"./Special:Contributions/83.25.191.254\" title=\"Special:Contributions/83.25.191.254\">83.25.191.254</a> (<a href=\"./User_talk:83.25.191.254#top\" title=\"User talk:83.25.191.254\">talk</a>) 11:09, 22 January 2017 (UTC)",
           "depth": 0,
-          "sha": "7af7fb8"
+          "sha": "fcb90a2"
         }
       ],
       "depth": 2,
       "text": "Permission to use figure in a book.",
-      "sha": "fad8578"
+      "sha": "e87a85d"
     },
     {
       "id": 131,
@@ -2210,9 +2210,9 @@
       "id": 149,
       "replies": [
         {
-          "text": "Following a <a href=\"./Wikipedia:Village_pump_(proposals)/suspend_sysop_rights_of_inactive_admins\" title=\"Wikipedia:Village pump (proposals)/suspend sysop rights of inactive admins\">community discussion</a> in June 2011, consensus was reached to <a href=\"./Wikipedia:Administrators#Procedural_removal_for_inactive_administrators\" title=\"Wikipedia:Administrators\">provisionally suspend the administrative permissions of users who have been inactive for one year</a> (i.e. administrators who have not made any edits or logged actions in more than one year). As a result of this discussion, your administrative permissions will be removedif you do not return to activity within the next month. If you wish to have these permissions reinstatedshould this occur, please post to the <a href=\"./Wikipedia:Bureaucrats'_noticeboard\" title=\"Wikipedia:Bureaucrats' noticeboard\">Wikipedia:Bureaucrats' noticeboard</a> and the userright will be restored per the <a href=\"./Wikipedia:Bureaucrats#Resysopping\" title=\"Wikipedia:Bureaucrats\">re-sysopping process</a> (i.e. as long as the attending bureaucrats are reasonably satisfied that your account has not been compromised, that your inactivity did not have the effect of evading scrutiny of any actions which might have led to sanctions, that you have not been inactive for a three-year period of time, and that you have not been inactive from administrative tasks for a five year period of time). If you remain inactive for a three-year period of time, including the present year you have been inactive, you will need to request reinstatement at <a href=\"./Wikipedia:RFA\" title=\"Wikipedia:RFA\">WP:RFA</a>. Further, following a <a href=\"./Special:PermanentLink/828861169#RFC:_Slight_tweak_to_lengthy_inactivity_policy\" title=\"Special:PermanentLink/828861169\">community discussion in March of 2018</a>, administrators suspended for inactivity who have not had any logged administrative activity for five years will need to request reinstatement at <a href=\"./Wikipedia:RFA\" title=\"Wikipedia:RFA\">WP:RFA</a>. This removal of access is procedural only, and not intended to reflect negatively upon you in any way. We wish you the best in future endeavors, and thank you for your past administrative efforts. —<a href=\"./User:JJMC89_bot\" title=\"User:JJMC89 bot\">JJMC89 <b>bot</b></a> 00:04, 1 August 2018 (UTC)",
+          "text": "Following a <a href=\"./Wikipedia:Village_pump_(proposals)/suspend_sysop_rights_of_inactive_admins\" title=\"Wikipedia:Village pump (proposals)/suspend sysop rights of inactive admins\">community discussion</a> in June 2011, consensus was reached to <a href=\"./Wikipedia:Administrators#Procedural_removal_for_inactive_administrators\" title=\"Wikipedia:Administrators\">provisionally suspend the administrative permissions of users who have been inactive for one year</a> (i.e. administrators who have not made any edits or logged actions in more than one year). As a result of this discussion, your administrative permissions will be removed if you do not return to activity within the next month. If you wish to have these permissions reinstated should this occur, please post to the <a href=\"./Wikipedia:Bureaucrats'_noticeboard\" title=\"Wikipedia:Bureaucrats' noticeboard\">Wikipedia:Bureaucrats' noticeboard</a> and the userright will be restored per the <a href=\"./Wikipedia:Bureaucrats#Resysopping\" title=\"Wikipedia:Bureaucrats\">re-sysopping process</a> (i.e. as long as the attending bureaucrats are reasonably satisfied that your account has not been compromised, that your inactivity did not have the effect of evading scrutiny of any actions which might have led to sanctions, that you have not been inactive for a three-year period of time, and that you have not been inactive from administrative tasks for a five year period of time). If you remain inactive for a three-year period of time, including the present year you have been inactive, you will need to request reinstatement at <a href=\"./Wikipedia:RFA\" title=\"Wikipedia:RFA\">WP:RFA</a>. Further, following a <a href=\"./Special:PermanentLink/828861169#RFC:_Slight_tweak_to_lengthy_inactivity_policy\" title=\"Special:PermanentLink/828861169\">community discussion in March of 2018</a>, administrators suspended for inactivity who have not had any logged administrative activity for five years will need to request reinstatement at <a href=\"./Wikipedia:RFA\" title=\"Wikipedia:RFA\">WP:RFA</a>. This removal of access is procedural only, and not intended to reflect negatively upon you in any way. We wish you the best in future endeavors, and thank you for your past administrative efforts. — <a href=\"./User:JJMC89_bot\" title=\"User:JJMC89 bot\">JJMC89 <b>bot</b></a> 00:04, 1 August 2018 (UTC)",
           "depth": 0,
-          "sha": "3c906ed"
+          "sha": "f0d1f60"
         },
         {
           "text": "Poked the page. --<a href=\"./User:Brion_VIBBER\" title=\"User:Brion VIBBER\">brion</a> (<a href=\"./User_talk:Brion_VIBBER#top\" title=\"User talk:Brion VIBBER\">talk</a>) 22:06, 1 August 2018 (UTC)",
@@ -2222,7 +2222,7 @@
       ],
       "depth": 2,
       "text": "Notification of pending suspension of administrative permissions due to inactivity",
-      "sha": "12eff75"
+      "sha": "eab9a8e"
     },
     {
       "id": 150,
@@ -2267,14 +2267,14 @@
       "id": 153,
       "replies": [
         {
-          "text": "See you soon! All the best, <b><a href=\"./User:L235\" title=\"User:L235\">Kevin</a></b> (aka <a href=\"./User:L235\" title=\"User:L235\">L235</a><b>·</b> <a href=\"./User_talk:L235#top\" title=\"User talk:L235\">t</a><b>·</b> <a href=\"./Special:Contributions/L235\" title=\"Special:Contributions/L235\">c</a>)<br><br><b>Join us in celebrating Wikipedia's 18th birthday at Stanford University!</b><br><br>&#8195;I am delighted to invite you to the <a href=\"./Wikipedia:Meetup/San_Francisco/Stanford_Wikipedia_Day_2019\" title=\"Wikipedia:Meetup/San Francisco/Stanford Wikipedia Day 2019\">2019 Wikipedia Day party at Stanford</a>, which will be held on Tuesday, January 15, 2019, at 5:00-8:30pm.<br><br>&#8195;There will be pizza, cake, and refreshments; both newcomers and experienced Wikimedians are welcome! We will have a beginner track with tutorials, and an advanced track with presentations, lightning talks, and tips and tricks. Admission is free, and you do NOT have to be a Stanford University student to attend.<br><br>&#8195;Details and RSVP <b><a href=\"./Wikipedia:Meetup/San_Francisco/Stanford_Wikipedia_Day_2019\" title=\"Wikipedia:Meetup/San Francisco/Stanford Wikipedia Day 2019\">here</a></b> • register <b><a href=\"http://web.stanford.edu/~kevinsli/wpday-registration.fb\">here</a></b><br><br>(<a href=\"./Wikipedia:Meetup/SFrancisco/Invite\" title=\"Wikipedia:Meetup/SFrancisco/Invite\">Subscribe/Unsubscribe to this talk page notice here</a>) | <a href=\"./User:MediaWiki_message_delivery\" title=\"User:MediaWiki message delivery\">MediaWiki message delivery</a> (<a href=\"./User_talk:MediaWiki_message_delivery\" title=\"User talk:MediaWiki message delivery\">talk</a>) 22:40, 5 January 2019 (UTC)",
+          "text": "See you soon! All the best, <b><a href=\"./User:L235\" title=\"User:L235\">Kevin</a></b> (aka <a href=\"./User:L235\" title=\"User:L235\">L235</a> <b>·</b>  <a href=\"./User_talk:L235#top\" title=\"User talk:L235\">t</a> <b>·</b>  <a href=\"./Special:Contributions/L235\" title=\"Special:Contributions/L235\">c</a>)<br><br><b>Join us in celebrating Wikipedia's 18th birthday at Stanford University!</b><br><br>&#8195;I am delighted to invite you to the <a href=\"./Wikipedia:Meetup/San_Francisco/Stanford_Wikipedia_Day_2019\" title=\"Wikipedia:Meetup/San Francisco/Stanford Wikipedia Day 2019\">2019 Wikipedia Day party at Stanford</a>, which will be held on Tuesday, January 15, 2019, at 5:00-8:30pm.<br><br>&#8195;There will be pizza, cake, and refreshments; both newcomers and experienced Wikimedians are welcome! We will have a beginner track with tutorials, and an advanced track with presentations, lightning talks, and tips and tricks. Admission is free, and you do NOT have to be a Stanford University student to attend.<br><br>&#8195;Details and RSVP <b><a href=\"./Wikipedia:Meetup/San_Francisco/Stanford_Wikipedia_Day_2019\" title=\"Wikipedia:Meetup/San Francisco/Stanford Wikipedia Day 2019\">here</a></b> • register <b><a href=\"http://web.stanford.edu/~kevinsli/wpday-registration.fb\">here</a></b><br><br>(<a href=\"./Wikipedia:Meetup/SFrancisco/Invite\" title=\"Wikipedia:Meetup/SFrancisco/Invite\">Subscribe/Unsubscribe to this talk page notice here</a>) | <a href=\"./User:MediaWiki_message_delivery\" title=\"User:MediaWiki message delivery\">MediaWiki message delivery</a> (<a href=\"./User_talk:MediaWiki_message_delivery\" title=\"User talk:MediaWiki message delivery\">talk</a>) 22:40, 5 January 2019 (UTC)",
           "depth": 0,
-          "sha": "8967f40"
+          "sha": "d975a38"
         }
       ],
       "depth": 2,
       "text": "You are cordially invited to Stanford University to celebrate Wikipedia's birthday",
-      "sha": "19cbdcb"
+      "sha": "e9dd49d"
     },
     {
       "id": 154,
