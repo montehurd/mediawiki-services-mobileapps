@@ -5,6 +5,7 @@ const assert = require('../../utils/assert.js');
 const preq = require('preq');
 const sample = require('./User_talk_Brion_VIBBER_895522398');
 const talk = require('../../../lib/talk');
+const domino = require('domino');
 
 describe('talk', function() {
     this.timeout(20000); // eslint-disable-line no-invalid-this
@@ -64,6 +65,24 @@ describe('talk-unit', () => {
                 objWithSha,
                 { sha: '3febe4d' }
             );
+        });
+    });
+    describe('getFamilyTree', () => {
+        it('gets expected family tree', () => {
+          const LI = domino.createDocument(`
+            <html>
+              <body>
+                <div>
+                  <ul>
+                    <li id='yo'>Hi
+                  </ul>
+                </div>
+              </body>
+            </html>`).querySelector('#yo');
+          const tree = talk.getFamilyTree(LI);
+          assert.deepEqual(
+              tree.map(e => e.tagName), ['LI', 'UL', 'DIV', 'BODY', 'HTML']
+          );
         });
     });
 });
