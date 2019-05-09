@@ -289,7 +289,7 @@ const pContainingArrayOfNodes = (nodeArray, doc) => {
 
 const soughtElementsInSection = (sectionElement, doc) => {
   let elements = [];
-  Array.from(sectionElement.querySelectorAll('p,li,dt,dd,th,td,pre,div,blockquote,br,center'))
+  Array.from(sectionElement.querySelectorAll('p,li,dt,dd,th,td,pre,div,blockquote,center'))
     .forEach(element => {
 
       if (!['PRE', 'LI', 'DT', 'DD'].includes(element.tagName)) {
