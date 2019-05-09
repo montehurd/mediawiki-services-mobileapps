@@ -59,11 +59,10 @@ describe('talk-unit', () => {
     });
     describe('shortenSha', () => {
         it('shortens sha to first 7 chars', () => {
-            const objWithSha = { sha: '3febe4d69db2a2d620fa73388dbd3aed38be5575' };
-            talk.shortenSha(objWithSha);
+            const sha = '3febe4d69db2a2d620fa73388dbd3aed38be5575';
             assert.deepEqual(
-                objWithSha,
-                { sha: '3febe4d' }
+                talk.shortenSha(sha),
+                '3febe4d'
             );
         });
     });
