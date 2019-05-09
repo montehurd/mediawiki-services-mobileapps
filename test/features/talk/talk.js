@@ -33,11 +33,11 @@ describe('talk', function() {
         });
     }
 
-    it('Fetches some results', () => {
+    it('fetches some results', () => {
         return fetchAndVerifyNonZeroResultsForEndpoint();
     });
 
-    it('Fetches expected topics for revision', () => {
+    it('produces expected topics and replies for a revision of a complex talk page', () => {
         return endpointResponse()
         .then((response) => {
             assert.equal(response.body.topics.length, 156);
