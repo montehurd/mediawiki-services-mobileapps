@@ -4,6 +4,7 @@ const server = require('../../utils/server.js');
 const assert = require('../../utils/assert.js');
 const preq = require('preq');
 const sample = require('./User_talk_Brion_VIBBER_895522398');
+const talk = require('../../../lib/talk');
 
 describe('talk', function() {
     this.timeout(20000); // eslint-disable-line no-invalid-this
@@ -42,6 +43,17 @@ describe('talk', function() {
             sample.topics.forEach(function (topic, index) {
               assert.deepEqual(response.body.topics[index], topic);
             });
+        });
+    });
+});
+
+describe('talk-unit', () => {
+    describe('sha', () => {
+        it('generates sha for string', () => {
+            assert.equal(
+                talk.createSha1('Some string'),
+                '3febe4d69db2a2d620fa73388dbd3aed38be5575'
+            );
         });
     });
 });
