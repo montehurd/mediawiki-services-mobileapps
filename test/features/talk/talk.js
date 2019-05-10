@@ -3,7 +3,7 @@
 const server = require('../../utils/server.js');
 const assert = require('../../utils/assert.js');
 const preq = require('preq');
-const sample = require('./User_talk_Brion_VIBBER_895522398');
+const sample = require('./expected-output/en.User_talk_Brion_VIBBER.895522398.json');
 const talk = require('../../../lib/talk');
 const domino = require('domino');
 
