@@ -232,4 +232,21 @@ describe('talk-unit', () => {
             assert.equal(el.hasAttribute('bloop'), true);
         });
     });
+    describe('textFromTextNode', () => {
+      const doc = domino.createDocument('');
+      it('gets text', () => {
+        const node = doc.createTextNode('Hi there');
+        assert.equal(
+            talk.textFromTextNode(node),
+            'Hi there'
+        );
+      });
+      it('escapes tags and ampersands', () => {
+        const node = doc.createTextNode('Some <i>tags</i> and&nbsp;ampersands.');
+        assert.equal(
+            talk.textFromTextNode(node),
+            'Some &lt;i&gt;tags&lt;/i&gt; and&amp;nbsp;ampersands.'
+        );
+      });
+    });
 });
