@@ -249,4 +249,67 @@ describe('talk-unit', () => {
         );
       });
     });
+    describe('textFromPreservedElementNode', () => {
+      it('preserve nested bold, italic and anchor', () => {
+        const elementHTML = '' +
+        '<b>' + // bold is a preserved element
+          'keep nested <b>bold</b> and <i>italic</i> and <a href="test">anchor</a> tags' +
+        '</b>';
+        const el = domino.createDocument(elementHTML).querySelector('b');
+
+        const expectedOutput = '' +
+        '<b>' +
+          'keep nested <b>bold</b> and <i>italic</i> and <a href="test">anchor</a> tags' +
+        '</b>';
+
+        assert.equal(talk.textFromPreservedElementNode(el), expectedOutput);
+      });
+      it('removes img and other tags', () => {
+        const elementHTML = '' +
+        '<b>' +
+          'do not keep image tags <img src="">' +
+          '<other>do not keep other tags, but keep their text content</other>' +
+        '</b>';
+        const el = domino.createDocument(elementHTML).querySelector('b');
+        const expectedOutput = '' +
+        '<b>' +
+          'do not keep image tags ' +
+          'do not keep other tags, but keep their text content' +
+        '</b>';
+        assert.equal(talk.textFromPreservedElementNode(el), expectedOutput);
+      });
+      it('handle deep nesting', () => {
+        const elementHTML = '' +
+        '<b>' +
+          'handle deep nesting' +
+          '<i>italic' +
+            '<a href="test">anchor' +
+              '<other>' +
+                'other' +
+                '<b>' +
+                  'bold' +
+                '</b>' +
+              '</other>' +
+              '<img src="">' +
+              'bla' +
+            '</a>' +
+          '</i>' +
+        '</b>';
+        const el = domino.createDocument(elementHTML).querySelector('b');
+        const expectedOutput = '' +
+        '<b>' +
+          'handle deep nesting' +
+          '<i>italic' +
+            '<a href="test">anchor' +
+                'other' +
+                '<b>' +
+                  'bold' +
+                '</b>' +
+              'bla' +
+            '</a>' +
+          '</i>' +
+        '</b>';
+        assert.equal(talk.textFromPreservedElementNode(el), expectedOutput);
+      });
+    });
 });
