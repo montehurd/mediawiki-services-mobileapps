@@ -463,14 +463,14 @@
       "id": 28,
       "replies": [
         {
-          "text": "Hi. I heard you are the former \"Chief Techincal Officer of Wikimedia\" and you are good at wikicodes, so i am asking you a question that has been [<a href=\"http://www.mediawiki.org/wiki/Thread:Project:Support_desk/Transcluding_onlyinclude_and_includeonly_tags\">http://www.mediawiki.org/wiki/Thread:Project:Support_desk/Transcluding_onlyinclude_and_includeonly_tags</a> unanswered on wikimedia for a quite long time. I hope you know the answer. To make it easier to see, i am posting the problem here too:<br><br><b>short question</b><br><br>Is there a way to let a template include &lt;includeonly&gt;&lt;onlyinclude&gt;{{{date}}}&lt;/onlyinclude&gt;&lt;/includeonly&gt; when transcluded?<br><br><b>longer explaination for question</b><br><br>I'll try to explain it with this table:<br><br><i>Page name</i>:<br><br>Template(in this case: \"template:update\")<br><br>Page between(in this case: \"update page\")<br><br>Final page(in this case: \"item page\")<br><br><i>use</i>:<br><br>add a notice to \"update page\"<br><br>show information about the update,<br><br>and when transcluded show the date of it only<br><br>Only have the text between the onlyinclude tags included<br><br>This is because at the  <a href=\"http://runescape.wikia.com/wiki/RuneScape_Wiki\">RuneScape Wiki</a> i am trying to automate the update date. Because there is always a link to the update page on the item page, and the update page has the date on it, i want the update page to have an additional note with the date entered(between onlyinclude tags) and i don't want it to appear on the update page itself(between includeonly tags). All update pages have the template:Update on it, with the parameter {{{date}}} so I want template:update to add &lt;includeonly&gt;&lt;onlyinclude&gt;{{{date}}}&lt;/onlyinclude&gt;&lt;/includeonly&gt; to the update page so that when the item page has {{#time:j F Y|{{Update:(updatename)}}}} on it, it shows the date in \"dd month yy\" automatically without needing to add that yourself.<br><br>I hope you can help me. <a href=\"./User:Joeytje50\" title=\"User:Joeytje50\">Joeytje50</a> (<a href=\"./User_talk:Joeytje50\" title=\"User talk:Joeytje50\">talk</a>) 17:56, 8 December 2010 (UTC)",
+          "text": "Hi. I heard you are the former \"Chief Techincal Officer of Wikimedia\" and you are good at wikicodes, so i am asking you a question that has been [<a href=\"http://www.mediawiki.org/wiki/Thread:Project:Support_desk/Transcluding_onlyinclude_and_includeonly_tags\">http://www.mediawiki.org/wiki/Thread:Project:Support_desk/Transcluding_onlyinclude_and_includeonly_tags</a> unanswered on wikimedia for a quite long time. I hope you know the answer. To make it easier to see, i am posting the problem here too:<br><br><b>short question</b><br><br>Is there a way to let a template include <b>&lt;includeonly&gt;&lt;onlyinclude&gt;{{{date}}}&lt;/onlyinclude&gt;&lt;/includeonly&gt;</b> when transcluded?<br><br><b>longer explaination for question</b><br><br>I'll try to explain it with this table:<br><br><i>Page name</i>:<br><br>Template(in this case: \"template:update\")<br><br>Page between(in this case: \"update page\")<br><br>Final page(in this case: \"item page\")<br><br><i>use</i>:<br><br>add a notice to \"update page\"<br><br>show information about the update,<br><br>and when transcluded show the date of it only<br><br>Only have the text between the onlyinclude tags included<br><br>This is because at the  <a href=\"http://runescape.wikia.com/wiki/RuneScape_Wiki\">RuneScape Wiki</a> i am trying to automate the update date. Because there is always a link to the update page on the item page, and the update page has the date on it, i want the update page to have an additional note with the date entered(between onlyinclude tags) and i don't want it to appear on the update page itself(between includeonly tags). All update pages have the template:Update on it, with the parameter {{{date}}} so I want template:update to add <b>&lt;includeonly&gt;&lt;onlyinclude&gt;{{{date}}}&lt;/onlyinclude&gt;&lt;/includeonly&gt;</b> to the update page so that when the item page has <b>{{#time:j F Y|{{Update:(updatename)}}}}</b> on it, it shows the date in \"dd month yy\" automatically without needing to add that yourself.<br><br>I hope you can help me. <a href=\"./User:Joeytje50\" title=\"User:Joeytje50\">Joeytje50</a> (<a href=\"./User_talk:Joeytje50\" title=\"User talk:Joeytje50\">talk</a>) 17:56, 8 December 2010 (UTC)",
           "depth": 0,
-          "sha": "64861ff"
+          "sha": "f112b2b"
         }
       ],
       "depth": 2,
       "text": "I herd u can",
-      "sha": "e8b84aa"
+      "sha": "6125a7a"
     },
     {
       "id": 29,
@@ -577,14 +577,14 @@
       "id": 36,
       "replies": [
         {
-          "text": "Thanks for uploading <b><a href=\"./File:Fifa_world_cup_org.jpg\" title=\"File:Fifa world cup org.jpg\">File:Fifa world cup org.jpg</a></b>. The image description page currently specifies that the image is non-free and may only be used on Wikipedia under a <a href=\"./Wikipedia:FU\" title=\"Wikipedia:FU\">claim of fair use</a>. However, the image is currently <a href=\"./Wikipedia:Orphan\" title=\"Wikipedia:Orphan\">orphaned</a>, meaning that it is not used in any articles on Wikipedia. If the image was previously in an article, please go to the article and see why it was removed. <a href=\"./Wikipedia:BOLD\" title=\"Wikipedia:BOLD\">You may add it back</a> if you think that that will be useful. However, please note that images for which a replacement could be created are not acceptable for use on Wikipedia (see <a href=\"./Wikipedia:Non-free_content#Policy\" title=\"Wikipedia:Non-free content\">our policy for non-free media</a>).<br><br><b>PLEASE NOTE:</b><ul><li>I am a <a href=\"./Wikipedia:BOT\" title=\"Wikipedia:BOT\">bot</a>, and will therefore not be able to answer your questions.<li>I will remove the request for deletion if the file is used in an article once again.<li>If you receive this notice <i>after</i> the image is deleted, and you want to restore the image, click <a href=\"http://en.wikipedia.org/w/index.php?action=edit&amp;preload=Wikipedia:Requests_for_undeletion/Example&amp;editintro=Wikipedia:Requests_for_undeletion/Intro&amp;preloadtitle=File%3AFifa+world+cup+org.jpg&amp;section=new&amp;title=Wikipedia:Requests_for_undeletion/Current_requests&amp;create=Request\">here</a> to file an un-delete request.<li>To opt out of these bot messages, add {{bots|deny=DASHBot}} to your talk page.<li>If you believe the bot has made an error, please turn it off <a href=\"./User:DASHBot/F5\" title=\"User:DASHBot/F5\">here</a> and leave a message on <a href=\"./User_talk:Tim1357\" title=\"User talk:Tim1357\">my owner's talk page</a>.</ul>Thank you.  <a href=\"./User:DASHBot\" title=\"User:DASHBot\">DASHBot</a> (<a href=\"./User_talk:DASHBot\" title=\"User talk:DASHBot\">talk</a>) 06:07, 3 July 2011 (UTC)",
+          "text": "Thanks for uploading <b><a href=\"./File:Fifa_world_cup_org.jpg\" title=\"File:Fifa world cup org.jpg\">File:Fifa world cup org.jpg</a></b>. The image description page currently specifies that the image is non-free and may only be used on Wikipedia under a <a href=\"./Wikipedia:FU\" title=\"Wikipedia:FU\">claim of fair use</a>. However, the image is currently <a href=\"./Wikipedia:Orphan\" title=\"Wikipedia:Orphan\">orphaned</a>, meaning that it is not used in any articles on Wikipedia. If the image was previously in an article, please go to the article and see why it was removed. <a href=\"./Wikipedia:BOLD\" title=\"Wikipedia:BOLD\">You may add it back</a> if you think that that will be useful. However, please note that images for which a replacement could be created are not acceptable for use on Wikipedia (see <a href=\"./Wikipedia:Non-free_content#Policy\" title=\"Wikipedia:Non-free content\">our policy for non-free media</a>).<br><br><b>PLEASE NOTE:</b><ul><li>I am a <a href=\"./Wikipedia:BOT\" title=\"Wikipedia:BOT\">bot</a>, and will therefore not be able to answer your questions.<li>I will remove the request for deletion if the file is used in an article once again.<li>If you receive this notice <i>after</i> the image is deleted, and you want to restore the image, click <a href=\"http://en.wikipedia.org/w/index.php?action=edit&amp;preload=Wikipedia:Requests_for_undeletion/Example&amp;editintro=Wikipedia:Requests_for_undeletion/Intro&amp;preloadtitle=File%3AFifa+world+cup+org.jpg&amp;section=new&amp;title=Wikipedia:Requests_for_undeletion/Current_requests&amp;create=Request\">here</a> to file an un-delete request.<li>To opt out of these bot messages, add <b>{{bots|deny=DASHBot}}</b> to your talk page.<li>If you believe the bot has made an error, please turn it off <a href=\"./User:DASHBot/F5\" title=\"User:DASHBot/F5\">here</a> and leave a message on <a href=\"./User_talk:Tim1357\" title=\"User talk:Tim1357\">my owner's talk page</a>.</ul>Thank you.  <a href=\"./User:DASHBot\" title=\"User:DASHBot\">DASHBot</a> (<a href=\"./User_talk:DASHBot\" title=\"User talk:DASHBot\">talk</a>) 06:07, 3 July 2011 (UTC)",
           "depth": 0,
-          "sha": "2b21c24"
+          "sha": "abb0789"
         }
       ],
       "depth": 2,
       "text": "Orphaned non-free image File:Fifa world cup org.jpg",
-      "sha": "f5281ba"
+      "sha": "baf310f"
     },
     {
       "id": 37,
@@ -922,14 +922,14 @@
       "id": 56,
       "replies": [
         {
-          "text": "The article <a href=\"./Starfighter\" title=\"Starfighter\">Starfighter</a> has been <a href=\"./Wikipedia:Proposed_deletion\" title=\"Wikipedia:Proposed deletion\">proposed for deletion</a>  because of the following concern:<br><br>&#8195;<b>article on a word made up by some editor, unsourced after several years</b><br><br>While all contributions to Wikipedia are appreciated, content or articles may be <a href=\"./Wikipedia:DEL#REASON\" title=\"Wikipedia:DEL\">deleted for any of several reasons</a>.<br><br>You may prevent the proposed deletion by removing the {{proposed deletion/dated}} notice, but please explain why in your <a href=\"./Help:Edit_summary\" title=\"Help:Edit summary\">edit summary</a> or on <a href=\"./Talk:Starfighter\" title=\"Talk:Starfighter\">the article's talk page</a>.<br><br>Please consider improving the article to address the issues raised. Removing {{proposed deletion/dated}} will stop the <a href=\"./Wikipedia:Proposed_deletion\" title=\"Wikipedia:Proposed deletion\">proposed deletion process</a>, but other <a href=\"./Wikipedia:Deletion_process\" title=\"Wikipedia:Deletion process\">deletion processes</a> exist. In particular, the <a href=\"./Wikipedia:Criteria_for_speedy_deletion\" title=\"Wikipedia:Criteria for speedy deletion\">speedy deletion</a> process can result in deletion without discussion, and <a href=\"./Wikipedia:Articles_for_deletion\" title=\"Wikipedia:Articles for deletion\">articles for deletion</a> allows discussion to reach <a href=\"./Wikipedia:Consensus\" title=\"Wikipedia:Consensus\">consensus</a> for deletion.<br><br>&#8195;I've seconded it. -- <a href=\"./User:Trevj#top\" title=\"User:Trevj\">Trevj</a> (<a href=\"./User_talk:Trevj#top\" title=\"User talk:Trevj\">talk</a>) 11:22, 13 July 2012 (UTC)",
+          "text": "The article <a href=\"./Starfighter\" title=\"Starfighter\">Starfighter</a> has been <a href=\"./Wikipedia:Proposed_deletion\" title=\"Wikipedia:Proposed deletion\">proposed for deletion</a>  because of the following concern:<br><br>&#8195;<b>article on a word made up by some editor, unsourced after several years</b><br><br>While all contributions to Wikipedia are appreciated, content or articles may be <a href=\"./Wikipedia:DEL#REASON\" title=\"Wikipedia:DEL\">deleted for any of several reasons</a>.<br><br>You may prevent the proposed deletion by removing the <b>{{proposed deletion/dated}}</b> notice, but please explain why in your <a href=\"./Help:Edit_summary\" title=\"Help:Edit summary\">edit summary</a> or on <a href=\"./Talk:Starfighter\" title=\"Talk:Starfighter\">the article's talk page</a>.<br><br>Please consider improving the article to address the issues raised. Removing <b>{{proposed deletion/dated}}</b> will stop the <a href=\"./Wikipedia:Proposed_deletion\" title=\"Wikipedia:Proposed deletion\">proposed deletion process</a>, but other <a href=\"./Wikipedia:Deletion_process\" title=\"Wikipedia:Deletion process\">deletion processes</a> exist. In particular, the <a href=\"./Wikipedia:Criteria_for_speedy_deletion\" title=\"Wikipedia:Criteria for speedy deletion\">speedy deletion</a> process can result in deletion without discussion, and <a href=\"./Wikipedia:Articles_for_deletion\" title=\"Wikipedia:Articles for deletion\">articles for deletion</a> allows discussion to reach <a href=\"./Wikipedia:Consensus\" title=\"Wikipedia:Consensus\">consensus</a> for deletion.<br><br>&#8195;I've seconded it. -- <a href=\"./User:Trevj#top\" title=\"User:Trevj\">Trevj</a> (<a href=\"./User_talk:Trevj#top\" title=\"User talk:Trevj\">talk</a>) 11:22, 13 July 2012 (UTC)",
           "depth": 0,
-          "sha": "bdebe7a"
+          "sha": "e2f3ce4"
         }
       ],
       "depth": 2,
       "text": "<a href=\"./Wikipedia:Proposed_deletion\" title=\"Wikipedia:Proposed deletion\">Proposed deletion</a> of <a href=\"./Starfighter\" title=\"Starfighter\">Starfighter</a>",
-      "sha": "2611a6e"
+      "sha": "da398ec"
     },
     {
       "id": 57,
@@ -2301,6 +2301,19 @@
       "depth": 2,
       "text": "Administrator account security (Correction to Arbcom 2019 special circular)",
       "sha": "85732d0"
+    },
+    {
+      "id": 156,
+      "replies": [
+        {
+          "text": "Dear Brion VIBBER,<br><br>I'd like to extend a cordial invitation to you to join the <b><a href=\"./Wikipedia:Fifteen_Year_Society\" title=\"Wikipedia:Fifteen Year Society\">Fifteen Year Society</a></b>, an informal group for editors who've been participating in the Wikipedia project for fifteen years or more. ​<br><br>Best regards, <a href=\"./User:Urhixidur\" title=\"User:Urhixidur\">Urhixidur</a> (<a href=\"./User_talk:Urhixidur\" title=\"User talk:Urhixidur\">talk</a>) 18:55, 8 May 2019 (UTC)",
+          "depth": 0,
+          "sha": "d029c1a"
+        }
+      ],
+      "depth": 2,
+      "text": "Invitation to join the Fifteen Year Society",
+      "sha": "6620b89"
     }
   ]
 }
