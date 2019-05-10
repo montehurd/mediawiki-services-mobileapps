@@ -3,11 +3,12 @@
 const server = require('../../utils/server.js');
 const assert = require('../../utils/assert.js');
 const preq = require('preq');
-const sample = require('./expected-output/en.User_talk_Brion_VIBBER.895522398.json');
+const complexExpectedOutputSample = require('./expected-output/en.User_talk_Brion_VIBBER.895522398.json');
 const talk = require('../../../lib/talk');
 const domino = require('domino');
 
-describe('talk', function() {
+describe('talk-complex', function() {
+  describe('ensure output produced for a revision of a complex talk page matches expectations', () => {
     this.timeout(20000); // eslint-disable-line no-invalid-this
 
     before(() => server.start());
@@ -37,15 +38,16 @@ describe('talk', function() {
         return fetchAndVerifyNonZeroResultsForEndpoint();
     });
 
-    it('produces expected topics and replies for a revision of a complex talk page', () => {
+    it('produces expected topics and replies for revision', () => {
         return endpointResponse()
         .then((response) => {
             assert.equal(response.body.topics.length, 156);
-            sample.topics.forEach(function (topic, index) {
+            complexExpectedOutputSample.topics.forEach(function (topic, index) {
               assert.deepEqual(response.body.topics[index], topic);
             });
         });
     });
+  });
 });
 
 describe('talk-unit', () => {
