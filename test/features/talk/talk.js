@@ -21,7 +21,7 @@ describe('talk', function() {
     }
 
     function verifyNonZeroEndpointResults(response) {
-        assert.deepEqual(response.status, 200);
+        assert.equal(response.status, 200);
         assert.ok(response.body.topics.length > 0,
             'Should have fetched some results');
     }
@@ -60,7 +60,7 @@ describe('talk-unit', () => {
     describe('shortenSha', () => {
         it('shortens sha to first 7 chars', () => {
             const sha = '3febe4d69db2a2d620fa73388dbd3aed38be5575';
-            assert.deepEqual(
+            assert.equal(
                 talk.shortenSha(sha),
                 '3febe4d'
             );
@@ -181,14 +181,14 @@ describe('talk-unit', () => {
     describe('escapeHTML', () => {
         it('escapes tags', () => {
             const sha = 'This <i>is</i> fine.';
-            assert.deepEqual(
+            assert.equal(
                 talk.escapeHTML(sha),
                 'This &lt;i&gt;is&lt;/i&gt; fine.'
             );
         });
         it('escapes ampersands', () => {
             const sha = 'This&nbsp;is&nbsp;fine.';
-            assert.deepEqual(
+            assert.equal(
                 talk.escapeHTML(sha),
                 'This&amp;nbsp;is&amp;nbsp;fine.'
             );
