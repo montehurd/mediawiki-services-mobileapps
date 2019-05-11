@@ -1,0 +1,7 @@
+[
+  {
+    "files": ["**/*.js"],
+    "command": "./.on-save.sh",
+    "showError": false
+  }
+]
