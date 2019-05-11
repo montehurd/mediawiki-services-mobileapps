@@ -313,7 +313,7 @@ describe('talk-unit', () => {
         '</b>';
         assert.equal(talk.textFromPreservedElementNode(el), expectedOutput);
       });
-      it('shows file name from href if anchor has no text', () => {
+      it('shows file name from href in brackets if anchor has no text', () => {
         const elementHTML = '' +
         '<a href="test/someFileName">' +
         '</a>';
@@ -323,6 +323,20 @@ describe('talk-unit', () => {
         '[someFileName]' +
         '</a>';
         assert.equal(talk.textFromPreservedElementNode(el), expectedOutput);
+      });
+    });
+    describe('textFromPreElementNode', () => {
+      it('converts newlines to breaks', () => {
+        const elementHTML = '' +
+        '<pre>' +
+          'breaks\nshould\nbecome\nbr\ntags' +
+        '</pre>';
+        const el = domino.createDocument(elementHTML).querySelector('pre');
+        const expectedOutput = '' +
+          'breaks<br>should<br>become<br>br<br>tags';
+        assert.equal(
+          talk.textFromPreElementNode(el, domino.createDocument(elementHTML)), expectedOutput
+        );
       });
     });
 });
