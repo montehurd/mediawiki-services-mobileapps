@@ -313,5 +313,16 @@ describe('talk-unit', () => {
         '</b>';
         assert.equal(talk.textFromPreservedElementNode(el), expectedOutput);
       });
+      it('shows file name from href if anchor has no text', () => {
+        const elementHTML = '' +
+        '<a href="test/someFileName">' +
+        '</a>';
+        const el = domino.createDocument(elementHTML).querySelector('a');
+        const expectedOutput = '' +
+        '<a href="test/someFileName">' +
+        '[someFileName]' +
+        '</a>';
+        assert.equal(talk.textFromPreservedElementNode(el), expectedOutput);
+      });
     });
 });
