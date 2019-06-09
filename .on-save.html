@@ -1,0 +1,35 @@
+<html>
+<script>
+fetch('http://localhost:6927/en.wikipedia.org/v1/page/talk/User_talk:Brion_VIBBER/895522398').then(response => {
+// fetch('http://localhost:6927/en.wikipedia.org/v1/page/talk/User_talk:Montehurd/899425787').then(response => {
+// fetch('http://localhost:6927/fr.wikipedia.org/v1/page/talk/User_talk:Brion_VIBBER/51609364').then(response => {
+  response.json().then(json => {
+	  json.topics.forEach(topic => {
+      const topicDiv = document.createElement('div')
+      topicDiv.style.margin = '20px 0px 20px 0px'
+      topicDiv.style.padding = '5px'
+      topicDiv.style.border = '1px dashed blue'
+      topicDiv.style.marginLeft = `${30 * (topic.depth - 1)}px`
+
+      const h = document.createElement(`h${topic.depth}`)
+      h.innerHTML = `${topic.text} [${topic.id}]`
+      topicDiv.appendChild(h)
+
+      topic.replies.forEach(item => {
+        const d = document.createElement('div')
+        d.style.border = '1px solid red'
+        d.style.marginLeft = `${25 * item.depth}px`
+        d.style.marginBottom = '5px'
+        d.style.padding = '5px'
+        d.innerHTML = item.text
+        topicDiv.appendChild(d)
+      })
+
+      document.body.appendChild(topicDiv)
+    })
+  })
+})
+</script>
+<body>
+</body>
+</html>
