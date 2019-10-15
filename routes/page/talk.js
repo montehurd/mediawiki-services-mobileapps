@@ -2,6 +2,7 @@ const router = require('../../lib/util').router();
 const talkParser = require('../../lib/talk/parser');
 const mUtil = require('../../lib/mobile-util');
 const parsoidApi = require('../../lib/parsoid-access');
+const rmElements = require('../../lib/transformations/rmElements');
 const rmAttributes = require('../../lib/transformations/rmAttributes');
 
 /**
@@ -18,6 +19,7 @@ router.get('/talk/:title/:revision?/:tid?', (req, res) => {
     .then(parsoidRsp => mUtil.createDocument(parsoidRsp.body)
     .then((doc) => {
 
+        rmElements(doc, 'path, clippath, script, noscript, defs, style, form, svg, abbr');
         rmAttributes(doc, '*', ['style','id','class','rel','about','data-mw','typeof']);
 
         const lang = req.params.domain.split('.')[0];
