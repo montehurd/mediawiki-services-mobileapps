@@ -2,6 +2,7 @@ const router = require('../../lib/util').router();
 const talkParser = require('../../lib/talk/parser');
 const mUtil = require('../../lib/mobile-util');
 const parsoidApi = require('../../lib/parsoid-access');
+const rmAttributes = require('../../lib/transformations/rmAttributes');
 
 /**
  * The main application object reported when this module is required.
@@ -16,6 +17,9 @@ router.get('/talk/:title/:revision?/:tid?', (req, res) => {
     return parsoidApi.getParsoidHtml(req)
     .then(parsoidRsp => mUtil.createDocument(parsoidRsp.body)
     .then((doc) => {
+
+        rmAttributes(doc, '*', ['style','id','class','rel','about','data-mw','typeof']);
+
         const lang = req.params.domain.split('.')[0];
         const topicsWithReplies = talkParser.parseUserTalkPageDocIntoTopicsWithReplies(doc, lang);
 
